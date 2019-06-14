@@ -1,3 +1,72 @@
+
+[medium adagrad]: <https://medium.com/konvergen/an-introduction-to-adagrad-f130ae871827>
+[medium rprop]: <https://towardsdatascience.com/understanding-rmsprop-faster-neural-network-learning-62e116fcf29a>
+
+##### Statistical Gradient Descent:
+Hessian Free Optimization: [Martens, 2010]
+Use second order information from the second derivation to update weights.
+Newtons method: Loss function is locally approximated by the quadratic
+expression containing the Hessian – the second derivative matrix.
+Calculating only some elements of the Hessian is possible, not all.
+Choose the elements with information about the the direction of the Gradient Descent.
+
+- AdaGrad:
+Algorithm adaptive scaled learning-rate for each dimension. ([medium adagrad])
+AdaGrad is almost the same as SGD but each individual parameter update is scaled (divided) with the accumulated squared gradient from every previous gradient computation. In the long run this term goes to 0 for all parameters. 
+
+- RPROP: 
+goal is to solve problem with gradients varying a lot in magnitudes. ([medium rprop])
+Rprop combines two ideas:
+(i)  only using the sign of the gradient 
+(ii) adapting the step size individually for each weight. 
+Look at the sign of the two previous gradient steps and adjust the stepsize accordingly (intensify or decrease).
+It is also adviced to limit the stepsize between a minimum and maximum value. 
+
+- RMSProp:
+"Divide the learning rate for a weight by a running average of the magnitudes of recent 
+ gradients for that weight" Thought to be a biased estimate [Leslie N. Smith Cyclical Learning Rates for
+ Training Neural Networks]
+
+- ESGD:
+unbiased version of RMSProp
+
+- ADAM: – ADAptiv Moment estimation
+RMSprop + Stochastic Gradient Descent with momentum
+Uses 1st and 2nd momentum estimates
+n:th Moment(X) = m_n = E[X]^n – (expected value)^n
+
+
+  
+- SGRD:
+
+- CLR – Cyclical Learning Rate:
+Requires almost no additional computation 
+Linear change of learning rate easiest to implement (my thoughts), chosen because any nonlinear change between largest and smallest gave the same result.
+
+Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
+
+    \# of iterations = trainingset-size / batch-size
+    stepsize        = 2-10 times \# iterations in an epoch
+
+    PyTorch:
+      local cycle = math.floor(1 + epochCounter /(2∗ stepsize ))
+      local x = math.abs(epochCounter/stepsize − 2∗cycle + 1)
+      local lr = opt .LR + (maxLR − opt .LR) ∗ math.max(0, (1−x))
+
+      variables:
+        opt.LR is the specified lower (i.e., base) learning rate
+        epochCounter is the number of epochs of training,
+        lr is the computed learning rate
+
+    Alternative methods:
+      Linear2:   maximum learning rate is halfed after each cycle.
+      exp_range: decrease both minimum and maximum boundary
+                 by factor gamma^itteration after each cycle.
+
+
+
+
+
 http://cs231n.github.io/neural-networks-3/                       <= gradient check
 https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html  <= about floating point numbers
 
@@ -261,59 +330,6 @@ WORD VECTORS:
     Reverse of skip-gram
 
 
-GRADIENT DESCENT:
-      Hessian Free Optimization: [Martens, 2010]
-        Use second order information from the second derivation to update weights.
-        Newtons method: Loss function is locally approximated by the quadratic
-        expression containing the Hessian – the second derivative matrix.
-        Calculating only some elements of the Hessian is possible, not all.
-        Choose the elements with information about the the direction of the Gradient Descent.
-
-      RMSProp:
-        "Divide the learning rate for a weight by a running average of the magnitudes of recent 
-		 gradients for that weight"
-         Thought to be a biased estimate [Leslie N. Smith Cyclical Learning Rates for
-		 Training Neural Networks]
-
-      ESGD:
-        unbiased version of RMSProp
-
-      Adam: – ADAptiv Moment estimation
-         RMSprop + Stochastic Gradient Descent with momentum
-
-         Uses 1st and 2nd moment estimate
-          n:th Moment(X) = m_n = E[X]^n – (expected value)^n
-
-      AdaGrad:
-		algorithm adaptive scaled learning-rate for each dimension. 
-      SGRD:
-
-      CLR – Cyclical Learning Rate:
-        Requires almost no additional computation
-
-        Linear change of learning rate easiest to implement (my thoughts), chosen because any nonlinear change between largest and smallest
-        gave the same result.
-
-        Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
-
-        # of iterations = trainingset-size / -size
-        stepsize        = 2-10 times # iterations in an epoch
-
-        PyTorch:
-          local cycle = math.floor(1 + epochCounter /(2∗ stepsize ))
-          local x = math.abs(epochCounter/stepsize − 2∗cycle + 1)
-          local lr = opt .LR + (maxLR − opt .LR) ∗ math.max(0, (1−x))
-
-          variables:
-            opt.LR is the specified lower (i.e., base) learning rate
-            epochCounter is the number of epochs of training,
-            lr is the computed learning rate
-
-        Alternative methods:
-          Linear2:   maximum learning rate is halfed after each cycle.
-          exp_range: decrease both minimum and maximum boundary
-                     by factor gamma^itteration after each cycle.
-
       Super Convergence:
 
         1cycle = curriculum learning and simulated annealing
@@ -344,3 +360,4 @@ Loss Function Topology:
   from Saddle Points not  Poor Local Minima [Daupin et al.]
 
   Saddle points have small gradients that slow the learning process.
+
