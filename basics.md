@@ -35,9 +35,9 @@ Leslis N. SMith says it's a biased estimate, I believe it is in relation to the 
 Equilibrated SGD – unbiased version of RMSProp. ([research esgd])  <br/>
 In the paper the authors proposes an update of the moving-average(?) every 20th iteration because it would have the same calculation overhead as RMSPROP. And still (I guess) better performance. I haven't found any good source of the implementation of the paper yet.  
 
-- **ADAM**: – ADAptiv Momentum estimation – RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])  
+- **ADAM**: – ADAptiv Momentum estimation – RMSprop + Momentum. ([youtube eve])  
 <br/> $$\theta_{t+1} = \theta_{t} - lr \frac{m_{t}}{\sqrt{v_t} + \epsilon} $$  
-Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator $\sqrt{v_t}$.  
+Adam takes small steps in steep terrain and large steps in flat terrain. 
 average recent gradient: $m_{t} = beta_{1} m_{t-1} + (1-beta_{1}) grad_{t}$  
 average recent deviation in the gradient: $v_{t} = beta_{2} v_{t-1} + (1-beta_{2}) {grad_{t}}^{2}$  
 $v_{t}$ is related to the second derivative and is in general close to constant. 
@@ -48,7 +48,7 @@ $d_{t}$ is the only difference between Adam and Eve, has two objectives:
 **(i)** large variation in the Loss-function between steps should be given less weight -> take smaller steps.  
 **(ii)** are we far from the minium (L*)? -> take larger steps.  
 <br/> $$\frac{1}{d_{t}} \propto \frac{L_{t} - L^{\*}}{|L_{t} - L_{t-1}|}$$  
-<br/> problem (**ii**) If we step away from $L^{\*}$ we might take incrementally larger and larger steps away from $L^{*}$ – blowing up.  
+<br/> problem (**ii**) Stepping away from $L^{\*}$ might incrementally take larger and larger steps and blowing up.  
 solution (**ii**) $\frac{1}{c} \leq \frac{1}{d_{t}} \leq c$  
 Also add smoothness to $d_{t}$ with another running average ($beta_{3}$).  
 Use Adam to estimate $L^{\*}$ or set $L^{\*} = 0$  
