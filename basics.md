@@ -1,6 +1,9 @@
-
+[github word2vec]: <https://github.com/bollu/bollu.github.io#everything-you-know-about-word2vec-is-wrong>
 [medium adagrad]: <https://medium.com/konvergen/an-introduction-to-adagrad-f130ae871827>
 [medium rprop]: <https://towardsdatascience.com/understanding-rmsprop-faster-neural-network-learning-62e116fcf29a>
+[research esgd]: <https://www.researchgate.net/publication/272423025_RMSProp_and_equilibrated_adaptive_learning_rates_for_non-convex_optimization>
+[paper eve]: <https://arxiv.org/pdf/1611.01505.pdf>
+[youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
 
 ##### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
@@ -19,24 +22,61 @@ goal is to solve problem with gradients varying a lot in magnitudes. ([medium rp
 Rprop combines two ideas:
 (i)  only using the sign of the gradient 
 (ii) adapting the step size individually for each weight. 
-Look at the sign of the two previous gradient steps and adjust the stepsize accordingly (intensify or decrease).
+Rprop looks at the sign of the two(!) previous gradient steps and adjust the stepsize accordingly (intensify or decrease).
 It is also adviced to limit the stepsize between a minimum and maximum value. 
 
 - RMSProp:
-"Divide the learning rate for a weight by a running average of the magnitudes of recent 
- gradients for that weight" Thought to be a biased estimate [Leslie N. Smith Cyclical Learning Rates for
- Training Neural Networks]
+problem with rprop is that it doesn't work for mini-batch updates because it uses the sign of the gradient. RMSProp solves this by using a moving average of the squared gradient for each weight. ([medium rprop])
+This still doesn't resemble the RPROP algorithm. The RPROP algorithm decreases the learning-rate if we go the other direction, and increase it if we are going the same direction. 
+In RMSProp the algorithm doesn't remember which direction it went in the previous iterations. It only matters what the magnitude is of the gradient. 
+Leslis N. SMith says it's a biased estimate, I believe it is in relation to the Hessian. RMSProp comes close to the Hessian. (Whatever that means?)
 
 - ESGD:
-unbiased version of RMSProp
+Equilibrated SGD – unbiased version of RMSProp. ([research esgd])
+In the paper the authors proposes an update of the moving-average(?) every 20th iteration because it would have the same calculation overhead as RMSPROP. And still (I guess) better performance. I haven't found any good source of the implementation of the paper yet.
 
-- ADAM: – ADAptiv Moment estimation
-RMSprop + Stochastic Gradient Descent with momentum
-Uses 1st and 2nd momentum estimates
-n:th Moment(X) = m_n = E[X]^n – (expected value)^n
+- ADAM: – ADAptiv Momentum estimation
+RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])
+
+theta_t+1 = theta_t - lr * momentum / denominator
+
+Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator v_t^-(0.5). 
+
+average recent gradient:
+mom_t = beta1 * mom_t-1 + (1-beta1) * grad_t
+average recent deviation in the gradient:
+v_t   = beta2 * v_t-1 + (1-beta2) * (grad_t)^2 
+v_t is related to the second derivative and is in general close to constant. 
 
 
-  
+momentum    =  m_t 
+denominator = (v_t)^-(0.5) + eps 
+
+default values: 
+eps ~= 1e-5
+beta1 = 99% 
+beta2 = 99.9% 
+
+what about initalization? 
+
+EVE: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])
+
+theta_1+1 = theta_t - (lr/d_t) * m_t / denominator
+
+d_t is the only difference between Adam and Eve, has two objectives: 
+(i) large variation in the Loss-function between steps should be given less weight -> take smaller steps.
+(ii) are we far from the minium (L*)? -> take larger steps. 
+
+1/d_t prop_to (ii)/(i) prop_to (L_t - L*) / | L_t - L_t-1 |
+
+problem (ii) If we step away from L* we might take incrementally larger and larger steps away from L* – blowing up. 
+solution (ii) Clip the new term between c and 1/c. 
+
+Also add smoothness to d_t with another running average (beta3).
+
+How to calculate the global minimum? Do Adam first and estimate the global minimum or set it to 0. 0 because it is the lower bound of the Loss-function.  
+
+
 - SGRD:
 
 - CLR – Cyclical Learning Rate:
@@ -360,4 +400,5 @@ Loss Function Topology:
   from Saddle Points not  Poor Local Minima [Daupin et al.]
 
   Saddle points have small gradients that slow the learning process.
+
 
