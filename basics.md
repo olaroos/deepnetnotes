@@ -45,13 +45,13 @@ momentum    =  m_t
 denominator = (v_t)^-(0.5) + eps 
 
 - **EVE**: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
-<br/> $$\theta_{t+1} = \theta_{t} - frac{lr}{d_{t}} \dot frac{m_{t}}{denominator}$$
+<br/> $$\theta_{t+1} = \theta_{t} - \frac{lr}{d_{t}} \dot \frac{m_{t}}{denominator}$$
 d_t is the only difference between Adam and Eve, has two objectives:  
 **(i)** large variation in the Loss-function between steps should be given less weight -> take smaller steps.  
 **(ii)** are we far from the minium (L*)? -> take larger steps.  
-<br/> 1/d_t $\theta$ prop_to **(ii)**/**(i)** prop_to (L_t - L*) / | L_t - L_t-1 |  
-problem (**ii**) If we step away from L* we might take incrementally larger and larger steps away from L* – blowing up.  
-solution (**ii**) Clip the new term between c and 1/c.  
+<br/> $\frac{1}{d_{t}} \propto \frac{L_{t} - L^{*}}{| L_{t} - L_{t-1} |}$  
+problem (**ii**) If we step away from L* we might take incrementally larger and larger steps away from $L^{*}$ – blowing up.  
+solution (**ii**) Clip the new term between $c$ and $\frac{1}{c}.  
 Also add smoothness to d_t with another running average (beta3).  
 How to calculate the global minimum? Do Adam first and estimate the global minimum or set it to 0. 0 because it is the lower bound of the Loss-function.  
 
