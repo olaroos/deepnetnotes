@@ -45,7 +45,7 @@ momentum    =  m_t
 denominator = (v_t)^-(0.5) + eps 
 
 - **EVE**: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
-<br/> $$\theta_{t+1} = \theta_{t} - $$
+<br/> $$\theta_{t+1} = \theta_{t} - \frac{lr}{d_{t}}$$
 d_t is the only difference between Adam and Eve, has two objectives:  
 **(i)** large variation in the Loss-function between steps should be given less weight -> take smaller steps.  
 **(ii)** are we far from the minium (L*)? -> take larger steps.  
