@@ -38,8 +38,8 @@ In the paper the authors proposes an update of the moving-average(?) every 20th 
 - **ADAM**: – ADAptiv Momentum estimation – RMSprop + Momentum. ([youtube eve])  
 <br/> $$\theta_{t+1} = \theta_{t} - lr \frac{m_{t}}{\sqrt{v_t} + \epsilon} $$  
 Adam takes small steps in steep terrain and large steps in flat terrain. 
-average recent gradient: $m_{t} = beta_{1} m_{t-1} + (1-beta_{1}) grad_{t}$  
-average recent deviation in the gradient: $v_{t} = beta_{2} v_{t-1} + (1-beta_{2}) {grad_{t}}^{2}$  
+$m_{t} = beta_{1} m_{t-1} + (1-beta_{1}) grad_{t}$ – average recent gradient  
+$v_{t} = beta_{2} v_{t-1} + (1-beta_{2}) {grad_{t}}^{2}$ – average recent deviation in the gradient  
 $v_{t}$ is related to the second derivative and is in general close to constant. 
 
 - **EVE**: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
