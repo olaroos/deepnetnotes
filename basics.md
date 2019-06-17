@@ -51,7 +51,7 @@ d_t is the only difference between Adam and Eve, has two objectives:
 **(ii)** are we far from the minium (L*)? -> take larger steps.  
 <br/> $\frac{1}{d_{t}} \propto \frac{L_{t} - L^{*}}{| L_{t} - L_{t-1} |}$  
 problem (**ii**) If we step away from L* we might take incrementally larger and larger steps away from $L^{*}$ – blowing up.  
-solution (**ii**) Clip the new term between $c$ and $\frac{1}{c}.  
+solution (**ii**) Clip the new term between $c$ and $\frac{1}{c}$.  
 Also add smoothness to d_t with another running average (beta3).  
 How to calculate the global minimum? Do Adam first and estimate the global minimum or set it to 0. 0 because it is the lower bound of the Loss-function.  
 
