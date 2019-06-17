@@ -37,43 +37,23 @@ In the paper the authors proposes an update of the moving-average(?) every 20th 
 
 - ADAM: – ADAptiv Momentum estimation
 RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])
-
 theta_t+1 = theta_t - lr * momentum / denominator
-
-Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator v_t^-(0.5). 
-
-average recent gradient:
-mom_t = beta1 * mom_t-1 + (1-beta1) * grad_t
-average recent deviation in the gradient:
-v_t   = beta2 * v_t-1 + (1-beta2) * (grad_t)^2 
+Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator v_t^-(0.5).
+average recent gradient: mom_t = beta1 * mom_t-1 + (1-beta1) * grad_t
+average recent deviation in the gradient: v_t   = beta2 * v_t-1 + (1-beta2) * (grad_t)^2 
 v_t is related to the second derivative and is in general close to constant. 
-
-
 momentum    =  m_t 
 denominator = (v_t)^-(0.5) + eps 
 
-default values: 
-eps ~= 1e-5
-beta1 = 99% 
-beta2 = 99.9% 
-
-what about initalization? 
-
-EVE: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])
-
+- EVE: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])
 theta_1+1 = theta_t - (lr/d_t) * m_t / denominator
-
 d_t is the only difference between Adam and Eve, has two objectives: 
-(i) large variation in the Loss-function between steps should be given less weight -> take smaller steps.
+(i) large variation in the Loss-function between steps should be given less weight -> take smaller steps.<br/> <br/> 
 (ii) are we far from the minium (L*)? -> take larger steps. 
-
-1/d_t prop_to (ii)/(i) prop_to (L_t - L*) / | L_t - L_t-1 |
-
+1/d_t $\theta$ prop_to (ii)/(i) prop_to (L_t - L*) / | L_t - L_t-1 |
 problem (ii) If we step away from L* we might take incrementally larger and larger steps away from L* – blowing up. 
 solution (ii) Clip the new term between c and 1/c. 
-
 Also add smoothness to d_t with another running average (beta3).
-
 How to calculate the global minimum? Do Adam first and estimate the global minimum or set it to 0. 0 because it is the lower bound of the Loss-function.  
 
 
@@ -400,5 +380,3 @@ Loss Function Topology:
   from Saddle Points not  Poor Local Minima [Daupin et al.]
 
   Saddle points have small gradients that slow the learning process.
-
-
