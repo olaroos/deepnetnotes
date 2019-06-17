@@ -36,29 +36,26 @@ Equilibrated SGD – unbiased version of RMSProp. ([research esgd])  <br/>
 In the paper the authors proposes an update of the moving-average(?) every 20th iteration because it would have the same calculation overhead as RMSPROP. And still (I guess) better performance. I haven't found any good source of the implementation of the paper yet.  
 
 - **ADAM**: – ADAptiv Momentum estimation – RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])  
-<br/> theta_t+1 = theta_t - lr * momentum / denominator  
+<br/> $$\theta_{t+1} = \theta_{t} - lr \dot \frac{mom_{t}}{denominator}$$  
 Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator v_t^-(0.5).
-average recent gradient: mom_t = beta1 * mom_t-1 + (1-beta1) * grad_t
-average recent deviation in the gradient: v_t   = beta2 * v_t-1 + (1-beta2) * (grad_t)^2 
-v_t is related to the second derivative and is in general close to constant. 
-momentum    =  m_t 
-denominator = (v_t)^-(0.5) + eps 
+average recent gradient: $mom_{t} = beta_{1} \dot mom_{t-1} + (1-beta_{1}) \dot grad_{t}$
+average recent deviation in the gradient: $v_{t} = beta_{2} \dot v_{t-1} + (1-beta_{2}) \dot {grad_{t}}^{2}$ 
+$v_{t}$ is related to the second derivative and is in general close to constant. 
+$momentum    =  m_{t}$  
+$denominator = {v_{t}}^{-0.5} + eps$ 
 
 - **EVE**: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
 <br/> $$\theta_{t+1} = \theta_{t} - \frac{lr}{d_{t}} \frac{m_{t}}{denominator}$$
 $d_{t}$ is the only difference between Adam and Eve, has two objectives:  
 **(i)** large variation in the Loss-function between steps should be given less weight -> take smaller steps.  
 **(ii)** are we far from the minium (L*)? -> take larger steps.  
-<br/> $\frac{1}{d_{t}} \propto \frac{L_{t} - L^{\*}}{|L_{t} - L_{t-1}|}$  
-problem (**ii**) If we step away from L* we might take incrementally larger and larger steps away from $L^{*}$ – blowing up.  
-solution (**ii**) Clip the new term between $c$ and $\frac{1}{c}$.  
-Also add smoothness to d_t with another running average (beta3).  
-How to calculate the global minimum? Do Adam first and estimate the global minimum or set it to 0. 0 because it is the lower bound of the Loss-function.  
+<br/> $$\frac{1}{d_{t}} \propto \frac{L_{t} - L^{\*}}{|L_{t} - L_{t-1}|}$$  
+<br/> problem (**ii**) If we step away from $L^{\*}$ we might take incrementally larger and larger steps away from $L^{*}$ – blowing up.  
+solution (**ii**) $\frac{1}{c} \leq \frac{1}{d_{t}} \leq c$  
+Also add smoothness to $d_{t}$ with another running average ($beta_{3}$).  
+Use Adam to estimate $L^{\*}$ or set $L^{\*} = 0$  
 
-
-- SGRD:
-
-- CLR – Cyclical Learning Rate:
+- **CLR** – Cyclical Learning Rate:
 Requires almost no additional computation 
 Linear change of learning rate easiest to implement (my thoughts), chosen because any nonlinear change between largest and smallest gave the same result.
 
