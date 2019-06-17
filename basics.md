@@ -13,31 +13,30 @@ expression containing the Hessian – the second derivative matrix.
 Calculating only some elements of the Hessian is possible, not all.
 Choose the elements with information about the the direction of the Gradient Descent.
 
-- AdaGrad:
+- **AdaGrad**:
 Algorithm adaptive scaled learning-rate for each dimension. ([medium adagrad])  
 AdaGrad is almost the same as SGD but each individual parameter update is scaled (divided) with the accumulated squared gradient from every previous gradient computation. In the long run this term goes to 0 for all parameters.  
 
-- RPROP: 
+- **RProp**: 
 goal is to solve problem with gradients varying a lot in magnitudes. ([medium rprop])  
 Rprop combines two ideas:  
-(i)  only using the sign of the gradient  
-(ii) adapting the step size individually for each weight.  
+**(i)**  only using the sign of the gradient  
+**(ii)** adapting the step size individually for each weight.  
 Rprop looks at the sign of the two(!) previous gradient steps and adjust the stepsize accordingly (intensify or decrease).
 It is also adviced to limit the stepsize between a minimum and maximum value. 
 
-- RMSProp:
-problem with rprop is that it doesn't work for mini-batch updates because it uses the sign of the gradient. RMSProp solves this by using a moving average of the squared gradient for each weight. ([medium rprop])  
-This still doesn't resemble the RPROP algorithm. The RPROP algorithm decreases the learning-rate if we go the other direction, and increase it if we are going the same direction.  
+- **RMSProp**:
+RProp doesn't work for mini-batch updates because it uses the sign of the gradient, solved by using moving average of the squared gradient for each weight. ([medium rprop])  
+<br/> This still doesn't resemble the RPROP algorithm. The RPROP algorithm decreases the learning-rate if we go the other direction, and increase it if we are going the same direction.  
 In RMSProp the algorithm doesn't remember which direction it went in the previous iterations. It only matters what the magnitude is of the gradient.  
 Leslis N. SMith says it's a biased estimate, I believe it is in relation to the Hessian. RMSProp comes close to the Hessian. (Whatever that means?)  
 
-- ESGD:
-Equilibrated SGD – unbiased version of RMSProp. ([research esgd])  
+- **ESGD**:
+Equilibrated SGD – unbiased version of RMSProp. ([research esgd])  <br/>
 In the paper the authors proposes an update of the moving-average(?) every 20th iteration because it would have the same calculation overhead as RMSPROP. And still (I guess) better performance. I haven't found any good source of the implementation of the paper yet.  
 
-- ADAM: – ADAptiv Momentum estimation – RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])  
-theta_t+1 = theta_t - lr * momentum / denominator  
-$$1 = 2$$  
+- **ADAM**: – ADAptiv Momentum estimation – RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])  
+<br/> theta_t+1 = theta_t - lr * momentum / denominator  
 Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator v_t^-(0.5).
 average recent gradient: mom_t = beta1 * mom_t-1 + (1-beta1) * grad_t
 average recent deviation in the gradient: v_t   = beta2 * v_t-1 + (1-beta2) * (grad_t)^2 
@@ -45,14 +44,14 @@ v_t is related to the second derivative and is in general close to constant.
 momentum    =  m_t 
 denominator = (v_t)^-(0.5) + eps 
 
-- EVE: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
-theta_1+1 = theta_t - (lr/d_t) * m_t / denominator  
+- **EVE**: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
+<br/> theta_1+1 = theta_t - (lr/d_t) * m_t / denominator  
 d_t is the only difference between Adam and Eve, has two objectives:  
-(i) large variation in the Loss-function between steps should be given less weight -> take smaller steps.  
-(ii) are we far from the minium (L*)? -> take larger steps.  
-1/d_t $\theta$ prop_to (ii)/(i) prop_to (L_t - L*) / | L_t - L_t-1 |  
-problem (ii) If we step away from L* we might take incrementally larger and larger steps away from L* – blowing up.  
-solution (ii) Clip the new term between c and 1/c.  
+**(i)** large variation in the Loss-function between steps should be given less weight -> take smaller steps.  
+**(ii)** are we far from the minium (L*)? -> take larger steps.  
+<br/> 1/d_t $\theta$ prop_to **(ii)**/**(i)** prop_to (L_t - L*) / | L_t - L_t-1 |  
+problem (**ii**) If we step away from L* we might take incrementally larger and larger steps away from L* – blowing up.  
+solution (**ii**) Clip the new term between c and 1/c.  
 Also add smoothness to d_t with another running average (beta3).  
 How to calculate the global minimum? Do Adam first and estimate the global minimum or set it to 0. 0 because it is the lower bound of the Loss-function.  
 
