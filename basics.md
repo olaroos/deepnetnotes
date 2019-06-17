@@ -36,13 +36,7 @@ Equilibrated SGD – unbiased version of RMSProp. ([research esgd])  <br/>
 In the paper the authors proposes an update of the moving-average(?) every 20th iteration because it would have the same calculation overhead as RMSPROP. And still (I guess) better performance. I haven't found any good source of the implementation of the paper yet.  
 
 - **ADAM**: – ADAptiv Momentum estimation – RMSprop + Stochastic Gradient Descent with momentum. ([youtube eve])  
-<br/> $$\theta_{t+1} = \theta_{t} - lr \dot \frac{mom_{t}}{denominator}$$  
-Uses 1st and 2nd momentum estimates. Adam also takes small steps in steep terrain and large steps in flat terrain. This is the result of using the denominator v_t^-(0.5).
-average recent gradient: $mom_{t} = beta_{1} \dot mom_{t-1} + (1-beta_{1}) \dot grad_{t}$
-average recent deviation in the gradient: $v_{t} = beta_{2} \dot v_{t-1} + (1-beta_{2}) \dot {grad_{t}}^{2}$ 
-$v_{t}$ is related to the second derivative and is in general close to constant. 
-$momentum    =  m_{t}$  
-$denominator = {v_{t}}^{-0.5} + eps$ 
+<br/> $$\theta_{t+1} = \theta_{t} - lr \dot$$
 
 - **EVE**: – evolution of Adam () – locally and globaly adaptive learning-rate ([paper eve], [youtube eve])  
 <br/> $$\theta_{t+1} = \theta_{t} - \frac{lr}{d_{t}} \frac{m_{t}}{denominator}$$
