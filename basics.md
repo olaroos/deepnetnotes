@@ -4,6 +4,7 @@
 [research esgd]: <https://www.researchgate.net/publication/272423025_RMSProp_and_equilibrated_adaptive_learning_rates_for_non-convex_optimization>
 [paper eve]: <https://arxiv.org/pdf/1611.01505.pdf>
 [youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
+[medium LSTM]: <https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714> 
 
 #### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
@@ -82,10 +83,14 @@ Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
 #### RNNs: Recurrent Neural Networks
 Used to learn periodical patterns from data. 
 Problems: vanishing- and exploding-gradient. 
+inputs:  $x_{t}$ and hidden unit $h_{t-1}$  
+output:  $y_{t}$ and hidden unit $h_{t}$  
 
 - **LSTM**: – Long Short Term Memory  
 Used to counteract the problems with vanishing and exploding gradients in RNNs.  
 Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]  
+inputs:  $x_{t}, h_{t-1}, c_{t-1}$ – data, hidden-unit, memory-unit  
+outputs: $h_{t}, c_{t}$ – hidden-unit, memory-unit  
 
 - **GRU**: – Gated Recurrent Unit  
 A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
