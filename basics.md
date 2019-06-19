@@ -83,20 +83,17 @@ Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
 #### RNNs: Recurrent Neural Networks
 Used to learn periodical patterns from data. 
 Problems: vanishing- and exploding-gradient. 
-inputs:  $x_{t}$, $h_{t-1}$  
-output:  $y_{t}$, $h_{t}$
-$x - data$  
-$y - target$
-$h - hidden unit$  
+parts:  
+$x$ - data  
+$y$ - target
+$h$ - hidden-unit  
 
 - **LSTM**: – Long Short Term Memory  
 Used to counteract the problems with vanishing and exploding gradients in RNNs.  
 Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]  
-inputs:  $x_{t}$, $h_{t-1}$, $c_{t-1}$  
-outputs: $h_{t}$, $c_{t}$  
-$x - data$  
-$h - hidden unit$  
-$c - memory$  
+$x$ - data  
+$h$ - hidden-unit  
+$c$ - memory    
 
 - **GRU**: – Gated Recurrent Unit  
 A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
