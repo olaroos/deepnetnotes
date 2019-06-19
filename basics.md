@@ -80,26 +80,29 @@ Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
 
 
 #### RNNs: Recurrent Neural Networks
+Used to learn periodical patterns from data. 
+Problems: vanishing- and exploding-gradient. 
 
-- **LSTM**: – Long Short Term Memory
-Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]
+- **LSTM**: – Long Short Term Memory  
+Used to counteract the problems with vanishing and exploding gradients in RNNs.  
+Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]  
 
-- **GRU**: – Gated Recurrent Unit
-A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]
-Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.
-But cannot be trained parallelisation. No long and short range dependencies.
+- **GRU**: – Gated Recurrent Unit  
+A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
+Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.  
+But cannot be trained parallelisation. No long and short range dependencies.  
 
-- **Attention**: – (Fuzzy) Memory; 
-Stanford course on NLP; Look it up.
-With attention units we can parallelise training.
+- **Attention**: – (Fuzzy) Memory   
+Stanford course on NLP; Look it up.  
+With attention units we can parallelise training.  
 
-- **Self Attention**:
+- **Self Attention**:  
 
-- **Transformers**: – 
-Avoids recurrence, uses attention. Allows parallelisation and faster training.
-Relating signals from input and output positions depend only on "distance" between them.
-Drawback: Distance is a linear dependence – averaging attention-weighted positions – 
-Solution: Use Multi-Head Attention.
+- **Transformers**:  
+Avoids recurrence, uses attention. Allows parallelisation and faster training.  
+Relating signals from input and output positions depend only on "distance" between them.  
+Drawback: Distance is a linear dependence – averaging attention-weighted positions –   
+Solution: Use Multi-Head Attention.  
 
 		Encoder:
 			R    = [r1, r2, r3, r4] = d x 4					 <-- Word Embedding
