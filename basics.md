@@ -89,7 +89,7 @@ $x$ - data
 $o$ - output  
 $h$ - hidden-unit  
 
-- **LSTM**: – Long Short Term Memory  [medium LSTM]
+- **LSTM**: – Long Short Term Memory  [medium LSTM]  
 Used to counteract the problems with vanishing and exploding gradients in RNNs.  
 LSTM has a memory-unit that "remembers" – as opposed to the hidden-unit in RNNs which only acts  
 as a state (don't know if this is correct, I want to view the structure of the memory unit, what shape does it have?).   
