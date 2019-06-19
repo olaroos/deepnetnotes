@@ -5,6 +5,7 @@
 [paper eve]: <https://arxiv.org/pdf/1611.01505.pdf>
 [youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
 [medium LSTM]: <https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714> 
+[wiki LSTM]: <https://en.wikipedia.org/wiki/Long_short-term_memory>
 
 #### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
@@ -81,19 +82,21 @@ Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
 
 
 #### RNNs: Recurrent Neural Networks
-Used to learn periodical patterns from data. 
-Problems: vanishing- and exploding-gradient. 
+Used to learn periodical patterns from data.  Vanilla RNNs functions as a hidden-markov-model.  
+Problems: vanishing- and exploding-gradient.  
 parts:  
 $x$ - data  
-$y$ - target
+$o$ - output  
 $h$ - hidden-unit  
 
-- **LSTM**: – Long Short Term Memory  
+- **LSTM**: – Long Short Term Memory  [medium LSTM]
 Used to counteract the problems with vanishing and exploding gradients in RNNs.  
-Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]  
+LSTM has a memory-unit that "remembers" – as opposed to the hidden-unit in RNNs which only acts  
+as a state (don't know if this is correct, I want to view the structure of the memory unit, what shape does it have?).   
+Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 $x$ - data  
-$h$ - hidden-unit  
-$c$ - memory    
+$o$ - output  
+$c$ - memory  
 
 - **GRU**: – Gated Recurrent Unit  
 A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
