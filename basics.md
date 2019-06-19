@@ -5,7 +5,7 @@
 [paper eve]: <https://arxiv.org/pdf/1611.01505.pdf>
 [youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
 
-##### Statistical Gradient Descent:
+#### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
 Use second order information from the second derivation to update weights.
 Newtons method: Loss function is locally approximated by the quadratic
@@ -79,6 +79,51 @@ Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
 
 
 
+#### RNNs: Recurrent Neural Networks
+
+- **LSTM**: – Long Short Term Memory
+Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]
+
+- **GRU**: – Gated Recurrent Unit
+A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]
+Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.
+But cannot be trained parallelisation. No long and short range dependencies.
+
+- **Attention**: – (Fuzzy) Memory; 
+Stanford course on NLP; Look it up.
+With attention units we can parallelise training.
+
+- **Self Attention**:
+
+- **Transformers**: – 
+Avoids recurrence, uses attention. Allows parallelisation and faster training.
+Relating signals from input and output positions depend only on "distance" between them.
+Drawback: Distance is a linear dependence – averaging attention-weighted positions – 
+Solution: Use Multi-Head Attention.
+
+		Encoder:
+			R    = [r1, r2, r3, r4] = d x 4					 <-- Word Embedding
+			ai   =  R * softmax( (R' * ri)/sqrt(d) ) <-- Attention
+		  dx1    dx4              4x1
+			ri'  = max(W * ai + b, 0)   						 <-- (feedforward I think)
+
+		Decoder:
+			vi'  = max(W * bi + c, 0)
+
+		Self attention between Encoder and Decoder:
+			si   = R' softmax(R' * vi')
+
+  	Multi-Head Attention –
+			each head will make you focus on different things. (Like a convolution filter that focuses on different details?)
+			for k = 1, ..., k
+				- project your vi's with Wk -> vi^k  =   Wk 	 * 	 vi
+				  														d0 x d	 d0 x d 		d x 1      d0 = d/k
+				- then do self attention on     Vk   = [v1^k, v2^k, ..., v4^k]
+				ai^k = Vk softmax(Vk^-1 vi^k) i=1, ..., 4
+				vi^k' = ffnn(ai^k)
+
+		Transformers also use Positional Encoding which is a sinusodial value
+		depending on the position of the word in the senctence.
 
 
 http://cs231n.github.io/neural-networks-3/                       <= gradient check
@@ -262,52 +307,6 @@ Convolution:
 	Dilated Convolution:
 		Convolution filters that takes pixels that are not nearest neighbours.
 
-RNNs:
-
-	GRU – Gated Recurrent Unit
-		A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]
-
-  LSTM – Long Short Term Memory
-    Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [Wikipedia]
-
-		Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.
-		But cannot be trained parallelisation. No long and short range dependencies.
-
-	Attention – (Fuzzy) Memory; Stanford course on NLP; Look it up.
-		With attention units we can parallelise training.
-
-	Self Attention –
-
-
-
-  Transformers – avoids recurrence, uses attention. Allows parallelisation and faster training.
-    relating signals from input and output positions depend only on "distance" between them.
-    this linear dependence has a drawback – averaging attention-weighted positions – counteracted
-    using Multi-Head Attention.
-
-		Encoder:
-			R    = [r1, r2, r3, r4] = d x 4					 <-- Word Embedding
-			ai   =  R * softmax( (R' * ri)/sqrt(d) ) <-- Attention
-		  dx1    dx4              4x1
-			ri'  = max(W * ai + b, 0)   						 <-- (feedforward I think)
-
-		Decoder:
-			vi'  = max(W * bi + c, 0)
-
-		Self attention between Encoder and Decoder:
-			si   = R' softmax(R' * vi')
-
-  	Multi-Head Attention –
-			each head will make you focus on different things. (Like a convolution filter that focuses on different details?)
-			for k = 1, ..., k
-				- project your vi's with Wk -> vi^k  =   Wk 	 * 	 vi
-				  														d0 x d	 d0 x d 		d x 1      d0 = d/k
-				- then do self attention on     Vk   = [v1^k, v2^k, ..., v4^k]
-				ai^k = Vk softmax(Vk^-1 vi^k) i=1, ..., 4
-				vi^k' = ffnn(ai^k)
-
-		Transformers also use Positional Encoding which is a sinusodial value
-		depending on the position of the word in the senctence.
 
 Papers to read:
 	Improving Language Understanding by Generative Pre-Training
