@@ -140,6 +140,23 @@ Solution: Use Multi-Head Attention.
 		depending on the position of the word in the senctence.
 
 
+
+
+#### NLP: Natural Language Processing  
+
+NLP generally requires multiple steps of pretraining the input- and output-data. 
+
+- (pretraining) **AR**: AutoRegressive language modelling  
+
+- (pretraining) **AE**: AutoEncoding  
+
+
+- **BERT**: Bidirectional Encoder Representation from Transformers  
+
+
+- **XLNet**: 
+
+
 http://cs231n.github.io/neural-networks-3/                       <= gradient check
 https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html  <= about floating point numbers
 
