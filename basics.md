@@ -159,8 +159,10 @@ given an input token sequence with a portion of tokens replaced by a mask – pr
 Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
 
 - (pretraining) **XLNet**:  ([paper XLNet])  
-**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order **i.e capturing bidirectinal context**.  
-**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens **i.e no independence assumption**.  
+**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order  
+**i.e capturing bidirectinal context**.  
+**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens  
+**i.e no independence assumption**.  
 
 
 
