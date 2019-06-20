@@ -6,6 +6,8 @@
 [youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
 [medium LSTM]: <https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714> 
 [wiki LSTM]: <https://en.wikipedia.org/wiki/Long_short-term_memory>
+[paper XLNet]: <https://arxiv.org/pdf/1906.08237.pdf>
+[paper XLT]: <https://arxiv.org/pdf/1901.02860.pdf>
 
 #### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
@@ -140,6 +142,8 @@ Solution: Use Multi-Head Attention.
 		depending on the position of the word in the senctence.
 
 
+- **XL-Transformer**:  ([paper XLT])
+learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-transformers.  
 
 
 #### NLP: Natural Language Processing  
@@ -154,7 +158,12 @@ Problem:  encodes only uni-directional context.
 given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.
 Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
 
-- (pretraining) **XLNet**:  
+- (pretraining) **XLNet**:  ([paper XLNet])  
+**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order i.e *capturing bidirectinal context*. 
+**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens i.e *no independence assumption*.  
+
+
+
 
 
 http://cs231n.github.io/neural-networks-3/                       <= gradient check
