@@ -108,6 +108,9 @@ But cannot be trained parallelisation. No long and short range dependencies.
 - **Attention**: – (Fuzzy) Memory   
 Stanford course on NLP; Look it up.  
 With attention units we can parallelise training.  
+Q -  query  
+K -  key  
+V -  value  
 
 - **Self Attention**:  
 
@@ -154,6 +157,8 @@ NLP generally requires multiple steps of pretraining the input- and output-data.
 seeks to estimate the probability distribution of a text corpus using a autoregressive model either as a backwards- or forward-product.  
 Problem:  encodes only uni-directional context.  
 
+I don't understand the what this method is doing, we teach the model what to expect given a sequence starting from the left or the right. 
+
 - (pretraining) **AE** AutoEncoding **BERT**: Bidirectional Encoder Representation from Transformers  
 given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.  
 Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
@@ -163,8 +168,8 @@ Problem:  not able to model the joint probability using product rule – BERT as
 **i.e capturing bidirectinal context**.  
 **(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens  
 **i.e no independence assumption**.  
-
-
+**(iii)** integrates the segment recurrence mechanism and relative encoding scheme of Transformer-XL with adjustments for the arbitrary factorization order and target ambiguity ((i))  
+**i.e improved performance for longer text sequences**  
 
 
 
