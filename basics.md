@@ -155,12 +155,12 @@ seeks to estimate the probability distribution of a text corpus using a autoregr
 Problem:  encodes only uni-directional context.  
 
 - (pretraining) **AE** AutoEncoding **BERT**: Bidirectional Encoder Representation from Transformers  
-given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.
+given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.  
 Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
 
 - (pretraining) **XLNet**:  ([paper XLNet])  
-**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order i.e *capturing bidirectinal context*. 
-**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens i.e *no independence assumption*.  
+**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order **i.e capturing bidirectinal context**.  
+**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens **i.e no independence assumption**.  
 
 
 
