@@ -147,14 +147,14 @@ Solution: Use Multi-Head Attention.
 NLP generally requires multiple steps of pretraining the input- and output-data. 
 
 - (pretraining) **AR**: AutoRegressive language modelling  
+seeks to estimate the probability distribution of a text corpus using a autoregressive model either as a backwards- or forward-product.  
+Problem:  encodes only uni-directional context.  
 
-- (pretraining) **AE**: AutoEncoding  
+- (pretraining) **AE** AutoEncoding **BERT**: Bidirectional Encoder Representation from Transformers  
+given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.
+Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
 
-
-- **BERT**: Bidirectional Encoder Representation from Transformers  
-
-
-- **XLNet**: 
+- (pretraining) **XLNet**:  
 
 
 http://cs231n.github.io/neural-networks-3/                       <= gradient check
