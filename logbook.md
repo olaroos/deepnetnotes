@@ -10,4 +10,6 @@ Next target is to use an optimizer, now I am doing SGD.
 first tutorial: https://pytorch.org/tutorials/intermediate/char_rnn_classification_tutorial.html  
 second tutorial: https://pytorch.org/tutorials/intermediate/char_rnn_generation_tutorial.html#Creating-the-Network  
 
+I found a good template for future pytorch experiments. https://github.com/pytorch/examples/blob/master/imagenet/main.py#L139
+
 **24 June 2019**  
