@@ -93,18 +93,18 @@ $o$ - output
 $h$ - hidden-unit  
 
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
-Used to counteract the problems with vanishing and exploding gradients in RNNs.  
-LSTM uses a hidden state that is updated without non-linear functions and hence is not affected by the 
-vanishing gradient problem and can remember further back in time. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
-$x$ - data  
-$o$ - output  
-$c$ - memory that uses 4 gates [medium LSTM 2]  
-4 gates:  
+Used to counteract the problems with vanishing and exploding gradients in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
+LSTM uses a cell-state that is updated without multiplication of Weights and hence is not affected by the 
+vanishing gradient problem and can remember further back in time. 
+LSTM takes 3 inputs and outputs two states that are passed on to the next timestep.  
+$x$ – input
+$c$ – cell-state  
+$h$ – hidden-state  
+LSTM uses 4 gates to operate:
 $i$ – input gate  
 $f$ – forget gate  
-$o$ - output gate  
+$o$ – output gate  
 $g$ – gate gate  
-
 
 - **GRU**: – Gated Recurrent Unit  
 A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
