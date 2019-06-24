@@ -94,9 +94,8 @@ $o$ - output
 $h$ - hidden-unit  
 
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
-Used to counteract the problems with vanishing-gradient in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
-LSTM uses a cell-state that is updated without multiplication of Weights and hence is not affected by the 
-vanishing gradient problem and can remember further back in time.  
+Used to counteract the problems with vanishing-gradient in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM] Both LSTM and GRU are different from Vanilla RNN which replaces the old hidden state with a new calculated one while LSTM/GRU adds the new hidden state on top of the old one.  
+LSTM uses a cell-state that is updated without multiplication of Weights and hence can carry information far backwards without being affected by the vanishing gradient problem.  
 **3 inputs and outputs 2 states:**  [medium LSTM 2]  
 $x$ – input  
 $c$ – cell-state  
