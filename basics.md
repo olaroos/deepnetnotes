@@ -101,7 +101,7 @@ vanishing gradient problem and can remember further back in time.
 $x$ – input  
 $c$ – cell-state  
 $h$ – hidden-state  
-**uses 4 gates to operate:**  
+**4 gates to operate:**  
 $i$ – input gate  
 $f$ – forget gate  
 $o$ – output gate  
@@ -110,10 +110,10 @@ $g$ – gate gate
 - **GRU**: – Gated Recurrent Unit [GRU]  
 Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.  
 But cannot be trained parallelisation. No long and short range dependencies.  GRU is more computational efficient and almost on par with performance of LSTM.  
-**2 inputs and outputs 1 state**:
+**2 inputs and outputs 1 state**:  
 $x$ – input  
 $h$ - hidden-state  
-**uses 2 gates to operate:**  
+**2 gates to operate:**  
 $z$ – update gate  
 $r$ – reset gate  
 
