@@ -6,6 +6,7 @@
 [youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
 [medium LSTM 1]: <https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714> 
 [medium LSTM 2]: <https://medium.com/datadriveninvestor/recurrent-neural-network-rnn-52dd4f01b7e8> 
+[GRU]: <https://towardsdatascience.com/understanding-gru-networks-2ef37df6c9be>
 [wiki LSTM]: <https://en.wikipedia.org/wiki/Long_short-term_memory>
 [paper XLNet]: <https://arxiv.org/pdf/1906.08237.pdf>
 [paper XLT]: <https://arxiv.org/pdf/1901.02860.pdf>
@@ -86,14 +87,14 @@ Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
 
 #### RNNs: Recurrent Neural Networks
 Used to learn periodical patterns from data.  Vanilla RNNs functions as a hidden-markov-model.  
-Problems: vanishing- and exploding-gradient.  
+Problems: vanishing- and exploding-gradient.  Exploding gradient problem can be solved by "clipping" (setting upper and lower limit for) the gradient. The vanishing-gradient problem is harder to solve. 
 parts:  
 $x$ - data  
 $o$ - output  
 $h$ - hidden-unit  
 
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
-Used to counteract the problems with vanishing and exploding gradients in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
+Used to counteract the problems with vanishing-gradient in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence is not affected by the 
 vanishing gradient problem and can remember further back in time.  
 **LSTM takes 3 inputs and outputs two states:**  [medium LSTM 2]  
@@ -106,10 +107,14 @@ $f$ – forget gate
 $o$ – output gate  
 $g$ – gate gate  
 
-- **GRU**: – Gated Recurrent Unit  
-A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
+- **GRU**: – Gated Recurrent Unit [GRU]  
 Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.  
-But cannot be trained parallelisation. No long and short range dependencies.  
+But cannot be trained parallelisation. No long and short range dependencies.  GRU is more computational efficient and almost on par with performance of LSTM.  
+**GRU has one state**:
+$h$ - hidden-state
+**GRU uses 2 gates to operate:**  
+$z$ – update gate  
+$r$ – reset gate  
 
 - **Attention**: – (Fuzzy) Memory   
 Stanford course on NLP; Look it up.  
