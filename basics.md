@@ -97,11 +97,11 @@ $h$ - hidden-unit
 Used to counteract the problems with vanishing-gradient in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence is not affected by the 
 vanishing gradient problem and can remember further back in time.  
-**LSTM takes 3 inputs and outputs two states:**  [medium LSTM 2]  
+**3 inputs and outputs 2 states:**  [medium LSTM 2]  
 $x$ – input  
 $c$ – cell-state  
 $h$ – hidden-state  
-**LSTM uses 4 gates to operate:**  
+**uses 4 gates to operate:**  
 $i$ – input gate  
 $f$ – forget gate  
 $o$ – output gate  
@@ -110,9 +110,10 @@ $g$ – gate gate
 - **GRU**: – Gated Recurrent Unit [GRU]  
 Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.  
 But cannot be trained parallelisation. No long and short range dependencies.  GRU is more computational efficient and almost on par with performance of LSTM.  
-**GRU has one state**:
-$h$ - hidden-state
-**GRU uses 2 gates to operate:**  
+**2 inputs and outputs 1 state**:
+$x$ – input  
+$h$ - hidden-state  
+**uses 2 gates to operate:**  
 $z$ – update gate  
 $r$ – reset gate  
 
