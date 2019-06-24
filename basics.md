@@ -96,7 +96,7 @@ $h$ - hidden-unit
 Used to counteract the problems with vanishing and exploding gradients in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence is not affected by the 
 vanishing gradient problem and can remember further back in time.  
-**LSTM takes 3 inputs and outputs two states:**  
+**LSTM takes 3 inputs and outputs two states:**  [medium LSTM 2]  
 $x$ – input  
 $c$ – cell-state  
 $h$ – hidden-state  
