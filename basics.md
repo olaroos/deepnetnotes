@@ -95,12 +95,12 @@ $h$ - hidden-unit
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
 Used to counteract the problems with vanishing and exploding gradients in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence is not affected by the 
-vanishing gradient problem and can remember further back in time. 
-LSTM takes 3 inputs and outputs two states that are passed on to the next timestep.  
-$x$ – input
+vanishing gradient problem and can remember further back in time.  
+**LSTM takes 3 inputs and outputs two states:**  
+$x$ – input  
 $c$ – cell-state  
 $h$ – hidden-state  
-LSTM uses 4 gates to operate:
+**LSTM uses 4 gates to operate:**  
 $i$ – input gate  
 $f$ – forget gate  
 $o$ – output gate  
