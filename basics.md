@@ -4,7 +4,8 @@
 [research esgd]: <https://www.researchgate.net/publication/272423025_RMSProp_and_equilibrated_adaptive_learning_rates_for_non-convex_optimization>
 [paper eve]: <https://arxiv.org/pdf/1611.01505.pdf>
 [youtube eve]: <https://www.youtube.com/watch?v=nBE_ClJzYEM>
-[medium LSTM]: <https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714> 
+[medium LSTM 1]: <https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714> 
+[medium LSTM 2]: <https://medium.com/datadriveninvestor/recurrent-neural-network-rnn-52dd4f01b7e8> 
 [wiki LSTM]: <https://en.wikipedia.org/wiki/Long_short-term_memory>
 [paper XLNet]: <https://arxiv.org/pdf/1906.08237.pdf>
 [paper XLT]: <https://arxiv.org/pdf/1901.02860.pdf>
@@ -91,14 +92,20 @@ $x$ - data
 $o$ - output  
 $h$ - hidden-unit  
 
-- **LSTM**: – Long Short Term Memory  [medium LSTM]  
+- **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
 Used to counteract the problems with vanishing and exploding gradients in RNNs.  
-LSTM has a memory-unit that "remembers" – as opposed to the hidden-unit in RNNs which only acts  
-as a state (don't know if this is correct, I want to view the structure of the memory unit, what shape does it have?).   
-Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
+LSTM uses a hidden state that is updated without non-linear functions and hence is not affected by the 
+vanishing gradient problem and can remember further back in time. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 $x$ - data  
 $o$ - output  
-$c$ - memory  
+$c$ - memory that uses 4 gates [medium LSTM 2]
+  
+4 gates:  
+$i$ – input gate  
+$f$ – forget gate  
+$o$ - output gate  
+$g$ – gate gate  
+
 
 - **GRU**: – Gated Recurrent Unit  
 A LSTM without an output-gate. And with a forget gate... (is that the same thing?) [Wikipedia]  
