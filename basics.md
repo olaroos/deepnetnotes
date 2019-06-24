@@ -94,9 +94,9 @@ $o$ - output
 $h$ - hidden-unit  
 
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
-Used to counteract the problems with vanishing-gradient in RNNs. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM] Both LSTM and GRU are different from Vanilla RNN which replaces the old hidden state with a new calculated one while LSTM/GRU adds the new hidden state on top of the old one.  
+Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM] Both LSTM and GRU are different from Vanilla RNN which replaces the old states with a new calculated one – while LSTM/GRU saves part of the old state and adds the new state on top of it. Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn. But neither can be trained using parallelisation.  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence can carry information far backwards without being affected by the vanishing gradient problem.  
-**3 inputs and outputs 2 states:**  [medium LSTM 2]  
+**3 inputs; outputs 2 states:**  [medium LSTM 2]  
 $x$ – input  
 $c$ – cell-state  
 $h$ – hidden-state  
@@ -107,9 +107,8 @@ $o$ – output gate
 $g$ – gate gate  
 
 - **GRU**: – Gated Recurrent Unit [GRU]  
-Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn.  
-But cannot be trained parallelisation. No long and short range dependencies.  GRU is more computational efficient and almost on par with performance of LSTM.  
-**2 inputs and outputs 1 state**:  
+GRU is more computational efficient and almost on par with performance of LSTM.  GRU counters the vanishing gradient problem similar to LSTM.  
+**2 inputs; outputs 1 state**:  
 $x$ – input  
 $h$ - hidden-state  
 **2 gates to operate:**  
