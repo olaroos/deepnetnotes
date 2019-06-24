@@ -98,8 +98,7 @@ LSTM uses a hidden state that is updated without non-linear functions and hence 
 vanishing gradient problem and can remember further back in time. Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM]  
 $x$ - data  
 $o$ - output  
-$c$ - memory that uses 4 gates [medium LSTM 2]
-  
+$c$ - memory that uses 4 gates [medium LSTM 2]  
 4 gates:  
 $i$ – input gate  
 $f$ – forget gate  
