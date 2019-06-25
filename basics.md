@@ -159,6 +159,13 @@ Solution: Use Multi-Head Attention.
 learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-transformers.  
 
 
+#### RNN: training nomenclature:  
+
+- **Teacher Forcing:**  feeding the ground-truth (yt, yt+1, ...)to the model during sequential training.  
+- **Free Running:** 	feeding the output to the model sequentially. 
+- **Professor Forcing:**  using a GAN-discriminator to force hidden-states from teacher-forcing and free-running to be close to each other.  
+
+
 #### NLP: Natural Language Processing  
 
 NLP generally requires multiple steps of pretraining the input- and output-data. 
