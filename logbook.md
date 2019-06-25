@@ -22,3 +22,5 @@ I have to read more about how to implement validation loss in RNN and use it to 
 Other things I want to do is make the RNN I use for Trump tweets deeper and see if there is any improvements.  
 
 But first I want to implement mini-batch-training for Vanilla RNN to speed up training.  
+Considering to use this approach as guideline. https://gist.github.com/williamFalcon/f27c7b90e34b4ba88ced042d9ef33edd  
+The problem is that for each sentence, we want to start with the same hidden-state. This also means if the length of different sentences/tweets are different we have to cut them off and padd them to all have the same length as the longest sentence left in our mini-batch.  
