@@ -19,4 +19,6 @@ LSTM solves it by saving long-term information in a memory-cell that is updated 
 **25 June 2019**  
 I read an interresting paper introducint the term Professor Forcing https://arxiv.org/pdf/1610.09038.pdf. It uses a GAN-discriminator to force the hidden-states from teacher-forcing and generating a sequence of the same length to be close to each other. I am interrested in trying to replicate this paper because it uses two networks with shared weights.  In some cases the improvement was only marginal but it also had a regularizing effect on the network.  
 I have to read more about how to implement validation loss in RNN and use it to see if the network is overfitting. At the moment, I am struggling to make the network output something sensical, I am not worried about overfitting my network atm.  
-Other things I want to do is make the RNN I use for Trump tweets deeper and see if there is any improvements. 
+Other things I want to do is make the RNN I use for Trump tweets deeper and see if there is any improvements.  
+
+But first I want to implement mini-batch-training for Vanilla RNN to speed up training.  
