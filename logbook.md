@@ -15,5 +15,8 @@ I found a good template for future pytorch experiments. https://github.com/pytor
 **24 June 2019**  
 I added some more specifics on LSTM and GRU. Read an article explaining GRU in more detail, LSTM uses 4 gates and GRU uses 2 gates. The problem with exploding gradient seem to be solvable by clipping the gradient, the vanishing gradient problem seem to be a harder problem to solve.  
 LSTM solves it by saving long-term information in a memory-cell that is updated without multiplication with the weights. This means (how I understand it) the memory-cell can carry information very far back for the weights to be updated with. It's not that the cell itself is changed, the long term information that is saved in the LSTM is still only held in the weights of the network but the information is carried backwards with the help of the memory-cell in the LSTM during training.  
-**25 June 2019**  
 
+**25 June 2019**  
+I read an interresting paper introducint the term Professor Forcing https://arxiv.org/pdf/1610.09038.pdf. It uses a GAN-discriminator to force the hidden-states from teacher-forcing and generating a sequence of the same length to be close to each other. I am interrested in trying to replicate this paper because it uses two networks with shared weights.  In some cases the improvement was only marginal but it also had a regularizing effect on the network.  
+I have to read more about how to implement validation loss in RNN and use it to see if the network is overfitting. At the moment, I am struggling to make the network output something sensical, I am not worried about overfitting my network atm.  
+Other things I want to do is make the RNN I use for Trump tweets deeper and see if there is any improvements. 
