@@ -29,6 +29,9 @@
 - **Non-Zero initial state**:  [blog nonzerois]  
 Train the inital-state as a model parameter and/or use a noisy initial state.  
 
+- **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
+
+
 #### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
 Use second order information from the second derivation to update weights.
@@ -140,13 +143,12 @@ puts two different sequences at adjacent sides of a matrix. This matrix explains
 $h_{s}$ – source state  
 $c_{t}$ – context vector  
 $a_{t}$ – alignment vector  
-$\tilde{h_{t}} – attentional vector = tanh(W_{c}[c_{t};h_{t}])$  
+$\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 The context-vector seems familiar, but I can't still place the attention concept into one picture in my mind.  
 
-So, attention is a take on encoder/decoder – I would go on to say that the name attention should only be associated with the decoder. But the encoder feeds the attention-decoder all, not only the last hidden state. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector. 
+So, attention is a take on encoder/decoder – I would go on to say that the name attention should only be associated with the decoder. But the encoder feeds the attention-decoder all, not only the last hidden state. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
 
-- **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
 
 - **Transformers**:  
