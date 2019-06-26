@@ -18,7 +18,7 @@
 
 [skymind attention]: <https://skymind.ai/wiki/attention-mechanism-memory-network>
 [paper attention1]: <https://arxiv.org/pdf/1508.04025.pdf>
-
+[animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
 
 #### Things I don't know where to put yet:  
 
@@ -135,7 +135,7 @@ $r$ – reset gate
 
 Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer. 
 
-- **Attention**: – [[skymind attention]] 
+- **Attention**: – [[skymind attention]] [[animated attention]]
 puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
 $h_{s}$ – source state  
 $c_{t}$ – context vector  
@@ -143,6 +143,8 @@ $a_{t}$ – alignment vector
 $\tilde{h_{t}} – attentional vector = tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 The context-vector seems familiar, but I can't still place the attention concept into one picture in my mind.  
+
+So, attention is a take on encoder/decoder – I would go on to say that the name attention should only be associated with the decoder. But the encoder feeds the attention-decoder all, not only the last hidden state. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector. 
 
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
