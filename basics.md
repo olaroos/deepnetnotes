@@ -17,6 +17,8 @@
 [tips on training RNN]: <https://danijar.com/tips-for-training-recurrent-neural-networks/>
 
 [skymind attention]: <https://skymind.ai/wiki/attention-mechanism-memory-network>
+[paper attention1]: <https://arxiv.org/pdf/1508.04025.pdf>
+
 
 #### Things I don't know where to put yet:  
 
@@ -131,13 +133,12 @@ $h$ - hidden-state
 $z$ – update gate  
 $r$ – reset gate  
 
-- **Attention**: – [skymind attention]  
+Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer. 
+
+- **Attention**: – [[skymind attention]] 
 puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
-Stanford course on NLP; Look it up.  
-With attention units we can parallelise training.  
-Q -  query  
-K -  key  
-V -  value  
+$h_{s}$ – source state  [[paper attention1]]
+
 
 - **Self Attention**:  -  
 Putting the same sequence at adjacent sides of a matrix. 
@@ -146,10 +147,17 @@ Putting the same sequence at adjacent sides of a matrix.
 
 
 - **Transformers**:  
-Avoids recurrence, uses attention. Allows parallelisation and faster training.  
+Avoids recurrence by using attention. Allows parallelisation and faster training.  
 Relating signals from input and output positions depend only on "distance" between them.  
 Drawback: Distance is a linear dependence – averaging attention-weighted positions –   
 Solution: Use Multi-Head Attention.  
+
+Q -  search query  
+K -  key  
+V -  value  
+The query - Q searches over the keys – K of all e.g words that might supply context for it. "Those keys are related to values that encode more meaning about the key word.  
+Any given word can have multiple meanings and relate to other words in different ways, you can have more than one query-key-value complex attached to it. That’s “multi-headed attention.”" 
+
 
 		Encoder:
 			R    = [r1, r2, r3, r4] = d x 4					 <-- Word Embedding
