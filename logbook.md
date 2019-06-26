@@ -27,4 +27,5 @@ The problem is that for each sentence, we want to start with the same hidden-sta
 
 **26 June 2019**  
 Note to self, when using PyTorch the batch-size is always the first dimension in any Tensor going into the network, even if batchsize is 1.  Also remember that the hidden layer does not have the same size as the input layer which was the size of the encoder.  
-Also, loss-functions that takes class number instead of onehotencoding vector has size 1, not 2 – even if you train mini-batches. 
+Also, loss-functions that takes class number instead of onehotencoding vector has size 1, not 2 – even if you train mini-batches.  
+Implemented batch-training for my RNN-network, works with batch-size 1 to N.  
