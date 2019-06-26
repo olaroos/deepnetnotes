@@ -14,7 +14,11 @@
 [paper layernorm]: <https://arxiv.org/pdf/1607.06450.pdf>
 [medium skipthought]: <https://medium.com/@sanyamagarwal/my-thoughts-on-skip-thoughts-a3e773605efa>
 [blog nonzeroiv]: <https://r2rt.com/non-zero-initial-states-for-recurrent-neural-networks.html>
+[tips on training RNN]: <https://danijar.com/tips-for-training-recurrent-neural-networks/>
+
 #### Things I don't know where to put yet:  
+
+- **[tips on training RNN]**: 
 
 - **Skip Thought Vectors**:  [medium skipthought]  
 
