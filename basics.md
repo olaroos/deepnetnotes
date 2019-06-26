@@ -11,6 +11,8 @@
 [paper XLNet]: <https://arxiv.org/pdf/1906.08237.pdf>
 [paper XLT]: <https://arxiv.org/pdf/1901.02860.pdf>
 
+[paper layernorm]: <https://arxiv.org/pdf/1607.06450.pdf>
+
 #### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
 Use second order information from the second derivation to update weights.
@@ -123,6 +125,9 @@ K -  key
 V -  value  
 
 - **Self Attention**:  
+
+- **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
+
 
 - **Transformers**:  
 Avoids recurrence, uses attention. Allows parallelisation and faster training.  
