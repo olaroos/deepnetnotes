@@ -24,3 +24,6 @@ Other things I want to do is make the RNN I use for Trump tweets deeper and see 
 But first I want to implement mini-batch-training for Vanilla RNN to speed up training.  
 Considering to use this approach as guideline. https://gist.github.com/williamFalcon/f27c7b90e34b4ba88ced042d9ef33edd  
 The problem is that for each sentence, we want to start with the same hidden-state. This also means if the length of different sentences/tweets are different we have to cut them off and padd them to all have the same length as the longest sentence left in our mini-batch.  
+
+**26 June 2019**  
+Note to self, when using PyTorch the batch-size is always the first dimension in any Tensor going into the network, even if batchsize is 1.  Also remember that the hidden layer does not have the same size as the input layer which was the size of the encoder.  Also, loss-functions that takes class number instead of onehotencoding vector has size 1, not 2. 
