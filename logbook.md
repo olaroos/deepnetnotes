@@ -28,4 +28,13 @@ The problem is that for each sentence, we want to start with the same hidden-sta
 **26 June 2019**  
 Note to self, when using PyTorch the batch-size is always the first dimension in any Tensor going into the network, even if batchsize is 1.  Also remember that the hidden layer does not have the same size as the input layer which was the size of the encoder.  
 Also, loss-functions that takes class number instead of onehotencoding vector has size 1, not 2 – even if you train mini-batches.  
-Implemented batch-training for my RNN-network, works with batch-size 1 to N.  
+Implemented batch-training for my RNN-network, works with batch-size 1 to N.  Training with mini-batches gives a faster convergence (expected) and a smoother curve.  
+
+Next step is to force the hidden state to be the zero-state whenever encountering a end-of-tweet character. I also introduced a beginning-of-tweet character to match the hidden state to start the sentence.  
+
+I am going away from global optimizer and parameter variables when training. If I want to run multiple experiments I need to use different optimizers and my guess is that optimizers can only be bound to one set of parameters. I don't know what happens with the object if I try to over-write it and it will be hard to know which optimizer I am currently using linked to my current network. Hopefully this will make it easier to handle.  
+
+**27 June 2019**  
+
+
+
