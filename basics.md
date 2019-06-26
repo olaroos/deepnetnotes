@@ -137,10 +137,12 @@ Still I don't understand where the difference between attention and transformers
 
 - **Attention**: – [[skymind attention]] 
 puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
-$h_{s}$ – source state  [[paper attention1]]  
+$h_{s}$ – source state  
 $c_{t}$ – context vector  
-$\tilde{h_{t}} = tanh(W_{c}[c_{t};h_{t}])$ – attentional vector 
-
+$a_{t}$ – alignment vector  
+$\tilde{h_{t}} – attentional vector = tanh(W_{c}[c_{t};h_{t}])$  
+these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
+The context-vector seems familiar, but I can't still place the attention concept into one picture in my mind.  
 
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
