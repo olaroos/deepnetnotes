@@ -12,6 +12,14 @@
 [paper XLT]: <https://arxiv.org/pdf/1901.02860.pdf>
 
 [paper layernorm]: <https://arxiv.org/pdf/1607.06450.pdf>
+[medium skipthought]: <https://medium.com/@sanyamagarwal/my-thoughts-on-skip-thoughts-a3e773605efa>
+[blog nonzeroiv]: <https://r2rt.com/non-zero-initial-states-for-recurrent-neural-networks.html>
+#### Things I don't know where to put yet:  
+
+- **Skip Thought Vectors**:  [medium skipthought]  
+
+- **Non-Zero initial state**:  [blog nonzeroiv]  
+Train the inital-state as a model parameter and/or use a noisy initial state.  
 
 #### Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
