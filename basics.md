@@ -138,7 +138,8 @@ Still I don't understand where the difference between attention and transformers
 - **Attention**: – [[skymind attention]] 
 puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
 $h_{s}$ – source state  [[paper attention1]]
-
+$c_{t}$ – context vector  
+$\tilde{h}_{t} = tanh(W_{c}[c_{t};h_{t}])$ – attentional vector 
 
 - **Self Attention**:  -  
 Putting the same sequence at adjacent sides of a matrix. 
