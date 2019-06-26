@@ -16,6 +16,8 @@
 [blog nonzerois]: <https://r2rt.com/non-zero-initial-states-for-recurrent-neural-networks.html>
 [tips on training RNN]: <https://danijar.com/tips-for-training-recurrent-neural-networks/>
 
+[skymind attention]: <https://skymind.ai/wiki/attention-mechanism-memory-network>
+
 #### Things I don't know where to put yet:  
 
 - **[tips on training RNN]**: 
@@ -129,14 +131,16 @@ $h$ - hidden-state
 $z$ – update gate  
 $r$ – reset gate  
 
-- **Attention**: – (Fuzzy) Memory   
+- **Attention**: – [skymind attention]  
+puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
 Stanford course on NLP; Look it up.  
 With attention units we can parallelise training.  
 Q -  query  
 K -  key  
 V -  value  
 
-- **Self Attention**:  
+- **Self Attention**:  -  
+Putting the same sequence at adjacent sides of a matrix. 
 
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
