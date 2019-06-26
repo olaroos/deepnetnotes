@@ -13,7 +13,7 @@
 
 [paper layernorm]: <https://arxiv.org/pdf/1607.06450.pdf>
 [medium skipthought]: <https://medium.com/@sanyamagarwal/my-thoughts-on-skip-thoughts-a3e773605efa>
-[blog nonzeroiv]: <https://r2rt.com/non-zero-initial-states-for-recurrent-neural-networks.html>
+[blog nonzerois]: <https://r2rt.com/non-zero-initial-states-for-recurrent-neural-networks.html>
 [tips on training RNN]: <https://danijar.com/tips-for-training-recurrent-neural-networks/>
 
 #### Things I don't know where to put yet:  
@@ -22,7 +22,7 @@
 
 - **Skip Thought Vectors**:  [medium skipthought]  
 
-- **Non-Zero initial state**:  [blog nonzeroiv]  
+- **Non-Zero initial state**:  [blog nonzerois]  
 Train the inital-state as a model parameter and/or use a noisy initial state.  
 
 #### Statistical Gradient Descent:
