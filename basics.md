@@ -128,12 +128,13 @@ $c_{t}$ – context vector = $g(a_{t},\bar{h_{s}})$
 $\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 
+Don't understand how Transformers can use parallelisation because I thougth attention used RNNs. We are still locked down by going over sequences in linear order, of course maybe we can do more calculations using the same calculated hidden-states. Maybe I'm missing something here it's unclear, I would like to be enlightened.  
+
 - **Transformers**:  
-Avoids recurrence by using attention. Allows parallelisation and faster training.  
+Avoids recurrence by using attention. Allows parallelisation and faster training. 
 Relating signals from input and output positions depend only on "distance" between them.  
 Drawback: Distance is a linear dependence – averaging attention-weighted positions –   
 Solution: Use Multi-Head Attention.  
-
 Q -  search query  
 K -  key  
 V -  value  
