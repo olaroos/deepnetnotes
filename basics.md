@@ -123,7 +123,7 @@ explanation (ii) RNN with encoder/decoder. The decoder is where the attention ha
 *local-attention*: a subset of the encoder hidden states are processed by the attention-decoder.  
 $h_{s}$ – source state  
 $h_{t}$ – current decoder hidden-state  
-$a_{t}$ – alignment vector = $softmax((f(c_{t},h_{s},h_{t})))$ where f() could have various definitions including at least  
+$a_{t}$ – alignment vector = $softmax((f(c_{t},h_{s},h_{t})))$ where f() can have various definitions but always include $h_{t}$.  
 $c_{t}$ – context vector = $g(a_{t},\bar{h_{s}})$  
 $\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
