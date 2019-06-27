@@ -120,7 +120,7 @@ Still I don't understand where the difference between attention and transformers
 explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
 explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden-/source-states are saved for processing by the attention-decoder. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
 *global-attention*: all encoder hidden states are processed by the attention-decoder.  
-*local-attention*: a subset of the encoder hidden states are processed by the attention-decoder. 
+*local-attention*: a subset of the encoder hidden states are processed by the attention-decoder.  
 $h_{s}$ – source state  
 $c_{t}$ – context vector  
 $a_{t}$ – alignment vector - $softmax((f(c_{t},h_{s},h_{t})))$ where f() could have various definitions including at least $h_{t}$.  
