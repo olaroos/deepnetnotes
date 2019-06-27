@@ -118,12 +118,12 @@ Still I don't understand where the difference between attention and transformers
 
 - **Attention**: – [[skymind attention]] [[animated attention]]
 explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
-explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden states are saved and the decoder examines more hidden states than the last one. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
+explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden-/source-states are saved for processing by the attention-decoder. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
 *global-attention*: all encoder hidden states are processed by the attention-decoder.  
-*local-attention*: a subset of the encoder hidden states are processed by the attention-decoder.  
+*local-attention*: a subset of the encoder hidden states are processed by the attention-decoder. 
 $h_{s}$ – source state  
 $c_{t}$ – context vector  
-$a_{t}$ – alignment vector  
+$a_{t}$ – alignment vector - $softmax((f(c_{t},h_{s},h_{t})))$ where f() could have various definitions including at least $h_{t}$.  
 $\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 
