@@ -20,7 +20,7 @@
 [paper attention1]: <https://arxiv.org/pdf/1508.04025.pdf>
 [animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
 
-#### Things I don't know where to put yet:  
+## Things I don't know where to put yet:  
 
 - **[tips on training RNN]**: 
 
@@ -32,7 +32,7 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
 
-#### Statistical Gradient Descent:
+## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
 Use second order information from the second derivation to update weights.
 Newtons method: Loss function is locally approximated by the quadratic
@@ -82,31 +82,9 @@ Use Adam to estimate $L^{\*}$ or set $L^{\*} = 0$
 
 - **CLR** – Cyclical Learning Rate:
 Requires almost no additional computation 
-Linear change of learning rate easiest to implement (my thoughts), chosen because any nonlinear change between largest and smallest gave the same result.
+Linear change of learning rate easiest to implement (my thoughts), chosen because any nonlinear change between largest and smallest gave the same result.  
 
-Iteration in one cycle (from paper) 4000, half cycle 2000 = stepsize.
-
-    \# of iterations = trainingset-size / batch-size
-    stepsize        = 2-10 times \# iterations in an epoch
-
-    PyTorch:
-      local cycle = math.floor(1 + epochCounter /(2∗ stepsize ))
-      local x = math.abs(epochCounter/stepsize − 2∗cycle + 1)
-      local lr = opt .LR + (maxLR − opt .LR) ∗ math.max(0, (1−x))
-
-      variables:
-        opt.LR is the specified lower (i.e., base) learning rate
-        epochCounter is the number of epochs of training,
-        lr is the computed learning rate
-
-    Alternative methods:
-      Linear2:   maximum learning rate is halfed after each cycle.
-      exp_range: decrease both minimum and maximum boundary
-                 by factor gamma^itteration after each cycle.
-
-
-
-#### RNNs: Recurrent Neural Networks
+## RNNs: Recurrent Neural Networks
 Used to learn periodical patterns from data.  Vanilla RNNs functions as a hidden-markov-model.  
 Problems: vanishing- and exploding-gradient.  Exploding gradient problem can be solved by "clipping" (setting upper and lower limit for) the gradient. The vanishing-gradient problem is harder to solve. 
 parts:  
@@ -139,17 +117,15 @@ $r$ – reset gate
 Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer. 
 
 - **Attention**: – [[skymind attention]] [[animated attention]]
-puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
+explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
+explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden states are saved and the decoder examines more hidden states than the last one. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
+*global*-attention: all encoder hidden states are processed by the attention-decoder.
+*local*-attention: a subset of the encoder hidden states are processed by the attention-decoder.  
 $h_{s}$ – source state  
 $c_{t}$ – context vector  
 $a_{t}$ – alignment vector  
 $\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
-The context-vector seems familiar, but I can't still place the attention concept into one picture in my mind.  
-
-So, attention is a take on encoder/decoder – I would go on to say that the name attention should only be associated with the decoder. But the encoder feeds the attention-decoder all, not only the last hidden state. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
-
-
 
 - **Transformers**:  
 Avoids recurrence by using attention. Allows parallelisation and faster training.  
