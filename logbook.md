@@ -36,5 +36,7 @@ I am going away from global optimizer and parameter variables when training. If 
 
 **27 June 2019**  
 
+I redid the notes on Attention with help from the 2015 paper – "Effective Approaches to Attention-based Neural Machine Translation". It's quite interresting how incomplete and wrong my first notes are. Still each itteration is a vital step towards the correct end product. Still I don't understand why the Transformer is possible to train with using parallellisation. Backpropagating through the attention means backpropagating through a RNN, you cannot parallelize that, it's a bottleneck by definition.
 
+**28 June 2019**  
 
