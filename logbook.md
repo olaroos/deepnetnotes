@@ -40,3 +40,11 @@ I redid the notes on Attention with help from the 2015 paper – "Effective Appr
 
 **28 June 2019**  
 
+I added a function today that changes the hidden-layer in any batch during training to the zero-hidden-state (inital). It didn't give very good results. When I think about it in more detail there are multiple reasons why this is a bad idea.  
+(i) changing the created hidden-state to the zero-state sends the wrong information to the model during backpropagation. If I rewrite the loss-function to be expecting the zero-state as output after the end of character-input it would make sense. And then the backpropagation would take taht into consideration.  
+e.g if the y_target is '\*' we want to add that the loss should be both the difference between y and y_target + the difference between the output-state and the zero-state. I don't know how to make a conditional loss-function in pytorch but It's an interresting challenge.  
+(ii) the goal of creating a RNN that outputs Trump tweets is to create one tweet, not multiple. We don't need to teach the model to end the tweet – at least not when playing around with the vanilla RNN.  
+I also added a function to calculate the validation loss, not using batches yet. Validation-loss will be calculated from an asked for number of tweets limited by an asked for number of character each. Different from training the network which is done with tweets of longer lengths.  
+What I should do is to change batch-training such that the zero-vector is invoked at the beginning of a batch itteration more times than one (which at the moment is only done one time when training the very first batch)  
+
+**29 June 2019** 
