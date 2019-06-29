@@ -41,7 +41,7 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
-– **PyTorch Tensor Basics**: [tensor basics]
+- **PyTorch Tensor Basics**: [tensor basics]
 
 ## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
