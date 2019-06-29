@@ -20,6 +20,8 @@
 [paper attention1]: <https://arxiv.org/pdf/1508.04025.pdf>
 [animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
 
+[tensor basics]: <https://deeplizard.com/learn/video/fCVuiW9AFzY> 
+
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
 - *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification* 
@@ -39,6 +41,7 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
+– **PyTorch Tensor Basics**: [tensor basics]
 
 ## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
