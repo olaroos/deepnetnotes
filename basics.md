@@ -20,6 +20,14 @@
 [paper attention1]: <https://arxiv.org/pdf/1508.04025.pdf>
 [animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
 
+## Papers to look closer into:  
+Jeremy Howard Recommends:  
+- *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification* 
+section 2.2  
+- *Understanding the difficulty of training deep feedforward neural networks*  
+
+
+
 ## Things I don't know where to put yet:  
 
 - **[tips on training RNN]**: 
