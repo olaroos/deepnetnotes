@@ -57,7 +57,8 @@ Listened to lesson 8 of fastai. Good stuff, I think I didn't know some basics as
 I am interrested in trying to build a custom loss function that calculates loss depending on both the output and the hidden state.  
 
 A[...,1] – "..." – symbolizes all the ranks of the matrix we haven't choosen in the same way as not selecting the last ranks of a matrix leaves them out.  
-Squeeze     a tensor removes all the dimensions that has a length of 1. 
-UnSqueezing a tensor adds a dimension with a length of 1. 
-Flatten     a tensor to reshape it to have exactly one dimension by concatenating its rows. 
+Squeeze     a tensor removes all the dimensions that has a length of 1.  
+UnSqueezing a tensor adds a dimension with a length of 1.  
+Flatten     a tensor to reshape it to have exactly one dimension by concatenating its rows.  
 
+Use package torchviz make_dot() function to create an image of Pytorchs execution graph.  
