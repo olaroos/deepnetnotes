@@ -27,7 +27,9 @@ Jeremy Howard Recommends:
 - *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification* 
 section 2.2  
 - *Understanding the difficulty of training deep feedforward neural networks*  
-
+- *All you need is a good Init*  
+- *Fixup Initialization*  
+- *Self-Normalizing Neural Networks*  
 
 
 ## Things I don't know where to put yet:  
