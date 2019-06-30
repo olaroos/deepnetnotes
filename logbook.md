@@ -61,4 +61,14 @@ Squeeze     a tensor removes all the dimensions that has a length of 1.
 UnSqueezing a tensor adds a dimension with a length of 1.  
 Flatten     a tensor to reshape it to have exactly one dimension by concatenating its rows.  
 
-Use package torchviz make_dot() function to create an image of Pytorchs execution graph.  
+Use package torchviz make_dot() function to create an image of Pytorchs execution graph. 
+
+**30 June 2019**  
+
+I started writing DataSet and DataLoader functions for my RNN experiment. I introduce new terms: parentbatch is a batch containing a number of subbatches. Each parentbatch starts training with the zero-vector hidden state. Each parentbatch has a number of subbatches equal to the longest string in the parentbatch divided by the sequence-length rounded upwards. I wrote a function to create parent-batches which padded the strings with a selectable char-token such that all the subbatches are of equal length.  
+
+Tomorrow I plan to implement training of padded batches.  
+
+I might have to nest the DataLoader for the subbatches inside a DataLoader for the ParentBatches. more to come... 
+
+
