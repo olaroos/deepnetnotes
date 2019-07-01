@@ -86,14 +86,18 @@ to be that a forward-pass through a LSTM only required one forward-pass. Not a n
 
 https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e  
 
-Why can't we just stop feeding the network for the strings that do not have any characters left? Why do we need to pad it? Good question. Don't really get why, we should be able to just feed the RNN a smaller batch. In the case of the LSTM, this might not be possible because of the way it is written in pytorch. The way the LSTM seems to be written we get as output a tensor which contains all the predictions for all the input characters. That's why we need to discard the ones that should not have been activated.  
+Why can't we just stop feeding the network for the strings that do not have any characters left? Why do we need to pad it? Good question. Don't really get why, we should be able to just feed the RNN a smaller batch. In the case of the LSTM, this might not be possible because of the way it is written in pytorch. The way the LSTM seems to be written we get as output a tensor which contains all the predictions for all the input characters. That's why we need to discard the ones that should not have been activated. 
 
-I thought about how the loss-function works and how I can adjust my functions to take padded-input and target-data. This is my guess on how it works:  
+THERE IS SO MUCH GOING ON IN this tutorial, I need some more time to figure this out. I keep my thought written down here anyway:  
+
+"I thought about how the loss-function works and how I can adjust my functions to take padded-input and target-data. This is my guess on how it works:  
 The execution-graph will save the values in the forward-pass and because we are summing up the activations and the loss and averaging them for the gradient we cannot just break the chain of the forwardpass. There are two things that need to happen if we want to train padded strings for a batch update:  
 (i) The activations from the input corresponding to the padded characters should not be taken into account when calculating the gradient. How do we accomplish this? The gradient will be calculated differently depending on how the RNN is built.  
 We don't want the change in the weights or the bias here to be summed up, and we want to do this by only changing the inputu x for those characters that are missing. I don't know if that is possible without changing the RNN-class function.  
 proposals: put the weights.data and the biases.data values temporarily to 0?  
 (ii) The calculated loss for the padded target characters should not be taken into account. This should also be set to 0 before summing up the loss.  
+
+So the padding is done such that the functions torch.nn.utils.rnn.pack_padded_sequence and  torch.nn.utils.rnn.pad_packed_sequence can be used before and after the data is put into the LSTM unit. They are re-padded after passing through the LSTM layer. For my RNN, I should be able to do this much easier than the LSTM. As long as the shorter strings that I feed to the network do actually calculate the gradient even though I prepare to cut them out of the forwardpass when they end. I could use the printing of the execution graph to examin if that is the case" 
 
 For some reason I thought that the loss-function had some memory or hidden function that calculated the gradient. This is not true, the gradient is only dependent on the variables connected to the execution-graph. As long as the input to the loss-functions are variables their calculated values will be connected to the execution-graph.  
 
