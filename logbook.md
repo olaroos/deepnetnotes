@@ -73,7 +73,9 @@ I might have to nest the DataLoader for the subbatches inside a DataLoader for t
 
 **1 July 2019**  
 
-I wrote a DataLoader for the parentBatches, an Itterator for the subBatches and a TwitterDataSet creator. I think I have to add more __functions__ to the subBatches itterator. I choose to make it an itterator instead of a generator because itterating over an itterator does not throw StopIteration error.  https://www.freecodecamp.org/news/how-and-why-you-should-use-python-generators-f6fb56650888/
+I wrote a DataLoader for the parentBatches, an Itterator for the subBatches and a TwitterDataSet creator. I think I have to add more __functions__ to the subBatches itterator. I choose to make it an itterator instead of a generator because itterating over an itterator does not throw StopIteration error.  
+https://www.freecodecamp.org/news/how-and-why-you-should-use-python-generators-f6fb56650888/  
+https://hackaday.com/2018/09/19/learn-to-loop-the-python-way-iterators-and-generators-explained/  
 
 Honestly, a DataLoader at this time is not necessary because the tweets are not that big and they are already loaded to the memory. In the future I guess I would want the DataLoader to subsequentually read e.g pickled data that has already been prepared from the disk.  
 
