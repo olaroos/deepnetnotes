@@ -71,4 +71,22 @@ Tomorrow I plan to implement training of padded batches.
 
 I might have to nest the DataLoader for the subbatches inside a DataLoader for the ParentBatches. more to come... 
 
+**1 July 2019**  
 
+I wrote a DataLoader for the parentBatches, an Itterator for the subBatches and a TwitterDataSet creator. I think I have to add more __functions__ to the subBatches itterator. I choose to make it an itterator instead of a generator because itterating over an itterator does not throw StopIteration error.  
+
+Honestly, a DataLoader at this time is not necessary because the tweets are not that big and they are already loaded to the memory. In the future I guess I would want the DataLoader to subsequentually read e.g pickled data that has already been prepared from the disk.  
+
+Preparing parentbatches of four years of Trump tweets takes almost 30 seconds, I might have refactor that function in the future.  
+
+I also read the article about padding input for LSTMs. One of the differences doing that for LSTM compared to vanilla-RNN seem
+to be that a forward-pass through a LSTM only required one forward-pass. Not a number of forwardpasses equal to the longest input-string in my RNN.  
+
+I thought about how the loss-function works and how I can adjust my functions to take padded-input and target-data. This is my guess on how it works:  
+The execution-graph will save the values in the forward-pass. There are two things that need to happen if we want to train padded strings:  
+(i) The activations from the input corresponding to the padded characters should not be taken into account when calculating the gradient. This can be accomplished by making it 0 for that input. 
+(ii) The calculated loss for the padded target characters should not be taken into account. This should also be set to 0 before summing up the loss.  
+
+For some reason I thought that the loss-function had some memory or hidden function that calculated the gradient. This is not true, the gradient is only dependent on the variables connected to the execution-graph. As long as the input to the loss-functions are variables their calculated values will be connected to the execution-graph.  
+
+Writing a custom loss-function requires one forward and one backward-function.  
