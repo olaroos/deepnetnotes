@@ -112,3 +112,6 @@ I also examined the execution-graph of a summation of the loss from multiple pas
 link to my experiment -> https://github.com/olaroos/RNNexp/blob/master/exgraphexp.ipynb
 
 So, now I understand how the padding in the LSTM example works. The input is cut mid-training. The only reason it is repadded again after the LSTM-pass is that the loss-function can't take input with shape that represents sequences of different lengths. Also it was noted in the comments of that article that the loss-function used has a ignore-index flag which makes the third step much less complicated.  
+
+Also I learned that we can assign a hook to variables that requires gradient to get their gradient with respect to the loss. variable.register_hook(lambda grad: print(grad))  
+
