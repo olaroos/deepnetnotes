@@ -102,3 +102,13 @@ So the padding is done such that the functions torch.nn.utils.rnn.pack_padded_se
 For some reason I thought that the loss-function had some memory or hidden function that calculated the gradient. This is not true, the gradient is only dependent on the variables connected to the execution-graph. As long as the input to the loss-functions are variables their calculated values will be connected to the execution-graph.  
 
 Writing a custom loss-function requires one forward and one backward-function.  
+
+**2 July 2019**  
+
+I did an experiment where I cut down the input from 2 to 1 in the middle of training my RNN-network and created a picture of the graph. I did the same training without cutting down the input-shape and compared the graphs. Here I learned that the execution-graph remembers the slicing, there should not be any problem changing the size of input mid-training.  
+
+I also examined the execution-graph of a summation of the loss from multiple passes in the RNN. Here it seems like no information is lost, the execution-graph remembers and will calculate the gradient with respect to each forward-pass's loss.  
+
+link to my experiment -> https://github.com/olaroos/RNNexp/blob/master/exgraphexp.ipynb
+
+So, now I understand how the padding in the LSTM example works. The input is cut mid-training. The only reason it is repadded again after the LSTM-pass is that the loss-function can't take input with shape that represents sequences of different lengths. Also it was noted in the comments of that article that the loss-function used has a ignore-index flag which makes the third step much less complicated.  
