@@ -115,3 +115,7 @@ So, now I understand how the padding in the LSTM example works. The input is cut
 
 Also I learned that we can assign a hook to variables that requires gradient to get their gradient with respect to the loss. variable.register_hook(lambda grad: print(grad))  
 
+**3 July 2019**  
+
+I rewrote the functions that create the data-batches, they produced tensors that were padded in the wrong way. Now the functions are more easy to understand. I also sort the batches of tweets the longest first. If the lengths would be randomly distributed in the batch, I could lose that information when I remove the tensors that have padded input and try to match them afterwards with the correct hidden-states after the forward-pass.  
+
