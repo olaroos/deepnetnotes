@@ -119,3 +119,8 @@ Also I learned that we can assign a hook to variables that requires gradient to 
 
 I rewrote the functions that create the data-batches, they produced tensors that were padded in the wrong way. Now the functions are more easy to understand. I also sort the batches of tweets the longest first. If the lengths would be randomly distributed in the batch, I could lose that information when I remove the tensors that have padded input and try to match them afterwards with the correct hidden-states after the forward-pass.  
 
+**6 July 2019** 
+
+Testing the make_parentbatch() function with real data and rewrote the generators for my DataLoader() function. Generators can loop through other generators, why didn't I think about that before.  
+
+I moved the batch_strings() function inside the make_parentbatch() function because they take the same input-parameters (don't want errors because I for some reason put different parameter-values into them), they depend on eachother temporarily  and because I mixed up the batchsize and sequencelength variables inside the functions and had a hard time finding the errors.  
