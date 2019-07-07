@@ -124,3 +124,16 @@ I rewrote the functions that create the data-batches, they produced tensors that
 Testing the make_parentbatch() function with real data and rewrote the generators for my DataLoader() function. Generators can loop through other generators, why didn't I think about that before.  
 
 I moved the batch_strings() function inside the make_parentbatch() function because they take the same input-parameters (don't want errors because I for some reason put different parameter-values into them), they depend on eachother temporarily  and because I mixed up the batchsize and sequencelength variables inside the functions and had a hard time finding the errors.  
+
+**7 July 2019**  
+
+I got batch-training working finally. Protip, don't load data onto the graphics-card until you want to do training. I ran out of 11 Gb memory when I tried to preprocess 15000 trump tweets. Now I make the tensors cuda right before I do forward-pass.  
+
+bugg_1: found out that my make_parentbatch() function sometimes creates batches that consists solely of padded elements. My guess is that this is an error in the pad() function but I didn't look into it yet.  
+
+I started adding more layers to the RNN to see if it makes a difference. Adding an extra layer doing short training didn't improve validation accuracy but I didn't put a non-linear function between the layers yet which I believe will make a difference.
+
+Creating DataLoaders really makes the training easier to manage. I deleted three big clumpsy functions.  
+
+I installed the nbextensions_configurator package through conda but couldn't find any extensions to choose from in the graphical interface. I remember I added it to a previous jupyter build but this time it didn't function as before. It's not a biggie, I will probably look into it again in the future. Code folding is something I miss in jupyter and it would be nice to tweak the boring interface.  
+
