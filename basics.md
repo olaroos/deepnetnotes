@@ -34,6 +34,8 @@ section 2.2
 
 ## Things I don't know where to put yet:  
 
+- **https://stats.stackexchange.com/questions/164876/tradeoff-batch-size-vs-number-of-iterations-to-train-a-neural-network**  
+
 - **[tips on training RNN]**: 
 
 - **Skip Thought Vectors**:  [medium skipthought]  
