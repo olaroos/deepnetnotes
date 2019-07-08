@@ -142,3 +142,10 @@ I installed the nbextensions_configurator package through conda but couldn't fin
 Wrote a function that does a training taking in number of itterations,optimizer,model,dataloader etc because I wanted to train multiple models and compare the validation plots.  It was possible to add more layers in the RNN and I think it made a big difference. Instead of 0.2 in validation error I'm down to 0.15 with an extra linear-layer, batch-norm and a relu.  
 
 I still need to scale the validation error to match the level of values of the training-error and plot them at the same time. I also want to change optimizer, using RMSProp atm.  
+
+Things I should do in the near future:  
+- write a dataloader for the validation set as well.  
+- give the jupyter kernel more memory, I'm not sure but I guess this is the reason my notebook has frooze up several times on Rolfs computer. I deepcopied all the tweets twice and the notebook completely died.  
+- write a function to easily create different architectures of RNN networks to experiment on and compare outcome.  
+
+It might actually be easier and more memory efficient to create each batch at the moment my train functions asks for it. I could continously random select a batchsize of tweets and never have to create all batches before I start training.
