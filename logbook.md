@@ -137,3 +137,8 @@ Creating DataLoaders really makes the training easier to manage. I deleted three
 
 I installed the nbextensions_configurator package through conda but couldn't find any extensions to choose from in the graphical interface. I remember I added it to a previous jupyter build but this time it didn't function as before. It's not a biggie, I will probably look into it again in the future. Code folding is something I miss in jupyter and it would be nice to tweak the boring interface.  
 
+**8 July 2019**  
+
+Wrote a function that does a training taking in number of itterations,optimizer,model,dataloader etc because I wanted to train multiple models and compare the validation plots.  It was possible to add more layers in the RNN and I think it made a big difference. Instead of 0.2 in validation error I'm down to 0.15 with an extra linear-layer, batch-norm and a relu.  
+
+I still need to scale the validation error to match the level of values of the training-error and plot them at the same time. I also want to change optimizer, using RMSProp atm.  
