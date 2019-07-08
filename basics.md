@@ -57,16 +57,17 @@ Choose the elements with information about the the direction of the Gradient Des
 Algorithm adaptive scaled learning-rate for each dimension. ([medium adagrad])  
 AdaGrad is almost the same as SGD but each individual parameter update is scaled (divided) with the accumulated squared gradient from every previous gradient computation. In the long run this term goes to 0 for all parameters.  
 
-- **RProp**: 
-goal is to solve problem with gradients varying a lot in magnitudes. ([medium rprop])  
+- **RProp**:  
+RProp doesn't work with mini-batches because it uses the sign of the gradient.  
+Goal is to solve problem with gradients varying a lot in magnitudes. ([medium rprop])  
 Rprop combines two ideas:  
 **(i)**  only using the sign of the gradient  
 **(ii)** adapting the step size individually for each weight.  
 Rprop looks at the sign of the two(!) previous gradient steps and adjust the stepsize accordingly (intensify or decrease).
 It is also adviced to limit the stepsize between a minimum and maximum value. 
 
-- **RMSProp**:
-RProp doesn't work for mini-batch updates because it uses the sign of the gradient, solved by using moving average of the squared gradient for each weight. ([medium rprop])  
+- **RMSProp**:  
+RMSProp does work with mini-batches by using moving average of the squared gradient for each weight. ([medium rprop])  
 <br/> This still doesn't resemble the RPROP algorithm. The RPROP algorithm decreases the learning-rate if we go the other direction, and increase it if we are going the same direction.  
 In RMSProp the algorithm doesn't remember which direction it went in the previous iterations. It only matters what the magnitude is of the gradient.  
 Leslis N. SMith says it's a biased estimate, I believe it is in relation to the Hessian. RMSProp comes close to the Hessian. (Whatever that means?)  
