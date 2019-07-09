@@ -1,3 +1,5 @@
+[optimizing jupyter notebook] <https://towardsdatascience.com/speed-up-jupyter-notebooks-20716cbe2025>
+
 #### 
 
 ##### nn.ModuleList  
@@ -15,4 +17,4 @@ It should also be used when doing the evaluation – calculating the validation 
 yield returns a Generator
 
 
-
+##### [optimizing jupyter notebook]
