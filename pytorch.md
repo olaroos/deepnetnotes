@@ -1,4 +1,5 @@
 [optimizing jupyter notebook]: <https://towardsdatascience.com/speed-up-jupyter-notebooks-20716cbe2025>
+[keyword @property]: <https://www.programiz.com/python-programming/property>
 
 #### 
 
@@ -18,3 +19,6 @@ yield returns a Generator
 
 
 ##### [optimizing jupyter notebook]
+
+##### [keyword @property]  
+
