@@ -1,4 +1,4 @@
-[optimizing jupyter notebook] <https://towardsdatascience.com/speed-up-jupyter-notebooks-20716cbe2025>
+[optimizing jupyter notebook]: <https://towardsdatascience.com/speed-up-jupyter-notebooks-20716cbe2025>
 
 #### 
 
