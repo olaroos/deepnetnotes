@@ -149,3 +149,11 @@ Things I should do in the near future:
 - write a function to easily create different architectures of RNN networks to experiment on and compare outcome.  
 
 It might actually be easier and more memory efficient to create each batch at the moment my train functions asks for it. I could continously random select a batchsize of tweets and never have to create all batches before I start training.
+
+**9 July 2019**  
+
+Changed the DataLoader to not preprocess tweets and instead load each set of batches for a batch-size of tweets when needed. I also made it shuffle the tweets after each epoch. This dataloader will also never throw StopIteration. This change should solve the problem with jupyter notebook freezing.  
+
+I also finished watching lesson 9 of fastai. Inspired by the structure they use in fastai I started changing my code because I want to implement the callback functions Jeremy uses in the future.  
+
+
