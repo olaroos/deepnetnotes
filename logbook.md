@@ -163,3 +163,6 @@ I started doing mayor refactoring of my code, inspired by fastai's callbacks. ca
 Everything is a little bit messy right now because I don't know if I want to implement the newly introduced Runner class right away or if I should implement the callbacks separately first as a middle step.  
 
 Anyway, refactoring makes it much easier to see what is going on when training the network.  
+
+I also spent some time installing and experimenting with _tags_ and _Ack_ (a search function like grep) for vim which I think I will definitely be using in the future. For tags to work a tags-file need to be precomputed with the command ctag(s?) in terminal. These files need to be locatable by vim, configure the vimrc-file to be able to find them.  
+
