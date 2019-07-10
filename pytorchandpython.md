@@ -35,4 +35,11 @@ kwargs = {'input1':1,'input2':3,'input3':5}
 
 ##### python magic commands:  
 
-- __call__ called whenever a function is given a string as input. e.g f("hi")
+- __call__ whenever you call a class itself as a function. a = class() a('input1', 2) 
+
+
+### fastai callbacks structure:
+
+basic functionalities:  
+- do not fail if methods is not declared in callback: use if cb and hasattr(cb, 'before_calc'): cb.before_calc()
+- 
