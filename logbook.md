@@ -156,4 +156,10 @@ Changed the DataLoader to not preprocess tweets and instead load each set of bat
 
 I also finished watching lesson 9 of fastai. Inspired by the structure they use in fastai I started changing my code because I want to implement the callback functions Jeremy uses in the future.  
 
+**10 July 2019**  
 
+I started doing mayor refactoring of my code, inspired by fastai's callbacks. calculating validation loss now uses the same DataLoader class as the training data. The dataloader no longer returns a bool that explains when to use the zero-hidden state. Looking at the first onehotencoded character of X in each batch will give us the same information. The begin-symbol is in the encoders second first position and hence if we find a "1" in that position we know that we should use the zero-hidden state.  
+
+Everything is a little bit messy right now because I don't know if I want to implement the newly introduced Runner class right away or if I should implement the callbacks separately first as a middle step.  
+
+Anyway, refactoring makes it much easier to see what is going on when training the network.  
