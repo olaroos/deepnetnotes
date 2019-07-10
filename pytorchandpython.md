@@ -35,7 +35,7 @@ kwargs = {'input1':1,'input2':3,'input3':5}
 
 ##### python magic commands:  
 
-- __call__ whenever you call a class itself as a function. a = class() a('input1', 2) 
+- \_\_call\_\_ whenever you call a class itself as a function. a = class() a('input1', 2) 
 
 
 ### fastai callbacks structure:
