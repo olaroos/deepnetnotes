@@ -22,3 +22,17 @@ yield returns a Generator
 
 ##### [keyword @property]  
 
+
+##### input parameters to functions:
+
+def f(*args, \*\*kwargs):  
+
+- args: all inputs that are not keywords i.e f(1,3,5)  
+args = (1,3,5) 
+
+- kwargs: all input that are given as keywords i.e f(input1=1,input2=3,input3=5) 
+kwargs = {'input1':1,'input2':3,'input3':5} 
+
+##### python magic commands:  
+
+- __call__ called whenever a function is given a string as input. e.g f("hi")
