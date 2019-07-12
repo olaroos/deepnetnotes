@@ -166,3 +166,10 @@ Anyway, refactoring makes it much easier to see what is going on when training t
 
 I also spent some time installing and experimenting with _tags_ and _Ack_ (a search function like grep) for vim which I think I will definitely be using in the future. For tags to work a tags-file need to be precomputed with the command ctag(s?) in terminal. These files need to be locatable by vim, configure the vimrc-file to be able to find them.  
 
+**11 July 2019**  
+
+Apparently I broke the training, something is wrong when I train the network and I can no longer generate as good results as I did before. It seemed to have happened when I changed the validation-loss calculations, I will actually backtrack to a previous commit and start again. I remember what I did today and I believe I can make it better if I rewrite it from an earlier commit and verify that the training is working as I move along.  
+
+**12 July 2019**  
+
+
