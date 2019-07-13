@@ -172,4 +172,8 @@ Apparently I broke the training, something is wrong when I train the network and
 
 **12 July 2019**  
 
+So, the errors I thought were my fault was in fact encoding errors. These errors seems to happen sporadically. Sometimes when I load in the tweet-data and create my encoder/decoders the symbols is saved with the wrong encoding.  
 
+My first guess is that this might have something to do with the extra swap I created recently, what if it was created with another encoding and when that is used the wrong encoding is saved to RAM.  
+
+I will run some tests tomorrow (July 13).  
