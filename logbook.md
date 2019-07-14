@@ -177,3 +177,17 @@ So, the errors I thought were my fault was in fact encoding errors. These errors
 My first guess is that this might have something to do with the extra swap I created recently, what if it was created with another encoding and when that is used the wrong encoding is saved to RAM.  
 
 I will run some tests tomorrow (July 13).  
+
+**13 July 2019**  
+
+I found out the source to why my network stopped learning and it didn't have anything to do with the swap.  
+
+The error stemmed from putting the RNN in training-mode. Before I hade been training my network in evaluation-mode. Because I implemented a batch-norm layer in my RNN it got me no results when the network was in training-mode. 
+
+**14 July 2019**  
+
+I decided to postpone inmplementing callbacks because I think initially it will get in the way of me experimenting with different structures of RNN, GRU and LSTM.  
+
+I moved functions that I don't need to rewrite to separate files. I also tried using autoreload 2 but it didn't seem to work for the functions I imported.  
+
+I also did a short experiment with extending the depth from 2 to 3 layers in the vanilla RNN and it seems to give better accuracy.  
