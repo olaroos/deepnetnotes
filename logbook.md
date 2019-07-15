@@ -206,8 +206,4 @@ My guess here is that in the matlab-assignment we used a simplification. All the
 
 When pytorch creates the execution-graph it remembers the amount of error each input-step generated and how much that error contributed to the total error used in the loss-function. (I should really put this to the test in some way).  
 
-When calculating the validation-error every 100th iteration the graph is very jagged and in my experiments I have a hard seeing if the validation-loss increases (a sign of overfitting). I tried calculating a simple-moving average and plotting it to try to notice if there was overfitting taking place.  
-
-It can also be that I didn't train the network long enought to induce overfitting. 
-
-I'm considering trying out an exponential moving average to see if this is a better indicator of overfitting. 
+When calculating the validation-error every 100th iteration the graph is very jagged and in my experiments I have a hard seeing if the validation-loss increases (a sign of overfitting). I tried calculating a simple-moving average and plotting it to try to notice if there was overfitting taking place but realised that I haven't trained the model long enough. I doubled the training length and it still didn't show any signs of overfitting...
