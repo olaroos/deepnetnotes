@@ -198,4 +198,16 @@ The RNN I'm developing put the input and the hidden layer into two sub-networks.
 
 Comparing losses: vanilla-RNN with 2 and 3 (character-generating) layers the 3-layer network had 5\% less loss. Making it 4-layers improves the results even more, making it 5 layers might make a minimal difference.  
 
-Trying to change the number of layers generating the hidden state: 
+Trying to change the number of layers generating the hidden state by adding one layer also seem to make a minimal decrease of validation-loss.  
+
+I'm planing to implement GRU as the next step. The generated sequences I get with these networks is much better than the ones I produced with Matlab code.  
+
+My guess here is that in the matlab-assignment we used a simplification. All the errors calculated at each input step was the average of all errors. Now, my guess is that pytorch does not use the average-error even though I'm adding all the errors together from each step.  
+
+When pytorch creates the execution-graph it remembers the amount of error each input-step generated and how much that error contributed to the total error used in the loss-function. (I should really put this to the test in some way).  
+
+When calculating the validation-error every 100th iteration the graph is very jagged and in my experiments I have a hard seeing if the validation-loss increases (a sign of overfitting). I tried calculating a simple-moving average and plotting it to try to notice if there was overfitting taking place.  
+
+It can also be that I didn't train the network long enought to induce overfitting. 
+
+I'm considering trying out an exponential moving average to see if this is a better indicator of overfitting. 
