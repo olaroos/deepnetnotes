@@ -191,3 +191,7 @@ I decided to postpone inmplementing callbacks because I think initially it will 
 I moved functions that I don't need to rewrite to separate files. I also tried using autoreload 2 but it didn't seem to work for the functions I imported.  
 
 I also did a short experiment with extending the depth from 2 to 3 layers in the vanilla RNN and it seems to give better accuracy.  
+
+**15 July 2019**  
+
+Comparing losses: vanilla-RNN with 2 and 3 layers the 3 layer network had 5\% less loss. 
