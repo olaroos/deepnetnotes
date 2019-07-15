@@ -30,6 +30,8 @@ section 2.2
 - *All you need is a good Init*  
 - *Fixup Initialization*  
 - *Self-Normalizing Neural Networks*  
+- *Bag of Tricks for Image Classification with Convolutional Neural Networks - 2018 dec*  
+
 
 
 ## Things I don't know where to put yet:  
