@@ -81,7 +81,7 @@ Equilibrated SGD – unbiased version of RMSProp. ([research esgd])  <br/>
 In the paper the authors proposes an update of the moving-average(?) every 20th iteration because it would have the same calculation overhead as RMSPROP. And still (I guess) better performance. I haven't found any good source of the implementation of the paper yet.  
 
 - **ADAM**: – ADAptiv Momentum estimation – RMSprop + Momentum. ([youtube eve])  
-<br/> $$\theta_{t+1} = \theta_{t} - lr \frac{m_{t}}{\sqrt{v_t + \epsilon}} $$  
+<br/> $$\theta_{t+1} = \theta_{t} - lr \frac{m_{t}}{\sqrt{v_t} + \epsilon} $$  
 Adam takes small steps in steep terrain and large steps in flat terrain.  
 $m_{t} = \beta_{1} m_{t-1} + (1-\beta_{1}) grad_{t}$ – average recent gradient  
 $v_{t} = \beta_{2} v_{t-1} + (1-\beta_{2}) {grad_{t}}^{2}$ – average recent deviation in the gradient  
