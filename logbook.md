@@ -194,4 +194,8 @@ I also did a short experiment with extending the depth from 2 to 3 layers in the
 
 **15 July 2019**  
 
-Comparing losses: vanilla-RNN with 2 and 3 layers the 3 layer network had 5\% less loss. 
+The RNN I'm developing put the input and the hidden layer into two sub-networks. One for generating the new hidden layer and another to generate the next character. 
+
+Comparing losses: vanilla-RNN with 2 and 3 (character-generating) layers the 3-layer network had 5\% less loss. Making it 4-layers improves the results even more, making it 5 layers might make a minimal difference.  
+
+Trying to change the number of layers generating the hidden state: 
