@@ -207,3 +207,10 @@ My guess here is that in the matlab-assignment we used a simplification. All the
 When pytorch creates the execution-graph it remembers the amount of error each input-step generated and how much that error contributed to the total error used in the loss-function. (I should really put this to the test in some way).  
 
 When calculating the validation-error every 100th iteration the graph is very jagged and in my experiments I have a hard seeing if the validation-loss increases (a sign of overfitting). I tried calculating a simple-moving average and plotting it to try to notice if there was overfitting taking place but realised that I haven't trained the model long enough. I doubled the training length and it still didn't show any signs of overfitting...
+
+
+**16 July 2019**  
+
+Trained the network for almost 30k itterations batchsize 20 and no signs of overfitting. I will try to make the linear-layers wider – both for the hidden and the output to see if this can induce overfitting.  
+
+I also made sure to code and understand the exponential-weighted-moving-average function with the debiasing Jeremy presents in lesson 11. The debiasing is an addon that can be used on the Adam optimizer but isn't part of the original version (as I understand it). The debiasing part is multiplication with the term (1 - beta^(i-1))^(-1) which will counter the inital bias produced by the momentum in the beginning of training.  
