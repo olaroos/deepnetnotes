@@ -211,7 +211,7 @@ When calculating the validation-error every 100th iteration the graph is very ja
 
 **16 July 2019**  
 
-Trained the network for almost 30k itterations batchsize 20 and no signs of overfitting. I will try to make the linear-layers wider – both for the hidden and the output to see if this can induce overfitting.  
+Trained the network for almost 300.000 itterations batchsize 20 and no signs of overfitting. I will try to make the linear-layers wider – both for the hidden and the output to see if this can induce overfitting.  
 
 I also made sure to code and understand the exponential-weighted-moving-average function with the debiasing Jeremy presents in lesson 11. The debiasing is an addon that can be used on the Adam optimizer but isn't part of the original version (as I understand it). The debiasing part is multiplication with the term (1 - beta^(i))^(-1) which will counter the inital bias produced by the momentum in the beginning of training but shrink to a value of 1 quite fast.  
 
