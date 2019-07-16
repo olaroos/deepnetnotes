@@ -32,7 +32,7 @@ section 2.2
 - *Self-Normalizing Neural Networks*  
 - *Bag of Tricks for Image Classification with Convolutional Neural Networks - 2018 dec*  
 - *LAMB optimizer paper (don't know what the name of it is*  
-
+- *mixup: Beyond Empirical Risk Minimization*  
 
 ## Things I don't know where to put yet:  
 
