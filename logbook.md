@@ -216,3 +216,13 @@ Trained the network for almost 300.000 itterations batchsize 20 and no signs of 
 I also made sure to code and understand the exponential-weighted-moving-average function with the debiasing Jeremy presents in lesson 11. The debiasing is an addon that can be used on the Adam optimizer but isn't part of the original version (as I understand it). The debiasing part is multiplication with the term (1 - beta^(i))^(-1) which will counter the inital bias produced by the momentum in the beginning of training but shrink to a value of 1 quite fast.  
 
 I'm getting ready to implement the callbacks into the Learner() class. Initially I'm planing to use callbacks to change the learning-rate.  
+
+**19 July 2019**  
+
+I started implementing callbacks and I think that it's going to be easier to debugg the training in the future. I only got to get the default working first.  
+
+I'm opposed to save the variable that tells the network to stop training in CallbackHandler, it would be better to put it in learner because I cannot access it from the individual callback objects.  
+
+I created a debugging ipynb file and I'm using it to find a bugg where batches are filled with only padded elements which breaks my training.  
+
+A stats struct has been added to the learner which will hold the graph data etc.  
