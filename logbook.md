@@ -226,3 +226,11 @@ I'm opposed to save the variable that tells the network to stop training in Call
 I created a debugging ipynb file and I'm using it to find a bugg where batches are filled with only padded elements which breaks my training.  
 
 A stats struct has been added to the learner which will hold the graph data etc.  
+
+**20 July 2019**  
+
+Fixed the bugg that creates batches of only pad-characters. Moved some variables from CallbackHandler to Learner-classobjects. Started writing code for the GRU unit.  
+
+Up until now I thought that I was inheriting from a RNN module, but I wasn't. The RNN-unit I was using was completely written by myself. I'm going to do the same with the GRU and the LSTM unit. Because if I know how to write them it's going to be much faster training them by implementing them in Swift in the future. And I can hopefully play around with different tweaks in the meantime even if training-time is not optimal.  
+
+
