@@ -233,4 +233,12 @@ Fixed the bugg that creates batches of only pad-characters. Moved some variables
 
 Up until now I thought that I was inheriting from a RNN module, but I wasn't. The RNN-unit I was using was completely written by myself. I'm going to do the same with the GRU and the LSTM unit. Because if I know how to write them it's going to be much faster training them by implementing them in Swift in the future. And I can hopefully play around with different tweaks in the meantime even if training-time is not optimal.  
 
+**22 July 2019**  
 
+GRU-module is not trainable.  
+
+**23 July 2019**  
+
+Made functions to build a specialised schematic for changing selectable parameters during training steps. Improved the callback-functions. GRU doesn't seem to converge as fast as my vanilla-RNN does. Need to do longer trainingruns with the GRU and build a function to analyse the gradients to see if exploding gradient is a problem in my GRU or RNN networks. I should introduce gradient clipping in some way.  
+
+**24 July 2019**  
