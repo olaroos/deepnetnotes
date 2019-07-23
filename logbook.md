@@ -235,7 +235,7 @@ Up until now I thought that I was inheriting from a RNN module, but I wasn't. Th
 
 **22 July 2019**  
 
-GRU-module is not trainable.  
+GRU-module is now trainable.  
 
 **23 July 2019**  
 
