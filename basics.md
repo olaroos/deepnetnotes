@@ -113,7 +113,7 @@ $h$ - hidden-unit
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
 Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM] Both LSTM and GRU are different from Vanilla RNN which replaces the old states with a new calculated one – while LSTM/GRU saves part of the old state and adds the new state on top of it. Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn. But neither can be trained using parallelisation.  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence can carry information far backwards without being affected by the vanishing gradient problem.  
-**gates** in RNNs are outputs from sigma-functions.  
+**gates** in RNNs are outputs from sigma-functions, the gate-gate in the LSTM is called a gate because it's a tanh multiplied with a sigma-function. It decides how much to write to the new cell-state.   
 **3 inputs; 2 output states:**  [medium LSTM 2]  
 $x$ – input  
 $c$ – cell-state  
