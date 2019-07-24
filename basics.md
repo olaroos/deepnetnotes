@@ -104,7 +104,7 @@ Linear change of learning rate easiest to implement (my thoughts), chosen becaus
 
 ## RNNs: Recurrent Neural Networks
 Used to learn periodical patterns from data.  Vanilla RNNs functions as a hidden-markov-model.  
-Problems: vanishing- and exploding-gradient.  Exploding gradient problem can be solved by "clipping" (setting upper and lower limit for) the gradient. The vanishing-gradient problem is harder to solve. 
+Problems: vanishing- and exploding-gradient.  Exploding gradient problem can be solved by "clipping" (setting upper and lower limit for) the gradient. The vanishing-gradient problem is harder to solve.  
 parts:  
 $x$ - data  
 $o$ - output  
@@ -113,6 +113,7 @@ $h$ - hidden-unit
 - **LSTM**: – Long Short Term Memory  [medium LSTM 1]  
 Stronger than GRUs, can easily perform unbounded counting (don't know what that entails) [wiki LSTM] Both LSTM and GRU are different from Vanilla RNN which replaces the old states with a new calculated one – while LSTM/GRU saves part of the old state and adds the new state on top of it. Both GRU and LSTM(not sure about this yet) can learn patterns that RNNs cannot learn. But neither can be trained using parallelisation.  
 LSTM uses a cell-state that is updated without multiplication of Weights and hence can carry information far backwards without being affected by the vanishing gradient problem.  
+**gates** in RNNs are outputs from sigma-functions.  
 **3 inputs; 2 output states:**  [medium LSTM 2]  
 $x$ – input  
 $c$ – cell-state  
