@@ -21,6 +21,8 @@
 [animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
 
 [tensor basics]: <https://deeplizard.com/learn/video/fCVuiW9AFzY> 
+[medium BGRU]: <https://towardsdatascience.com/understanding-bidirectional-rnn-in-pytorch-5bd25a5dd66>  
+
 
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
@@ -133,9 +135,12 @@ $h$ - hidden-state
 $z$ – update gate  
 $r$ – reset gate  
 
-Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer. 
+– **Bidirectional GRU/LSTM**: [BGRU]  
 
-- **Attention**: – [[skymind attention]] [[animated attention]]
+As I understand creating a bidirectional-gru/lstm is merging the result of two separate gru/lstms. IIuc (if I understand correctly) the order of the output from the counter-directional rnn/lstm is reversed and then merged in some way, summed, concatenated or elementwise-averaged before being feed to a linear-layer.  
+
+- **Attention**: – [[skymind attention]] [[animated attention]]  
+*Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer.*  
 explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
 explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden-/source-states are saved for processing by the attention-decoder. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
 *global-attention*: all encoder hidden states are processed by the attention-decoder.  
