@@ -244,3 +244,11 @@ Made functions to build a specialised schematic for changing selectable paramete
 **25 July 2019**  
 
 Started writing the stacked gru module. I realize I have to rewrite the model.parameters() function. My SGRU-module is made out of a number of single GRU-modules. I have to figure out what structure the optimizer expects when feeding it the parameters of my module.   
+
+It seems like the optimizer expects a generator, I will try to loop through all the single GRU-modules and yield the output 
+from their parameters() function:  
+
+def parameters(self):
+  for stack in range(n_stacks):
+    for param in iter(self.GRUs[stack].parameters()):
+      yield param
