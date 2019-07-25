@@ -139,6 +139,10 @@ $r$ – reset gate
 
 As I understand creating a bidirectional-gru/lstm is merging the result of two separate gru/lstms. IIuc (if I understand correctly) the order of the output from the counter-directional rnn/lstm is reversed and then merged in some way, summed, concatenated or elementwise-averaged before being feed to a linear-layer.  
 
+- **Stacked GRU/LSTM**:  
+Stacking multiple GRU/LSTM on each other. The output from the first layer of GRU/LSTM is the input to the second layer. The output from the final layer is feed to a linear-layer.  
+
+
 - **Attention**: – [[skymind attention]] [[animated attention]]  
 *Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer.*  
 explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
@@ -193,6 +197,12 @@ Any given word can have multiple meanings and relate to other words in different
 
 - **XL-Transformer**:  ([paper XLT])
 learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-transformers.  
+
+
+#### RNN: preprocessing:  
+
+– **Filtering Cycle Decomposition (FCD)**:  
+
 
 
 #### RNN: training nomenclature:  
@@ -412,26 +422,6 @@ Papers to read:
 	Improving Language Understanding by Generative Pre-Training
 	BERT: Tre-training of Deep Bidirectional Transformers for Language Understanding
 	Adversarial Examples Are Not Easily Detected: Bypassing Ten 
-
-
-
-
-Standard machine translation metrics to evaluate results in NLP.
-
-
-
-TRANSFORMERS:
-
-  https://staff.fnwi.uva.nl/s.abnar/?p=108
-
-  What is attention?
-    http://jalammar.github.io/illustrated-transformer/
-
-
-
-  Consists of:
-    (i)  Encoders
-    (ii) Decoders
 
 WORD VECTORS:
   https://blog.acolyer.org/2016/04/21/the-amazing-power-of-word-vectors/
