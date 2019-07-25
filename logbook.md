@@ -241,4 +241,6 @@ GRU-module is now trainable.
 
 Made functions to build a specialised schematic for changing selectable parameters during training steps. Improved the callback-functions. GRU doesn't seem to converge as fast as my vanilla-RNN does. Need to do longer trainingruns with the GRU and build a function to analyse the gradients to see if exploding gradient is a problem in my GRU or RNN networks. I should introduce gradient clipping in some way.  
 
-**24 July 2019**  
+**25 July 2019**  
+
+Started writing the stacked gru module. I realize I have to rewrite the model.parameters() function. My SGRU-module is made out of a number of single GRU-modules. I have to figure out what structure the optimizer expects when feeding it the parameters of my module.   
