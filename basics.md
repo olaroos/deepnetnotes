@@ -135,7 +135,7 @@ $h$ - hidden-state
 $z$ – update gate  
 $r$ – reset gate  
 
-- **Bidirectional GRU/LSTM**: [[BGRU]]  
+- **Bidirectional GRU/LSTM**: [[medium BGRU]]  
 As I understand creating a bidirectional-gru/lstm is merging the result of two separate gru/lstms. IIuc (if I understand correctly) the order of the output from the counter-directional rnn/lstm is reversed and then merged in some way, summed, concatenated or elementwise-averaged before being feed to a linear-layer.  
 
 - **Stacked GRU/LSTM**:  
