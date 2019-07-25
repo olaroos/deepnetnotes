@@ -135,14 +135,14 @@ $h$ - hidden-state
 $z$ – update gate  
 $r$ – reset gate  
 
-– **Bidirectional GRU/LSTM**: [BGRU]  
+- **Bidirectional GRU/LSTM**: [BGRU]  
 
 As I understand creating a bidirectional-gru/lstm is merging the result of two separate gru/lstms. IIuc (if I understand correctly) the order of the output from the counter-directional rnn/lstm is reversed and then merged in some way, summed, concatenated or elementwise-averaged before being feed to a linear-layer.  
 
 - **Stacked GRU/LSTM**:  
 Stacking multiple GRU/LSTM on each other. The output from the first layer of GRU/LSTM is the input to the second layer. The output from the final layer is feed to a linear-layer.  
 
-– **ULMFIT**:  
+- **ULMFIT**:  
 [medium ULMFIT]  
 Haven't read the whol article. ULMFIT is preprocessing text, then training with a custom dropout for embeddings and hidden layers in RNNs which need to be zeroed out in a different way than weights in a linear-layer.  
 
