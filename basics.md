@@ -22,7 +22,7 @@
 
 [tensor basics]: <https://deeplizard.com/learn/video/fCVuiW9AFzY> 
 [medium BGRU]: <https://towardsdatascience.com/understanding-bidirectional-rnn-in-pytorch-5bd25a5dd66>  
-
+[medium ULMFIT]: <https://medium.com/mlreview/understanding-building-blocks-of-ulmfit-818d3775325b>  
 
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
@@ -142,6 +142,9 @@ As I understand creating a bidirectional-gru/lstm is merging the result of two s
 - **Stacked GRU/LSTM**:  
 Stacking multiple GRU/LSTM on each other. The output from the first layer of GRU/LSTM is the input to the second layer. The output from the final layer is feed to a linear-layer.  
 
+– **ULMFIT**:  
+[medium ULMFIT]  
+Haven't read the whol article. ULMFIT is preprocessing text, then training with a custom dropout for embeddings and hidden layers in RNNs which need to be zeroed out in a different way than weights in a linear-layer.  
 
 - **Attention**: – [[skymind attention]] [[animated attention]]  
 *Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer.*  
