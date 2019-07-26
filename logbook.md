@@ -252,3 +252,16 @@ def parameters(self):
   for stack in range(n_stacks):
     for param in iter(self.GRUs[stack].parameters()):
       yield param
+
+**26 July 2019**  
+
+I made the SGRU work. I also noticed an error that keeps coming back. It seems like I have to define the function that uses torch.cuda.is_available() in each module-file I want to use it in. if I make these module files inherit this function from another module-file it seems CUDA casts an error.  
+
+When I was writing the Stacked GRU function pythorch threw an error where it said I updated a variable used for calculating the gradient in-place. The following is not allowed if you want to use a variable for calculating a gradient:  
+
+a = torch.zeros(0)  
+use a for calculation  
+a[0] = torch.zeros(0)  
+or  
+a += torch.ones(0)  
+
