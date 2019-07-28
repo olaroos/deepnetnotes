@@ -270,3 +270,11 @@ a += torch.ones(1)
 Added a function that calculates accuracy of a RNN-batch. It still doesn't take into consideration the padded characters that becomes removed in the end of a batch.  
 
 One other thing I noticed is that alot of functions have co-dependencies of functions I wrote. This makes it hard for me to cut out the functions I want to change to my current project-file because they don't see the functions I import from files. (which sounds odd, I have to doublecheck this). My current thoughts is to at least separate all functions into a separate file that does not have any dependencies on other functions I've written.  
+
+**28 July 2019**  
+
+Fixed accuracy-function to adapt to padded characters being removed in forward-pass.  
+
+Started moving functions I wrote that do not dependo on other functions I wrote to a separate file.  
+
+Added forward function go SGRU-module which was missing when I tried to generate a sequence from SGRU-model.  
