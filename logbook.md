@@ -278,3 +278,9 @@ Fixed accuracy-function to adapt to padded characters being removed in forward-p
 Started moving functions I wrote that do not dependo on other functions I wrote to a separate file.  
 
 Added forward function go SGRU-module which was missing when I tried to generate a sequence from SGRU-model.  
+
+**29 July 2019**  
+
+loss from training is no longer divided by batch-size because the default reduction in nn.NLLLoss() is mean which means the loss is already divided by the batch-size. The question is if I should stop dividing by the number of character processed as well?  
+
+Added collection of a moving average of the training-loss to the StatsCallback function.  
