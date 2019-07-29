@@ -288,3 +288,6 @@ Added collection of a moving average of the training-loss to the StatsCallback f
 SGRU seems to be working properly now.  
 
 Goal for this week is to visualize the max and min gradient(average?) when training the network to see if exploding gradient is a problem in my setup. And introduce gradient clipping with hooks.  
+
+I train a SGRU (3 GRU layers) and compare to a RNN with multiple intrinsic layers (around 5). Training for 30.000 iterations they have similar validation accuaracy. I would have thought that the SGRU would outperform the RNN much more at this point in training. I haven't however controlled my training for exploading gradients (I do a sequence length of 30) and I haven't used momentum, weight-decay or dropout in my models which I think could change the outcome. Experiment saved as experiment 2.  
+
