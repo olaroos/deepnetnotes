@@ -283,4 +283,8 @@ Added forward function go SGRU-module which was missing when I tried to generate
 
 loss from training is no longer divided by batch-size because the default reduction in nn.NLLLoss() is mean which means the loss is already divided by the batch-size. The question is if I should stop dividing by the number of character processed as well?  
 
-Added collection of a moving average of the training-loss to the StatsCallback function.  
+Added collection of a moving average of the training-loss to the StatsCallback function and a debiasing term.  
+
+SGRU seems to be working properly now.  
+
+Goal for this week is to visualize the max and min gradient(average?) when training the network to see if exploding gradient is a problem in my setup. And introduce gradient clipping with hooks.  
