@@ -291,3 +291,9 @@ Goal for this week is to visualize the max and min gradient(average?) when train
 
 I train a SGRU (3 GRU layers) and compare to a RNN with multiple intrinsic layers (around 5). Training for 30.000 iterations they have similar validation accuaracy. I would have thought that the SGRU would outperform the RNN much more at this point in training. I haven't however controlled my training for exploading gradients (I do a sequence length of 30) and I haven't used momentum, weight-decay or dropout in my models which I think could change the outcome. Experiment saved as experiment 2.  
 
+**30 July 2019**  
+
+So I was trying to find a way to print the gradients being calculated at each time-step which doesn't seem to be possible using the current pytorch architecture. All I can do is print the final gradient calculated for my module.  
+
+Not to be fair, we will see if the summed up gradient is exploding or not but clipping the gradient during the gradient calculation is what I really want to do and I think it would be a better solution which would give better results. And it would be possible to see the limits of how long sequences I can train if it is possible to visualize how the gradient is propagated backwards through the RNN when calculating the gradient...  
+
