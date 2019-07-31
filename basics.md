@@ -38,6 +38,8 @@ section 2.2
 
 ## Things I don't know where to put yet:  
 
+- **Time-Series decomposition into Trend and Seasonality https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/**  
+
 - **What is ensemble learning? One paper proposes it reduces variance in the trained model**  
 
 - **https://stats.stackexchange.com/questions/164876/tradeoff-batch-size-vs-number-of-iterations-to-train-a-neural-network**  
