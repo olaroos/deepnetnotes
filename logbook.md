@@ -297,3 +297,18 @@ So I was trying to find a way to print the gradients being calculated at each ti
 
 Not to be fair, we will see if the summed up gradient is exploding or not but clipping the gradient during the gradient calculation is what I really want to do and I think it would be a better solution which would give better results. And it would be possible to see the limits of how long sequences I can train if it is possible to visualize how the gradient is propagated backwards through the RNN when calculating the gradient...  
 
+**31 July 2019**  
+
+I was looking into hooks and I'm thinking about a good way to store the values from the gradients. Apparently pytorch has a forward-hook as well as a backwards-hook. The backwards hook takes what I believe is the input to the gradient calculation in each layer as well as the output (the produced gradient). Maybe the forward-hook makes it possible to capture the values calculated in the layers on the forward-pass.  
+
+I also did some thinking on why it might not make sense to clip the gradient during the calculations. Now, calculating the gradient in a backwardspass my original thoughts were to change the gradient as it is being calculated by clipping it early on or midway through out the calculations to avoid one of the last (in the backwards-pass) layers to blow up.  
+
+If you do that, it doesn't makes sense to clip of the top of a gradient (only remove parts of the values that reach over a certain threshhold) because it is a nonlinear operation and it could cause gradient-calculation errors that propagate to the later stages of gradient calculations.  
+
+Now if you make a linear-clipping operation that only changes the magnitude of the produced gradient in the later stages/layers we shouldn't lose any information.  
+
+So what I should do is to first look for a paper on gradient clipping and get some idea of what state of the art advanced gradient clipping is.  
+
+Also, if we can print the forwardpass activations maybe we can clip the gradient in all timesteps by changing the activations of each timestep in the forwards-pass.  
+
+So, plan is: read paper; plot the gradient by using hooks and experiment with longest sequence before gradient blowup or collapse.  
