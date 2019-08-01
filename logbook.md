@@ -312,3 +312,15 @@ So what I should do is to first look for a paper on gradient clipping and get so
 Also, if we can print the forwardpass activations maybe we can clip the gradient in all timesteps by changing the activations of each timestep in the forwards-pass.  
 
 So, plan is: read paper; plot the gradient by using hooks and experiment with longest sequence before gradient blowup or collapse.  
+
+**1 August 2019**  
+
+I wrote HookCallback to save the mean and max gradient from training my RNN networks. Plotting the log of these functions and using a sequence length of 100 chars didn't seem to give a problem with vanishing gradients. The lowest value observed was around e-15. Training with a vanilla RNN and a GRU module, the RNNs gradients were less stable than the GRUs of which all the layers gradients were straight lines. The RNN did have 16 layers and the GRU had 6 layers so the unstabilities are expected from the RNN. The GRU however is using sigmoids and therefor is at larger risk of the vanishing gradient problem but the GRU also has the update-gate which should aleviate the vanishing gradient problem and the use of Sigmoid functions.  
+
+I am thinking about what the lowest maximum value of the gradients a network can tolerate without stoping to learn. The momentum should also help with the vanishing gradient problem. I haven't added a measurement of the minimum gradient, only the max and the mean. I will add this parameter value as well now.  
+
+What I should do now is to build a LSTM, make experiments with stacked LSTMs and see which of these four (GRU, SGRU, LSTM, SLSTM) works best.  
+
+Put the functions I wrote now into a module for later use.  
+
+Then move on to building my first attention model.  
