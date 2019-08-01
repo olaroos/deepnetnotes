@@ -317,6 +317,9 @@ So, plan is: read paper; plot the gradient by using hooks and experiment with lo
 
 I wrote HookCallback to save the mean and max gradient from training my RNN networks. Plotting the log of these functions and using a sequence length of 100 chars didn't seem to give a problem with vanishing gradients. The lowest value observed was around e-15. Training with a vanilla RNN and a GRU module, the RNNs gradients were less stable than the GRUs of which all the layers gradients were straight lines. The RNN did have 16 layers and the GRU had 6 layers so the unstabilities are expected from the RNN. The GRU however is using sigmoids and therefor is at larger risk of the vanishing gradient problem but the GRU also has the update-gate which should aleviate the vanishing gradient problem and the use of Sigmoid functions.  
 
+I tried to train with and without momentum. Results can be seen in exps/3/. Training without momentum with sql=100 is not a problem. But adding momentum to the RNN drives the gradients to zero. Thats why the plots are without the logarithm in when using momentum. The GRU however manages to start training and get away from collapsing gradients. Maybe the momentum in the case of RNN can be eased in from a value of 1 (or more) to a lower value using RMSProp so that the training can take of first.  
+Anyway, I don't plan to use RNN in the future, but GRU, LSTM or Attention. The above experiment I belive is a proof that the GRUs gates can bring the model out of a state of low gradients.  
+
 I am thinking about what the lowest maximum value of the gradients a network can tolerate without stoping to learn. The momentum should also help with the vanishing gradient problem. I haven't added a measurement of the minimum gradient, only the max and the mean. I will add this parameter value as well now.  
 
 What I should do now is to build a LSTM, make experiments with stacked LSTMs and see which of these four (GRU, SGRU, LSTM, SLSTM) works best.  
