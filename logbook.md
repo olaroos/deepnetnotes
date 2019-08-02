@@ -337,3 +337,4 @@ I realized that I split up the hidden-state and the input in the GRU by using a 
 
 I started writing the LSTM-module. Instead of adding another input/output (the cell-state) I will create a tuple holding both the hidden-state and the cell-state and feed that in the position of the hidden input/output for the fit_rnn methods I already wrote. The only difference is now that the tuple/hidden input is handled differently by the LSTM-modules functions.  
 
+Actually thinking more about this, I really feel the need to do an experiment to see how PyTorch handles these different scenarios – and do some calculations on a paper. I can't solve it in my head, how does splitting up and feeding the same input to different linear-layers impact the backwards-pass. And, what is the upside/downside of concatenating opposed to elementwise addition of two inputs?  
