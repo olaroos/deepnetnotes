@@ -40,6 +40,8 @@ section 2.2
 
 ## Things I don't know where to put yet:  
 
+- **combine categorical and continuous variables in a network:** https://datascience.stackexchange.com/questions/29634/how-to-combine-categorical-and-continuous-input-features-for-neural-network-trai  
+
 - **about floating point numbers https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html**  
 
 - **checking gradient and more http://cs231n.github.io/neural-networks-3/**  
@@ -247,10 +249,9 @@ Problem:  not able to model the joint probability using product rule – BERT as
 
 
 - **ELMo**: [youtube ELMo]  
-
-i) Use multiple layers of recurrent units in the encoder  
-ii) Keep all the internal layer representations, in addition to the final recurrent layer.  
-iii) For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
+**i)** Use multiple layers of recurrent units in the encoder  
+**ii)** Keep all the internal layer representations, in addition to the final recurrent layer.  
+**iii)** For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
 As I understand it, ELMo is a stacked bi-directional RNN where the output for each stack-layer (LSTM/GRU) is run through a softmax and then added together with the output from all the other stack-layers + the input (goes through softmax) and then scaled by a trainable gamma parameter before (not sure about this) being feed to a final soft-max layer and a prediction.  
 
 **Embeddings**:  
@@ -352,10 +353,7 @@ Batch Normalization:
   	# Allows higher learning rates.
   	# Acts as regularization.
   	# Reduces the strong dependencies on weight initialization.
-	
-EMBEDDINGS
-	combine categorical and continuous variables in a network:
-		https://datascience.stackexchange.com/questions/29634/how-to-combine-categorical-and-continuous-input-features-for-neural-network-trai
+
 
 **Calculating Backpropagation on a paper:**  
 Derivative of a scalar w.r.t a matrix:
