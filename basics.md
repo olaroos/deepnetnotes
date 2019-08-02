@@ -24,6 +24,8 @@
 [medium BGRU]: <https://towardsdatascience.com/understanding-bidirectional-rnn-in-pytorch-5bd25a5dd66>  
 [medium ULMFIT]: <https://medium.com/mlreview/understanding-building-blocks-of-ulmfit-818d3775325b>  
 
+[youtube ELMo]: <https://www.youtube.com/watch?v=9JfGxKkmBc0>
+
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
 - *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification* 
@@ -38,13 +40,17 @@ section 2.2
 
 ## Things I don't know where to put yet:  
 
+- **about floating point numbers https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html**  
+
+- **checking gradient and more http://cs231n.github.io/neural-networks-3/**  
+
 - **Time-Series decomposition into Trend and Seasonality https://machinelearningmastery.com/decompose-time-series-data-trend-seasonality/**  
 
 - **What is ensemble learning? One paper proposes it reduces variance in the trained model**  
 
 - **https://stats.stackexchange.com/questions/164876/tradeoff-batch-size-vs-number-of-iterations-to-train-a-neural-network**  
 
-- **[tips on training RNN]**: 
+- **[tips on training RNN]**:  
 
 - **Skip Thought Vectors**:  [medium skipthought]  
 
@@ -240,112 +246,92 @@ Problem:  not able to model the joint probability using product rule – BERT as
 **i.e improved performance for longer text sequences**  
 
 
+- **ELMo**: [youtube ELMo]  
 
-http://cs231n.github.io/neural-networks-3/                       <= gradient check
-https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html  <= about floating point numbers
+i) Use multiple layers of recurrent units in the encoder  
+ii) Keep all the internal layer representations, in addition to the final recurrent layer.  
+iii) For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
 
+As I understand it, ELMo is a stacked bi-directional RNN where the output for each stack-layer (LSTM/GRU) is run through a softmax and then added together with the output from all the other stack-layers + the input (goes through softmax) and then scaled by a trainable gamma parameter before (not sure about this) being feed to a final soft-max layer and a prediction.  
 
-QUESTIONS:
-	(i) If the regularization term depends on all weights in the network. Should it not be scaled with
-		respect to the number of layers? If it is not, wouldn't the error blow up when starting to train,
-		before the weights have possibility to change.
+**Embeddings**:  
 
-		What if we use a nonlinear function that regulates the lambda (regularization scaler)
-		with respect to some global variable e.g batches trained or similar.
+- **Word Vectors**: https://blog.acolyer.org/2016/04/21/the-amazing-power-of-word-vectors/  
 
-Adam Optimization:
+- **Skip-Gram**: reverse of CBOW  
 
+- **CBOW**: reverse of Skip-Gram  
 
-Weight initialization:
-
-  The goal is to have the variance be the same when progressing through the network. If the 
-  variance is to small, e.g for the Sigmoid function, the output behaves in a linear fashion around 0. 
-  On the other hand the variance is to high, we will move to the fringes of the Sigmoid function for 
-  which the gradient is 0 so the network won't train.
-
-  The values for both Xa- and He-activations are based on the histograms of the
-  activation distribution of Tanh and ReLU activation functions.
-
-  Xavier initialization assumes activations in x(i) follow a
-  symmetric distribution which is not true for ReLU activation.
-  Xavier initizlizes the weights so that the variance for x and y in 
-  each layer is the same. 	
-
-  Xavier initialization – for tanh activation function
-                          mean = zero
-                          std of weights in layer i = 1/n_in – one over the
-                          squareroot(number of inputs into that layer).
-
-  He initialization     – for ReLU activation function
-                          mean = zero
-                          std of weights in layer i = sqrt (2/n_in)
+                       <= gradient check
+  <= about floating point numbers
 
 
-Explaining Forward + Backwards pass:
-	In the forward pass, regularization terms are not present.
-	The cost/loss function introduces the regularization term. Before I thought that
-	the regularization terms were only present when updating the weights but this is
-	not true and it is logically incoherent. How could something show up in the changes
-	of the weights if it was not present in the loss function? Could it?
+- **Weight Initialization**:  
+The goal is to have the variance be the same when progressing through the network. If the 
+variance is to small, e.g for the Sigmoid function, the output behaves in a linear fashion around 0. 
+On the other hand the variance is to high, we will move to the fringes of the Sigmoid function for 
+which the gradient is 0 so the network won't train.  
 
-	A loss function without regularization term would only depend on the changes of the
-	weight depending on the activation... (I guess)
+The values for both Xa- and He-activations are based on the histograms of the
+activation distribution of Tanh and ReLU activation functions.  
+
+Xavier initialization assumes activations in x(i) follow a
+symmetric distribution which is not true for ReLU activation.
+Xavier initizlizes the weights so that the variance for x and y in 
+each layer is the same. 	
+
+**Xavier init** (used for tanh-activation-functions)  
+$$\mu = 0$$  
+$$\sigma = \frac{1}{\sqrt{n_{in}}$$  
+
+**He init** (used for ReLU-activation-functions)  
+$$\mu = 0$$  
+$$\sigma = \frac{\sqrt{2}}{\sqrt{n_{in}}$$  
 
 
-Vocabulary:
-  Epoch:      passing the whole dataset forward and backward through the model once.
-  Iteration:  one iteration is passing one batch forward and backward through the model once.
-  BatchSize:
-  Cycle:      in cyclic learning one cycle is starting at eta_min -> eta_max -> eta_min and
-              ending the training there.
-  Sparse:     Sparsity refers to that only very few entries in a matrix (or vector) is non-zero.
-  Loss:
-  Cost:
-  Accuracy:
-  Generalization Error: 
+**Regularization**:  
+Process of adding information to solve  an ill-posed problem or to prevent overfitting.  
 
-Activation functions:
-	Sigmoid:
-		If all inputs are positive, the derivative of the cost-function J for the 
-		different layers are either all positive or all negative weights layerwise.
-		I DON'T UNDERSTAND WHY. What is the derivative of dJ/dh? Where h is the
-		sigmoid function? <- see slide 4 Josephine Sullivan.  
-		
-		cons:
-			exp() is expensive to compute.
-			outputs are not zero-centered.
-			saturated activation kill the gradient. 
+- **Large learning-rate**  => regularizational effect.  
+- **Small batch-size** => regularizational effect.  
+- **Weight decay**  
+- **L1 – Lasso Regression**: $$\lambda \sum{0_{i}$$  
+Computational inefficient on non-sparse cases  
+Sparse outputs  
+Built in feature-selection  
+Shrinks less important feature's coefficients to zero.  
+- **L2 – Ridge Regression**: $$\lambda \sum{{0_{i}}^{2}$$  
+Computational efficient due to having analytical solutions  
+Non-sparse outputs  
+No feature-selection  
+
+**Vocabulary**:  
+Epoch:      passing the whole dataset forward and backward through the model once.
+Iteration:  one iteration is passing one batch forward and backward through the model once.
+BatchSize:
+Cycle:      in cyclic learning one cycle is starting at eta_min -> eta_max -> eta_min and
+      ending the training there.
+Sparse:     Sparsity refers to that only very few entries in a matrix (or vector) is non-zero.
+Loss:
+Cost:
+Accuracy:
+Generalization Error: 
+
+**Activation functions**:  
+
+- **Sigmoid**:
+If all inputs are positive, the derivative of the cost-function J for the 
+different layers are either all positive or all negative weights layerwise.
+I DON'T UNDERSTAND WHY. What is the derivative of dJ/dh? Where h is the
+sigmoid function? <- see slide 4 Josephine Sullivan.  
+
+cons: exp() is expensive to compute. outputs are not zero-centered. saturated activation kill the gradient.  
+
 Inverse problem:
   input:  set of observations
   output: causal factors that produced them.
   calculate the causes with the result.
 
-Regularization:
-  Process of adding information to solve  an ill-posed problem or to prevent overfitting.
-	Regularization can come about in many different ways. 
-	Parameters that yield regularizing effects:
-		* Large learning-rate 
-		* Small batch sizes 
-	When talking about regularization one typically means WeightDecay. 
-  Weight decay exists as L1 and L2 regularization or both at the same time. 
-
-	L1 – Lasso Regression – lambda sum 0i 
-		Computational inefficient on non-sparse cases
-	 	Sparse outputs
-		Built in feature-selection	
-		
-		Shrinks less important feature's coefficients to zero. 
-		
-	L2 – Ridge Regression – lambda sum 0^2i
-		Computational efficient due to having analytical solutions 
-	    Non-sparse outputs 
-		No feature-selection 
-	
-  loss function = sum {V(f(xi), yi)}
-
-  cost function = loss function + regularization term = sum {V(f(xi), yi)} + lambda R(f)
-
-  lambda controls the importance of the regularization term.
 
 Ill-posed problem:
   a problem that is not well-posed:
@@ -377,46 +363,46 @@ EMBEDDINGS
 	combine categorical and continuous variables in a network:
 		https://datascience.stackexchange.com/questions/29634/how-to-combine-categorical-and-continuous-input-features-for-neural-network-trai
 
-Backpropagation:
-	Derivative of a scalar w.r.t a matrix:
-		r = sum(i,j)(W^2)
-		dr/dW = ?
+**Calculating Backpropagation on a paper:**  
+Derivative of a scalar w.r.t a matrix:
+r = sum(i,j)(W^2)
+dr/dW = ?
 
-		because W is a matrix we will have a derivative for each of Ws elements:
-		i.e we will create the Jacobian of W:
+because W is a matrix we will have a derivative for each of Ws elements:
+i.e we will create the Jacobian of W:
 
-		(dr/dW11 dr/dW12 etc)
-		(dr/dW21 dr/dW22 etc)
-		(etc
+(dr/dW11 dr/dW12 etc)
+(dr/dW21 dr/dW22 etc)
+(etc
 
- 		Applying the Jacobian_W to W^2 => sum(i,j)(2W)
-	Derivative of a scalar w.r.t a vector:
-		in this case we have to create a Jacobian-Vector. The same as above.
+Applying the Jacobian_W to W^2 => sum(i,j)(2W)
+Derivative of a scalar w.r.t a vector:
+in this case we have to create a Jacobian-Vector. The same as above.
 
-	Derivative of a Vector w.r.t another Vector:
-		In this case the symbol above the denominator in the Jacobian will
-		not be a scalar anymore. It will change depending on the position.
-		The vectors have to be of same size otherwise the vectors couldn't be multiplied
-		in the function we are evaluating.
+Derivative of a Vector w.r.t another Vector:
+In this case the symbol above the denominator in the Jacobian will
+not be a scalar anymore. It will change depending on the position.
+The vectors have to be of same size otherwise the vectors couldn't be multiplied
+in the function we are evaluating.
 
-		If the Derivative is of a Matrix w.r.t a Vector my guess is that
-		we will have som kind of sum along the dimension that is not multiplied
-		with the Vector in the evaluated function.
+If the Derivative is of a Matrix w.r.t a Vector my guess is that
+we will have som kind of sum along the dimension that is not multiplied
+with the Vector in the evaluated function.
 
-		e.g: dp/ds size(p) = size(s) = [1xC]
+e.g: dp/ds size(p) = size(s) = [1xC]
 
-		dp/ds = (dp1/ds1 dp2/ds1 ... dpC/ds1)
-			(dp1/ds2 dp2/ds2 ... dpC/ds2)
-			...
-			(dp1/dsC dp2/dsC ... dpC/dsC)
+dp/ds = (dp1/ds1 dp2/ds1 ... dpC/ds1)
+(dp1/ds2 dp2/ds2 ... dpC/ds2)
+...
+(dp1/dsC dp2/dsC ... dpC/dsC)
 
-	Derivative of a Vector w.r.t a Matrix:
-		Does not exist consistent definition for "Jacobian" of vector w.r.t matrix.
+Derivative of a Vector w.r.t a Matrix:
+Does not exist consistent definition for "Jacobian" of vector w.r.t matrix.
 
-		Solution is: to rewrite Matrix as a vector
-			     and extend the Vector with the Kronicker Multiplication of identity matrix of size len(x).
+Solution is: to rewrite Matrix as a vector
+     and extend the Vector with the Kronicker Multiplication of identity matrix of size len(x).
 
-		this is complicated I know. I am not totaly sure that the identity matrix has to have size len(x)
+this is complicated I know. I am not totaly sure that the identity matrix has to have size len(x)
 
 Convolution:
 	Dilated Convolution:
@@ -428,35 +414,10 @@ Papers to read:
 	BERT: Tre-training of Deep Bidirectional Transformers for Language Understanding
 	Adversarial Examples Are Not Easily Detected: Bypassing Ten 
 
-WORD VECTORS:
-  https://blog.acolyer.org/2016/04/21/the-amazing-power-of-word-vectors/
-
-  Skip-Gram:
-    Reverse of CBOW
-
-  CBOW:
-    Reverse of skip-gram
 
 
-      Super Convergence:
 
-        1cycle = curriculum learning and simulated annealing
-
-        super convergence is "1cycle". Use only one cycle of CLR – clarification needed, does training stop at the top or bottom?
-
-
-        In[1] it's stated that SC is possible if the LR-range test gives the result of a platoueing curve for larger learning-rate values. – clarify this even more!!!
-
-        Better accuracy and faster learning compared to a solid learning rate over 10 times as many epochs.
-
-        Best improvements when the ammount of training-data is limited.
-
-
-        Super Convergence makes generalization better and the model requires less droput, smaller regularization terms,
-        smaller weight decay.
-
-        Weight decay of 10^-5 - 3*10^-6 is a guideline. Weight decay can then be adjusted for the model to not under- or over-fit.
-
+ 
 LR range test:
   run model for several epochs over increasing learning rate values.
   max_lr  = lr(maximum accuracy) before accuracy get jagged/rough
