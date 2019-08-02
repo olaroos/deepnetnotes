@@ -288,14 +288,13 @@ $$\sigma = \frac{\sqrt{2}}{\sqrt{n_{in}}}$$
 Process of adding information to solve  an ill-posed problem or to prevent overfitting.  
 
 - **Large learning-rate**  => regularizational effect.  
-- **Small batch-size** => regularizational effect.  
-- **Weight decay**  
-- **L1 – Lasso Regression**: $$\lambda \sum{0_{i}$$  
+- **Small batch-size** => regularizational effect.    
+- **Weight Decay: L1 – Lasso Regression**: $$\lambda \sum{0_{i}}$$  
 Computational inefficient on non-sparse cases  
 Sparse outputs  
 Built in feature-selection  
 Shrinks less important feature's coefficients to zero.  
-- **L2 – Ridge Regression**: $$\lambda \sum{{0_{i}}^{2}$$  
+- **Weight Decay: L2 – Ridge Regression**: $$\lambda \sum{{0_{i}}^{2}}$$  
 Computational efficient due to having analytical solutions  
 Non-sparse outputs  
 No feature-selection  
