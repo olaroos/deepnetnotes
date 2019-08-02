@@ -251,7 +251,6 @@ Problem:  not able to model the joint probability using product rule – BERT as
 i) Use multiple layers of recurrent units in the encoder  
 ii) Keep all the internal layer representations, in addition to the final recurrent layer.  
 iii) For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
-
 As I understand it, ELMo is a stacked bi-directional RNN where the output for each stack-layer (LSTM/GRU) is run through a softmax and then added together with the output from all the other stack-layers + the input (goes through softmax) and then scaled by a trainable gamma parameter before (not sure about this) being feed to a final soft-max layer and a prediction.  
 
 **Embeddings**:  
@@ -262,11 +261,7 @@ As I understand it, ELMo is a stacked bi-directional RNN where the output for ea
 
 - **CBOW**: reverse of Skip-Gram  
 
-                       <= gradient check
-  <= about floating point numbers
-
-
-- **Weight Initialization**:  
+**Weight Initialization**:  
 The goal is to have the variance be the same when progressing through the network. If the 
 variance is to small, e.g for the Sigmoid function, the output behaves in a linear fashion around 0. 
 On the other hand the variance is to high, we will move to the fringes of the Sigmoid function for 
@@ -280,14 +275,13 @@ symmetric distribution which is not true for ReLU activation.
 Xavier initizlizes the weights so that the variance for x and y in 
 each layer is the same. 	
 
-**Xavier init** (used for tanh-activation-functions)  
+- **Xavier init** (used for tanh-activation-functions)  
 $$\mu = 0$$  
-$$\sigma = \frac{1}{\sqrt{n_{in}}$$  
+$$\sigma = \frac{1}{\sqrt{n_{in}}}$$  
 
-**He init** (used for ReLU-activation-functions)  
+- **He init** (used for ReLU-activation-functions)  
 $$\mu = 0$$  
-$$\sigma = \frac{\sqrt{2}}{\sqrt{n_{in}}$$  
-
+$$\sigma = \frac{\sqrt{2}}{\sqrt{n_{in}}}$$  
 
 **Regularization**:  
 Process of adding information to solve  an ill-posed problem or to prevent overfitting.  
