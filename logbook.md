@@ -328,3 +328,12 @@ What I should do now is to build a LSTM, make experiments with stacked LSTMs and
 Put the functions I wrote now into a module for later use.  
 
 Then move on to building my first attention model.  
+
+**2 August 2019**  
+
+So, I realized that I have another option when building both the LSTM and the GRU models. When merging the input and the hidden-state in GRU I used elementwise summation. I could also and I'm in favour of concatenating the vectors instead of pes. So, I will try to do this with both the GRU and the LSTM. In the LSTM, the gates can optionally also merge the old cell-state.  
+
+I realized that I split up the hidden-state and the input in the GRU by using a linear-layer. This won't be necessary if I concatenate the input to the gate instead of piecewise summing them.  
+
+I started writing the LSTM-module. Instead of adding another input/output (the cell-state) I will create a tuple holding both the hidden-state and the cell-state and feed that in the position of the hidden input/output for the fit_rnn methods I already wrote. The only difference is now that the tuple/hidden input is handled differently by the LSTM-modules functions.  
+
