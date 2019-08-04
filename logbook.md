@@ -359,3 +359,5 @@ I haven't read any articles analysing and comparing these structures yet. Anothe
 (v)   W_21 * (x * hidden)  
 
 Finished building my LSTM-module. This version concatenates the inputs to the gates. It also takes the cell-state as input to input-gate and forget-gate in addition to the x and the hidden-state.  
+
+I changed the unpad function to conditionally take a cell as input and return the changed extra cell-element. I don't remember why I put the if statement: if len(hidden.shape) > 2: ... hidden[:,idx] into that function but hopefully it will work by cutting up the cell[:,idx] in the same way.   
