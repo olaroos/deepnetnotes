@@ -357,3 +357,5 @@ consider the other possibilities:
 I haven't read any articles analysing and comparing these structures yet. Another possible structure would be elementwise multiplication of elements which is talked about in this article: https://medium.com/octavian-ai/incorporating-element-wise-multiplication-can-out-perform-dense-layers-in-neural-networks-c2d807f9fdc2
 
 (v)   W_21 * (x * hidden)  
+
+Finished building my LSTM-module. This version concatenates the inputs to the gates. It also takes the cell-state as input to input-gate and forget-gate in addition to the x and the hidden-state.  
