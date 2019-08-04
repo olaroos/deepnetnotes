@@ -345,11 +345,15 @@ So I was thinking a little bit more about this. In the case of my GRU where x an
 
 What is the initial average output from a linear layer?  
 
-I get the feeling but I cannot back it up by an argument that concatenating two inputs is better than adding them together. You introduce a co-dependence between the two inputs that I believe is harder to learn.  
+I get the feeling but I cannot back it up by an argument that concatenating two inputs is better than adding them together. You introduce a co-dependence between the two inputs that I believe is harder to learn. (imagine trying to turn down the impact of one variable e.g x_1 and loosing the information brought to it by h_1). This can be elievated by the structure of (i) below. But using the structure (iii) could bring about the same result without introducing codependencies and using fewer weights. 
 
-In my GRU e.g this is what happens:  W_21 * (W_11 * x + W_12 * hidden)  
-consider the other possibility:      W_21 * (x + hidden)  
-or:                                  W_21 * (x _concatenate_ hidden)  
-or:                                  W_21 * (W_11 * x _concatenate_ W_12 * hidden)  
+In my GRU e.g this is what happens:  
+(i)   W_21 * (W_11 * x + W_12 * hidden)  
+consider the other possibilities:  
+(ii)  W_21 * (x + hidden)  
+(iii) W_21 * (x _concatenate_ hidden)  
+(iv)  W_21 * (W_11 * x _concatenate_ W_12 * hidden)  
 
-What is the upside or downside of these?  
+I haven't read any articles analysing and comparing these structures yet. Another possible structure would be elementwise multiplication of elements which is talked about in this article: https://medium.com/octavian-ai/incorporating-element-wise-multiplication-can-out-perform-dense-layers-in-neural-networks-c2d807f9fdc2
+
+(v)   W_21 * (x * hidden)  
