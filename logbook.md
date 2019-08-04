@@ -338,3 +338,18 @@ I realized that I split up the hidden-state and the input in the GRU by using a 
 I started writing the LSTM-module. Instead of adding another input/output (the cell-state) I will create a tuple holding both the hidden-state and the cell-state and feed that in the position of the hidden input/output for the fit_rnn methods I already wrote. The only difference is now that the tuple/hidden input is handled differently by the LSTM-modules functions.  
 
 Actually thinking more about this, I really feel the need to do an experiment to see how PyTorch handles these different scenarios – and do some calculations on a paper. I can't solve it in my head, how does splitting up and feeding the same input to different linear-layers impact the backwards-pass. And, what is the upside/downside of concatenating opposed to elementwise addition of two inputs?  
+
+**4 August 2019**  
+
+So I was thinking a little bit more about this. In the case of my GRU where x and hidden input are added together before being feed to a linear layer. I guess one advantage could be that splitting an input with a linear layer could be to reduce the problem of vanishing gradient? At least if you don't feed x or hidden through a linear layer before adding them together.  
+
+What is the initial average output from a linear layer?  
+
+I get the feeling but I cannot back it up by an argument that concatenating two inputs is better than adding them together. You introduce a co-dependence between the two inputs that I believe is harder to learn.  
+
+In my GRU e.g this is what happens:  W_21 * (W_11 * x + W_12 * hidden)  
+consider the other possibility:      W_21 * (x + hidden)  
+or:                                  W_21 * (x _concatenate_ hidden)  
+or:                                  W_21 * (W_11 * x _concatenate_ W_12 * hidden)  
+
+What is the upside or downside of these?  
