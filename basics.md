@@ -156,8 +156,10 @@ Stacking multiple GRU/LSTM on each other. The output from the first layer of GRU
 - **ULMFIT**: - [[medium ULMFIT]]  
 Haven't read the whol article. ULMFIT is preprocessing text, then training with a custom dropout for embeddings and hidden layers in RNNs which need to be zeroed out in a different way than weights in a linear-layer.  
 
-- **Attention**: – [[skymind attention]] [[animated attention]]  
-*Still I don't understand where the difference between attention and transformers goes. Are the Q, K, V part of the attention mechanism or part of the transformer?  My guess right now is that it is part of the transformer.*  
+## Attention: – [[skymind attention]] [[animated attention]]  
+$Attention(Q,K,V) = softmax(\frac{QK^{T}{\sqrt{d_{k}}})V$  
+
+
 explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
 explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden-/source-states are saved for processing by the attention-decoder. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
 *global-attention*: all encoder hidden states are processed by the attention-decoder.  
@@ -169,7 +171,11 @@ $c_{t}$ – context vector = $g(a_{t},\bar{h_{s}})$
 $\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
 these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 
-Don't understand how Transformers can use parallelisation because I thougth attention used RNNs. We are still locked down by going over sequences in linear order, of course maybe we can do more calculations using the same calculated hidden-states. Maybe I'm missing something here it's unclear, I would like to be enlightened.  
+- **self-attention/inter-attention**:  
+
+calculate the h_bar vector containing the hidden states output from feeding the sequence forward in the attention-encoder-RNN.  
+
+calculate the context vector by combining calculating probability by using the attention-decoder-RNN (might be the same RNN as the encoder) and scoring the hidden output for each time-step with the c_t vector. 
 
 - **Transformers**:  
 Avoids recurrence by using attention. Allows parallelisation and faster training. 
