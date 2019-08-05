@@ -361,3 +361,12 @@ I haven't read any articles analysing and comparing these structures yet. Anothe
 Finished building my LSTM-module. This version concatenates the inputs to the gates. It also takes the cell-state as input to input-gate and forget-gate in addition to the x and the hidden-state.  
 
 I changed the unpad function to conditionally take a cell as input and return the changed extra cell-element. I don't remember why I put the if statement: if len(hidden.shape) > 2: ... hidden[:,idx] into that function but hopefully it will work by cutting up the cell[:,idx] in the same way.   
+
+**5 August 2019**  
+
+Added a linear-layer before the softmax in my LSTM-module and it now works properly.  
+
+Started writing an Attention Module which uses GRU-RNN. I'm building it from the paper that introduced the attention paper. My guess is that the decoder-RNN is not the same as the encoder-RNN in the paper but the decoder takes as input the hidden-state output from the encoder-RNN.  
+
+A weight-decay of 0.005 is to much for my GRU and LSTM modules. I will try a lower value in the future but atm I'm not using weight-decay when comparing performance between GRU and LSTM.  
+
