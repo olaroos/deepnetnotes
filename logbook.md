@@ -370,3 +370,8 @@ Started writing an Attention Module which uses GRU-RNN. I'm building it from the
 
 A weight-decay of 0.005 is to much for my GRU and LSTM modules. I will try a lower value in the future but atm I'm not using weight-decay when comparing performance between GRU and LSTM.  
 
+**6 August 2019**  
+
+Found a webpage that proposes to initialize the bias of the forget-gate to 1. For some reason it prohibits the gradient from decaying fast. [http://mlexplained.com/2019/02/15/building-an-lstm-from-scratch-in-pytorch-lstms-in-depth-part-1/]  
+
+
