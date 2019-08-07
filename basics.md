@@ -26,6 +26,7 @@
 
 [youtube ELMo]: <https://www.youtube.com/watch?v=9JfGxKkmBc0>
 
+[generative models]: <https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html>
 [VAE article]: <https://jaan.io/what-is-variational-autoencoder-vae-tutorial/>
 
 ## Papers to look closer into:  
@@ -68,10 +69,24 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 
 ## GAN: Generative Adverserial Networks:  
 
+[generative models]
+
 #### VAE: Variational Auto-Encoders  
 
 Structure of VAE is an encoder and a decoder and a loss-function.  [VAE article]  
 Loss-function uses a regularizing term: the Kullback-Leibler divergence (relative entropy) – how much does one propability distribution differ from another?  Because p (distribution of decoder) is a normal-distribution with mean 0 and variance 1 it forces the decoders distribution to have the same shape.  
+
+#### NF: Normalizing Flows:  
+
+GANs using encoder/decoder that produces a invertible differentiable nonlinear transformation. As such the dimensionality of the input and the output is the same. And chaining these invertible functions $x = f(z) = f_{1}(f_{2}(...f_{N}(z)))}$ into a structure that is called normalizing flows.  
+
+Glow: three steps:
+(i) Actnorm (variation of batch-norm in the context of flows)  
+Affine transformation that retains relative distances and angles between points in the transformed image)  
+(ii) Linear-layer  (standard linear layer)  
+
+(iii) Affine coupling  ( 
+
 
 
 
