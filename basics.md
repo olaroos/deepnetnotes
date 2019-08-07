@@ -78,14 +78,14 @@ Loss-function uses a regularizing term: the Kullback-Leibler divergence (relativ
 
 #### NF: Normalizing Flows:  
 
-GANs using encoder/decoder that produces a invertible differentiable nonlinear transformation. As such the dimensionality of the input and the output is the same. And chaining these invertible functions $x = f(z) = f_{1}(f_{2}(...f_{N}(z)))}$ into a structure that is called normalizing flows.  
+GANs using encoder/decoder that produces a invertible differentiable nonlinear transformation. As such the dimensionality of the input and the output is the same. And chaining these invertible functions $x = f(z) = f_{1}(f_{2}(...f_{N}(z)))$ into a structure that is called normalizing flows.  
 
 Glow: three steps:
 (i) Actnorm (variation of batch-norm in the context of flows)  
 Affine transformation that retains relative distances and angles between points in the transformed image)  
 (ii) Linear-layer  (standard linear layer)  
 
-(iii) Affine coupling  ( 
+(iii) Affine coupling  ()
 
 
 
