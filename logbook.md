@@ -375,3 +375,9 @@ A weight-decay of 0.005 is to much for my GRU and LSTM modules. I will try a low
 Found a webpage that proposes to initialize the bias of the forget-gate to 1. For some reason it prohibits the gradient from decaying fast. [http://mlexplained.com/2019/02/15/building-an-lstm-from-scratch-in-pytorch-lstms-in-depth-part-1/]  
 
 
+**7 August 2019**  
+
+I sidetrack a littlebit and start reading the MoGlov paper based on the Glow model. I get stuck on the actnorm layer which is described as a affine transformation.  This is a linear transformation that is invertible. It's unclear for me why this layer is relevant for the flow algorithm to work. It would be nice to know why this is choosen as one part of three layers in the Glow model.  
+$a_{t,n} = s_{n} \odot z_{t,n} + t_{n}$  
+
+
