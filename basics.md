@@ -71,6 +71,9 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 #### VAE: Variational Auto-Encoders  
 
 Structure of VAE is an encoder and a decoder and a loss-function.  [VAE article]  
+Loss-function uses a regularizing term: the Kullback-Leibler divergence (relative entropy) – how much does one propability distribution differ from another?  Because p (distribution of decoder) is a normal-distribution with mean 0 and variance 1 it forces the decoders distribution to have the same shape.  
+
+
 
 ## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
