@@ -26,6 +26,8 @@
 
 [youtube ELMo]: <https://www.youtube.com/watch?v=9JfGxKkmBc0>
 
+[VAE article]: <https://jaan.io/what-is-variational-autoencoder-vae-tutorial/>
+
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
 - *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification* 
@@ -62,6 +64,13 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
 - **PyTorch Tensor Basics**: [tensor basics]
+
+
+## GAN: Generative Adverserial Networks:  
+
+#### VAE: Variational Auto-Encoders  
+
+Structure of VAE is an encoder and a decoder and a loss-function.  [VAE article]  
 
 ## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
