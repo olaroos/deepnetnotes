@@ -28,6 +28,7 @@
 
 [generative models]: <https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html>
 [VAE article]: <https://jaan.io/what-is-variational-autoencoder-vae-tutorial/>
+[affine coupling]: <https://arxiv.org/pdf/1410.8516.pdf> 
 
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
@@ -100,7 +101,8 @@ Glow: three steps:
 $a_{t,n} = s_{n} \odot z_{t,n} + t_{n}$  
 It's an affine transformation – retains relative distances and angles between points in the transformed image. Affine maps do not have to preserve the zero point => all linear transformations are affine but not all afine transformations are linear.     
 (ii) Linear-layer  (standard linear layer)  
-(iii) Affine coupling  ()  
+(iii) Affine coupling  [[affine coupling]]  
+As I understand it, this is a way to learn the distribution of a set of inputs. By generating the parameters for another affine transformation $s$ and $t$ using the output from the Linear-Layer. This is supposed to be a deterministic/invertible operation.
 
 ## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
