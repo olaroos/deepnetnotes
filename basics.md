@@ -83,7 +83,7 @@ GANs using encoder/decoder that produces a invertible differentiable nonlinear t
 Glow: three steps:  
 (i) Actnorm (variation of batch-norm in the context of flows)  
 $a_{t,n} = s_{n} \odot z_{t,n} + t_{n}$  
-It's an affine transformation that retains relative distances and angles between points in the transformed image)  
+It's an affine transformation – retains relative distances and angles between points in the transformed image. Affine maps do not have to preserve the zero point => all linear transformations are affine but not all afine transformations are linear.     
 (ii) Linear-layer  (standard linear layer)  
 (iii) Affine coupling  ()  
 
