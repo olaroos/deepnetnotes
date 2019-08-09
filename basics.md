@@ -76,7 +76,7 @@ Likelihood methods can be divided into three sub-categories:
 (i) Autoregressive Models (e.g GANs)  
 uses discriminator to tune the models distribution and minimize the difference from the target distribution.
 (ii) Variational Auto-Encoders  
-uses non-deterministic encoders to learn the target distribution. 
+uses non-deterministic encoders to learn the target distribution. Pros, can be trained with parallelization.  
 (iii) Flow-Based generative models (e.g GLOW)  
 uses chains of deterministic transformation functions to learn the target distribution. 
 
