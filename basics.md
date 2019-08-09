@@ -81,6 +81,7 @@ Allows interpolation of datapoints e.g in synthesized data.
 (iii) Flow-Based generative models (e.g GLOW)  
 uses chains of deterministic transformation functions to learn the target distribution. 
 Also allows interpolation of datapoints e.g in synthesized data.  
+Calculation of gradient using invertible functions requires non-exponential memory consumption.  
 
 #### GANs: Generative Adverserial Networks:  
 
