@@ -74,7 +74,7 @@ Generative Models try to solve the problem which DL-models have that they work p
 
 Likelihood methods can be divided into three sub-categories:  
 (i) Autoregressive Models (e.g GANs)  
-uses discriminator to tune the models distribution and minimize the difference from the target distribution.
+uses discriminator to tune the models distribution and minimize the difference from the target distribution.  
 (ii) Variational Auto-Encoders  
 uses non-deterministic encoders to learn the target distribution. Pros, can be trained with parallelization.  
 (iii) Flow-Based generative models (e.g GLOW)  
