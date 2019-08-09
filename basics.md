@@ -72,9 +72,9 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 Generative Models try to solve the problem which DL-models have that they work porly with data that has been taken from a different distribution than the training data. [generative models]  
 
 Likelihood methods can be divided into three sub-categories:  
-(i) Autoregressive Models (e.g GANs)
-(ii) Variational Auto-Encoders 
-(iii) Flow-Based generative models (e.g GLOW) 
+(i) Autoregressive Models (e.g GANs)  
+(ii) Variational Auto-Encoders  
+(iii) Flow-Based generative models (e.g GLOW)  
 
 #### GANs: Generative Adverserial Networks:  
 
