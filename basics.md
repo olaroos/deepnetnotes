@@ -99,10 +99,13 @@ GANs using encoder/decoder that produces a invertible differentiable nonlinear t
 Glow: three steps:  
 (i) Actnorm (variation of batch-norm in the context of flows)  
 $a_{t,n} = s_{n} \odot z_{t,n} + t_{n}$  
-It's an affine transformation – retains relative distances and angles between points in the transformed image. Affine maps do not have to preserve the zero point => all linear transformations are affine but not all afine transformations are linear.     
+It's an affine transformation – retains relative distances and angles between points in the transformed image. Affine maps do not have to preserve the zero point => all linear transformations are affine but not all afine transformations are linear.  
 (ii) Linear-layer  (standard linear layer)  
 (iii) Affine coupling  [[affine coupling]]  
-As I understand it, this is a way to learn the distribution of a set of inputs. By generating the parameters for another affine transformation $s$ and $t$ using the output from the Linear-Layer. This is supposed to be a deterministic/invertible operation.
+As I understand it, this is a way to learn the distribution of a set of inputs, it is still unclear why this is better or different than using another actnorm layer which also is a trainable affine function.  
+For affine coupling the input is divided into two parts $x_{1}$ and $x_{2}$. $x_{1}$ deterministically generates the parameters of an affine-function $f_{1}$. $x_{2}$ is feed to the affine transformation-function $f_{1}(x_{2}) = z_{2}$
+The output from the layer is the combination of $x_{1}$ and $z_{2}$, $x_{1}$ is needed to calculate the inverse of the affine coupling.  
+
 
 ## SGD – Statistical Gradient Descent:
 Hessian Free Optimization: [Martens, 2010]
