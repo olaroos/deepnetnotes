@@ -67,9 +67,18 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 - **PyTorch Tensor Basics**: [tensor basics]
 
 
-## GAN: Generative Adverserial Networks:  
+## Generative Models:  
 
-[generative models]
+Generative Models try to solve the problem which DL-models have that they work porly with data that has been taken from a different distribution than the training data. [generative models]  
+
+Likelihood methods can be divided into three sub-categories:  
+(i) Autoregressive Models (e.g GANs)
+(ii) Variational Auto-Encoders 
+(iii) Flow-Based generative models (e.g GLOW) 
+
+#### GANs: Generative Adverserial Networks:  
+
+
 
 #### VAE: Variational Auto-Encoders  
 
@@ -77,6 +86,12 @@ Structure of VAE is an encoder and a decoder and a loss-function.  [VAE article]
 Loss-function uses a regularizing term: the Kullback-Leibler divergence (relative entropy) – how much does one propability distribution differ from another?  Because p (distribution of decoder) is a normal-distribution with mean 0 and variance 1 it forces the decoders distribution to have the same shape.  
 
 #### NF: Normalizing Flows:  
+
+The reason we use Normalizing Flows is to transform a gaussian distribution to a more complex distribution that better fits the function and data that we want to model. The method of transforming g-d in multiple steps by using multiple functions is called a Normalizing Flow.
+
+Each of these transform-functions should have two properties:
+(i)  easily invertable
+(ii) it's Jacobian is easy to calculate 
 
 GANs using encoder/decoder that produces a invertible differentiable nonlinear transformation. As such the dimensionality of the input and the output is the same. And chaining these invertible functions $x = f(z) = f_{1}(f_{2}(...f_{N}(z)))$ into a structure that is called normalizing flows.  
 
