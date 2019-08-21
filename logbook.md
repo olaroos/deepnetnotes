@@ -410,7 +410,7 @@ There are going to be multiple problems with the setup that I'm using right now 
 
 problem (i) could I think could maybe be handled by a break statement.  
 
-14:00 -> 
+14:00 -> 16:00  
 
 So I started training and I just found out the CUDA device-side triggered error which is due to the shape of the h_tilde I believe being the wrong shape. I will look at the shape issue next session.  
 
