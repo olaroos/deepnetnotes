@@ -409,3 +409,8 @@ There are going to be multiple problems with the setup that I'm using right now 
 (ii) If I train with batches the hidden states are going to shrink in batch-size(!) at some point in the process of training the Attention module. Actually, this doesn't have to be a problem now that I think about it.  
 
 problem (i) could I think could maybe be handled by a break statement.  
+
+14:00 -> 
+
+So I started training and I just found out the CUDA device-side triggered error which is due to the shape of the h_tilde I believe being the wrong shape. I will look at the shape issue next session.  
+
