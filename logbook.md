@@ -393,3 +393,19 @@ The glow paper mentions that flow-based models allows interpolation between data
 The question I'm asking is if the interpolation of two distributions is a distributions which during presentation can not be discerned as belonging to a different category than the two original distributions.  
 
 If so the distributions must create a continous subspace of categorical movements. I'm really interrested in this property of the flow networks (IF what I conjecture here is true).  
+
+**21 August 2019**  
+
+09:30 -> 13:00  
+
+Back to Attention. I finished the mockup of the Attention model. It is based on the first paper about attention and I implemented the global-attention model. In this model I couldn't find an equation for the c_t (the contextvector) so I assume that the global align vector a_t equals c_t in this model.  
+
+Furthermore it is still unclear to me if I should always innitiate the Attention model with a zero-hidden-state or if I should use the last output hidden state from the previous training.  
+
+There are going to be multiple problems with the setup that I'm using right now if I want to train prediction of tweets with the raw Attention model I built.  
+
+(i) My attention model asserts a fixed sequence length.  
+
+(ii) If I train with batches the hidden states are going to shrink in batch-size(!) at some point in the process of training the Attention module. Actually, this doesn't have to be a problem now that I think about it.  
+
+problem (i) could I think could maybe be handled by a break statement.  
