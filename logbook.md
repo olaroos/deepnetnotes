@@ -424,4 +424,10 @@ Another problem surfaced when I try to train attention with batches larger than 
 
 However thanks to me implementing callbacks I can easily print out the training data before running each batch_forward. This is what I'm going to do.  
 
+15:00 -> 
+
+So the problem is that I don't save the last hidden state for all linel of the batch. This happens when some lines stop earlier than others. I would need to solve this by looking at each line in the hbar variable and choose the last element from each line. At the moment I only choose the absolute last element which grabs only one hidden state from the hbar variable.  
+
+I don't know how this last part of the batch affects the training. I don't think it should be a problem that some attention updates are not the full sequence length.  
+
 
