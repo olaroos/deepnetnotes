@@ -416,8 +416,12 @@ So I started training and I just found out the CUDA device-side triggered error 
 
 **22 August 2019**  
 
-11:00 ->  
+11:00 -> 14:10  
 
 So I fixed the size problem. There was an other problem because I do in-place operations on my tensors that are used for gradient calculations. This is not permitted. I fixed it by replacing torch.zeroes() tensors with lists. When I think about this solution I believe the problem can be solved by changing torch.zeros() to torch.tensor() because the latter doesn't assign any values to the memory.  
+
+Another problem surfaced when I try to train attention with batches larger than 1. This error is weird because it seems to me that somewhere after the padded elements (value 0) non padded elements returns. This can't possibly be because if that was true this error would have surfaced when training my other modules.  
+
+However thanks to me implementing callbacks I can easily print out the training data before running each batch_forward. This is what I'm going to do.  
 
 
