@@ -414,3 +414,10 @@ problem (i) could I think could maybe be handled by a break statement.
 
 So I started training and I just found out the CUDA device-side triggered error which is due to the shape of the h_tilde I believe being the wrong shape. I will look at the shape issue next session.  
 
+**22 August 2019**  
+
+11:00 ->  
+
+So I fixed the size problem. There was an other problem because I do in-place operations on my tensors that are used for gradient calculations. This is not permitted. I fixed it by replacing torch.zeroes() tensors with lists. When I think about this solution I believe the problem can be solved by changing torch.zeros() to torch.tensor() because the latter doesn't assign any values to the memory.  
+
+
