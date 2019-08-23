@@ -449,3 +449,7 @@ Two cases:
 I choose to do (2,1).  
 
 I did solve problem (ii) and I'm about to solve problem (i).  
+
+So, I'm a little bit annoyed that I didn't realise earlier that the self-attention used by Google ditched the RNN implementation that was propsed in the original paper. I remember that I thought it was odd that they were using RNNs because it said in the Attention is all you need paper that the transformer could be trained in parallell.  
+
+Anyway. I think I will implement the transformers self-attention mechanism instead.  
