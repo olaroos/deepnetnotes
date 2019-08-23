@@ -430,4 +430,22 @@ So the problem is that I don't save the last hidden state for all linel of the b
 
 I don't know how this last part of the batch affects the training. I don't think it should be a problem that some attention updates are not the full sequence length.  
 
+**23 August 2019**  
 
+13:30 -> 
+
+So there are two main problems when training Attention with batch-size > 1.  
+(i)  In the end of one batch, different lines in the batch will end earlier than others. Now because we feed the last hidden states from the previous batch to the next batch, we need to save the end hidden states from each line when(!) they end, not only take the hidden state from the last line we are training with (which will usually only be one hidden state (if not multiple – in this case tweets have the same length and thus ends at the same character.  
+(ii)  How are we to define the alignment function? How do we align the h_t with the other hidden states (hbar_s)? when they have different sizes?  
+
+I decided to preserve the output from the alignment method having the same size as h_t. because h_tilde will consist of h_t and c_t and they have to have the same size (c_t depends on the size of h_t).  
+
+Two cases: 
+(1) bs h_t less than hbar_s: shrink hbar_s because we don't want to calculate alignment between a tweet character that does not exists in h_t.  
+(2) bs h_t larger than hbar_s:  
+(2,1) add zeros to hbar_s to fill in the void that is multiplied with h_t.  
+(2,2) we could also add the zeros to the output of the score function representing the void.  
+
+I choose to do (2,1).  
+
+I did solve problem (ii) and I'm about to solve problem (i).  
