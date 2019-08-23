@@ -18,7 +18,10 @@
 
 [skymind attention]: <https://skymind.ai/wiki/attention-mechanism-memory-network>
 [paper attention1]: <https://arxiv.org/pdf/1508.04025.pdf>
+[paper google attention]: <https://arxiv.org/pdf/1706.03762.pdf>
 [animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
+[medium all you need attention]: <https://medium.com/@Alibaba_Cloud/self-attention-mechanisms-in-natural-language-processing-9f28315ff905>
+
 
 [tensor basics]: <https://deeplizard.com/learn/video/fCVuiW9AFzY> 
 [medium BGRU]: <https://towardsdatascience.com/understanding-bidirectional-rnn-in-pytorch-5bd25a5dd66>  
@@ -206,63 +209,45 @@ Stacking multiple GRU/LSTM on each other. The output from the first layer of GRU
 - **ULMFIT**: - [[medium ULMFIT]]  
 Haven't read the whol article. ULMFIT is preprocessing text, then training with a custom dropout for embeddings and hidden layers in RNNs which need to be zeroed out in a different way than weights in a linear-layer.  
 
-## Attention: – [[skymind attention]] [[animated attention]]  
-$Attention(Q,K,V) = softmax(\frac{QK^{T}{\sqrt{d_{k}}})V$  
+## Attention: – [[skymind attention]] [[animated attention]]
 
+The original Attention model propsed in [paper attention] implemented RNNs for the encoder and decoder. This changed when google presented their paper "Attention is all you need".  
 
-explanation (i)  puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
-explanation (ii) RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden-/source-states are saved for processing by the attention-decoder. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
 *global-attention*: all encoder hidden states are processed by the attention-decoder.  
 *local-attention*: a subset of the encoder hidden states are processed by the attention-decoder.  
+
+- **Original attention**:  [[paper attention1]]
+ 
+RNN with encoder/decoder. The decoder is where the attention happens. The encoder hidden-/source-states are saved for processing by the attention-decoder. The Decoder scores each hidden state on an "attention" basis. Multiplies them by their softmax score and sums them up to => $c_{t}$ the context-vector.  
+
 $h_{s}$ – source state  
 $h_{t}$ – current decoder hidden-state  
 $a_{t}$ – alignment vector = $softmax((fh_{s},h_{t})))$ where f() can have various definitions but include at least $h_{t}$.  
 $c_{t}$ – context vector = $g(a_{t},\bar{h_{s}})$  
 $\tilde{h_{t}}$ – attentional vector = $tanh(W_{c}[c_{t};h_{t}])$  
-these abreviations are taken from the [[paper attention1]] which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 
-- **self-attention/inter-attention**:  
+these abreviations are taken from the  which should be one of the first attention papers with good results exploring different implementations of the attention concept.  
 
-calculate the h_bar vector containing the hidden states output from feeding the sequence forward in the attention-encoder-RNN.  
+calculate the h_bar vector containing the hidden states output from feeding the sequence forward in the attention-encoder-RNN. 
+calculate the context vector by combining calculating probability by using the attention-decoder-RNN (might be the same RNN as the encoder) and scoring the hidden output for each time-step with the c_t vector.  
 
-calculate the context vector by combining calculating probability by using the attention-decoder-RNN (might be the same RNN as the encoder) and scoring the hidden output for each time-step with the c_t vector. 
+- **Googles self-attention**:  [[paper google attention]]
+
+A matrix that puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
+
+$Googles-Attention(Q,K,V) = softmax(\frac{QK^{T}}{\sqrt{d_{k}}})V$  
+Q -  search query  
+K -  key  
+V -  value   
 
 - **Transformers**:  
 Avoids recurrence by using attention. Allows parallelisation and faster training. 
 Relating signals from input and output positions depend only on "distance" between them.  
 Drawback: Distance is a linear dependence – averaging attention-weighted positions –   
 Solution: Use Multi-Head Attention.  
-Q -  search query  
-K -  key  
-V -  value  
+
 The query - Q searches over the keys – K of all e.g words that might supply context for it. "Those keys are related to values that encode more meaning about the key word.  
 Any given word can have multiple meanings and relate to other words in different ways, you can have more than one query-key-value complex attached to it. That’s “multi-headed attention.”" 
-
-
-		Encoder:
-			R    = [r1, r2, r3, r4] = d x 4					 <-- Word Embedding
-			ai   =  R * softmax( (R' * ri)/sqrt(d) ) <-- Attention
-		  dx1    dx4              4x1
-			ri'  = max(W * ai + b, 0)   						 <-- (feedforward I think)
-
-		Decoder:
-			vi'  = max(W * bi + c, 0)
-
-		Self attention between Encoder and Decoder:
-			si   = R' softmax(R' * vi')
-
-  	Multi-Head Attention –
-			each head will make you focus on different things. (Like a convolution filter that focuses on different details?)
-			for k = 1, ..., k
-				- project your vi's with Wk -> vi^k  =   Wk 	 * 	 vi
-				  														d0 x d	 d0 x d 		d x 1      d0 = d/k
-				- then do self attention on     Vk   = [v1^k, v2^k, ..., v4^k]
-				ai^k = Vk softmax(Vk^-1 vi^k) i=1, ..., 4
-				vi^k' = ffnn(ai^k)
-
-		Transformers also use Positional Encoding which is a sinusodial value
-		depending on the position of the word in the senctence.
-
 
 - **XL-Transformer**:  ([paper XLT])
 learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-transformers.  
