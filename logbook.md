@@ -453,3 +453,24 @@ I did solve problem (ii) and I'm about to solve problem (i).
 So, I'm a little bit annoyed that I didn't realise earlier that the self-attention used by Google ditched the RNN implementation that was propsed in the original paper. I remember that I thought it was odd that they were using RNNs because it said in the Attention is all you need paper that the transformer could be trained in parallell.  
 
 Anyway. I think I will implement the transformers self-attention mechanism instead.  
+
+**26 August 2019**  
+
+10:00 -> 13:00  
+
+In the instructions for the torch softmax function it says that the given dim (2) will be the dimension that will sum to 1. This is true because if you send in a matrix x.shape = [1,3,3] if we choose an element from the first dimension, it will sum to 1 (torch.sum(w.squeeze()[0] = 1). 
+
+Compare this to (eq 2) w = x.squeeze().exp()/torch.sum(x.squeeze().exp(),0). torch.sum(w[0]) = 1.  
+
+e.g a.shape = [3,3]  
+
+At first I didn't realise that the element we choose is the vector that we will sum up and divide by. I thought that the choosen dimension in torch.sum was the dimension that would be keept unchanged. When in reality if I choose the row (dimension 0), the summation will be carried out over the columns and I will be given back a row that consists of elements which are the sums of the columns in each row position.  
+
+Now because of how I wrote the (eq 2) because the sum will be the same nomatter which dimension I sum over because x in this case is equal to its transpose. And when you elementwise divide a [3,3] matrix with a vector of dimension [3] it will always expand the vector in the column dimension (which is missing). This results in the a matrix that always sums to 1 if you hold the columns and sum over the rows.  
+
+These basic things mindfuck me over and over again. I feel like I have built a conception of how things work and I don't really digg down to the basics and I redo the same mistake over and over again. Instead I should be thorough and always find the reason to my missconception.  
+
+So I'm following this blog http://www.peterbloem.nl/blog/transformers that explaines and builds a transformer from scratch using torch-tensors and torch-operations.  
+
+Everything seems reasonable at this point. I understand the attention mechanism without learnable parameters. Now I try to add learnable parameters which are represented by the query, key and value weigths. Also notice that none of these weights include a bias. (It might have something to do with the matrix being operated on is symmetric but I haven't thought to much about it yet.)  
+
