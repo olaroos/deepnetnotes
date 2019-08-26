@@ -474,3 +474,20 @@ So I'm following this blog http://www.peterbloem.nl/blog/transformers that expla
 
 Everything seems reasonable at this point. I understand the attention mechanism without learnable parameters. Now I try to add learnable parameters which are represented by the query, key and value weigths. Also notice that none of these weights include a bias. (It might have something to do with the matrix being operated on is symmetric but I haven't thought to much about it yet.)  
 
+14:15 -> 15:30  
+
+The reason we use view instead of reshape is because view always uses the same memory space. I.e we don't know if or when reshape() makes a copy so we should use view. Also when you want a copy, use clone()...  
+
+The same memory ability holds for transpose(), narrow(), expand()  
+
+I realized a new thing about the nn.Linear class. It will always operate on the last element in the tensor put into it. Normally we have size [batchsize, xsize] but right now I have [batchsize, time, xsize]. When we feed that vector to nn.Linear(xsize, nheads*xsize) it will still only operate on the last element which is xsize.  This means I don't have to or shouldn't flatten the input vector before.  
+
+One concept that I had trouble understanding is the mask. The mask is just a torch tensor with 0's and 1's. That is elementwise-multiplied with the input (e.g input = [b,t,k,k]. input * mask.rep(b,t,1). The mask has 1's in the bottomleft and 0's in the topright corner. Multiplying by the mask will make it impossible for the timesteps in the beginning to use information from the future timesteps because they will be set to 0's.  
+
+Wrote the mask function, the one I copied seemed to use the wrong dimensions.  
+
+Finished the encoder block of the google transformer, will try to finish the decoder block next session.  
+
+
+
+
