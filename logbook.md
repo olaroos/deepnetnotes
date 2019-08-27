@@ -489,5 +489,17 @@ Wrote the mask function, the one I copied seemed to use the wrong dimensions.
 Finished the encoder block of the google transformer, will try to finish the decoder block next session.  
 
 
+**27 August 2019**  
+
+14:00 - 15:30 
+
+In the GoogleTransformer they seem to merge the output from the encoder with the output from one selfattention block on the target (Y) – feeding it to another self-attention block. How this merge happens is unclear for me.  
+
+Do we feed the encoder output (X) to some of the heads and the decoder output (Y) to the other heads of the self-attention block? and use this blocks result as a prediction?  
+
+I'm going to look around some more code that directly implemented this paper. This is the only part of the Transformer that I don't understand thoroughly.  
+
+Wrote a feedforward-block for the GoogleTransformer, it consists of two linear-layers with a relu between them.  
+
 
 
