@@ -510,4 +510,4 @@ This makes sense, it doesn't make sense to do the opposite procedure and use Y a
 
 So I rewrote the self-attention functin to take Query, Key and Value as parameters - optionaly a mask.  
 
-
+A question comes to my mind, if we are going to predict say the next character in a sequence and we use the google transformer. the input when training X is shifted one step to the right producing Y. But when we predicting we are missing the last character as input (in Y). How does the prediction come in?  
