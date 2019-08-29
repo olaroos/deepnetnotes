@@ -516,8 +516,12 @@ In a selfattention RNN, we can always take the hidden state that we produce in o
 
 Straight from the top of my mind I would guess that we shift the sequence one step to the right and encode the last character in the sequence as a blank state. You would then have basically two different Y vectors. One that contains the original right-shifted vector that we use as target comparing with the output of the transformer, and one Y vector with the last element changed to a blank state.  
 
-Another possibility is that the mask is created in a way such that it covers out the last element such that it is not considered at all as an input.  
+Another possibility is that the mask is created in a way such that it covers out the last element such that it is not considered at all as an input. 
 
 Questions, are we waisting resources by making a prediction for all the characters in the target-vector? Most likely not, this information has relative positional information that we need to learn sequential information... 
 
 I understand that we can use the transformer for multiple purposes, not only sequence prediction but also marking e.g the most influencal parts of a sequence which then could be used as input to solve another problem. I will read the paper Attention is all you need again to see if I missed something.  
+
+23:40 ->  
+
+I take back what I wrote about using the mask to hide information about the last element in Y. The google transformer uses a Residual connection that passes Y besides the masked self-attention layer. So masking Y doesn't solve the last element prediction problem.  
