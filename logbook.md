@@ -502,4 +502,12 @@ I'm going to look around some more code that directly implemented this paper. Th
 Wrote a feedforward-block for the GoogleTransformer, it consists of two linear-layers with a relu between them.  
 
 
+**29 August 2019**  
+
+Looking closer at the paper and the images is it clear that the Value and Key input to the second "self-attention" block comes from the decoder output and the Query comes from the first self-attention block in the decoder block. This is mimicing the setup of the original attention paper based on RNNs. The target (Y) is there compared to the input (X) to create the alignment vectors (in the Google Self-Attention Y corresponds to Query and X corresponds to Keys. But the google Self-Attention adds another step after the softmaxing the result of the Query and Key before feeding the result to a linear layer. It compares the input (X) again to the probability matrix (in lack of better wording – the output from the Query/Key) by matrix multiplication.  
+
+This makes sense, it doesn't make sense to do the opposite procedure and use Y as the Value. Y is the target that we are going to compare the output to, why would we train the network on the output and then compare it to the output again? The information is in the input.  
+
+So I rewrote the self-attention functin to take Query, Key and Value as parameters - optionaly a mask.  
+
 
