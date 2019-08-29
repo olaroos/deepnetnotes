@@ -513,3 +513,9 @@ So I rewrote the self-attention functin to take Query, Key and Value as paramete
 A question comes to my mind, if we are going to predict say the next character in a sequence and we use the google transformer. the input when training X is shifted one step to the right producing Y. But when we predicting we are missing the last character as input (in Y). How does the prediction come in?  
 
 In a selfattention RNN, we can always take the hidden state that we produce in order. But not using RNNs, the size is fixed for the self-attention mechanism in Googles transformers.  
+
+Straight from the top of my mind I would guess that we shift the sequence one step to the right and encode the last character in the sequence as a blank state. You would then have basically two different Y vectors. One that contains the original right-shifted vector that we use as target comparing with the output of the transformer, and one Y vector with the last element changed to a blank state.  
+
+Questions, are we waisting resources by making a prediction for all the characters in the target-vector?  
+
+I understand that we can use the transformer for multiple purposes, not only sequence prediction but also marking e.g the most influencal parts of a sequence which then could be used as input to solve another problem. I will read the paper Attention is all you need again to see if I missed something.  
