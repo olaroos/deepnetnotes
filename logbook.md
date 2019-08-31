@@ -544,5 +544,13 @@ This poses another question, when should we update the encoder that holds the co
 
 Reading the Transformer-XL (Extra Long) paper and it seems to adress these questions as well as long-term historical dependencies.  
 
-   
+**31 August 2019**  
+
+In the Transformer-XL paper Values and Key-weights are multiplied with a concatenation of the previous and current input-sequece. This creates a segment-level recurrence in the hidden states.  
+
+However the paper propses to cache the old hidden-states to be reused during evaluation and refer to them as the memory $m \part \mathbb{R}^{M x d}$. 
+
+M is equal to sequence length during training but increased multiple times during evaluation. It is unclear to me how these cached hidden states are used during evaluation.  
+
+
 
