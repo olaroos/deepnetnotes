@@ -259,6 +259,8 @@ learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-t
 
 Transformers do not have memory cells/states that are passed on in a autoregressive fashion. The context in the vanilla-transformer (googles) takes it's historical information from the encoder. The XL-transformer aims to extend the amount of information a transformer can learn by feeding it more information from previous chunks of sequences to various extents.  
 
+This information is feed to the Query- and the Key-weights, not the Value-weights. These weights are dimensionally expanded and multiplied with the previous sequential chunks concatenated to the current sequence (X).  
+
 
 #### RNN: preprocessing:  
 
