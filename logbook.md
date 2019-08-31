@@ -550,7 +550,9 @@ In the Transformer-XL paper Values and Key-weights are multiplied with a concate
 
 However the paper propses to cache the old hidden-states to be reused during evaluation and refer to them as the memory $m \part \mathbb{R}^{M x d}$. 
 
-M is equal to sequence length during training but increased multiple times during evaluation. It is unclear to me how these cached hidden states are used during evaluation.  
+M is equal to sequence length during training but increased multiple times during evaluation. It is unclear to me how these cached hidden states are used during evaluation. This is the only thing that I don't understand about the Transformer-XL paper. https://arxiv.org/pdf/1901.02860.pdf  
+
+I finished reading the Transformer-XL paper. My plan now before I implement the Transformer-XL is to finish the Vanilla-Transformer. I'm only missing the positional-embedding matrix functionality.  
 
 
 
