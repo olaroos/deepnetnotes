@@ -241,6 +241,7 @@ K -  key
 V -  value   
 
 - **Transformers**:  
+
 Avoids recurrence by using attention. Allows parallelisation and faster training. 
 Relating signals from input and output positions depend only on "distance" between them.  
 Drawback: Distance is a linear dependence – averaging attention-weighted positions –   
@@ -249,8 +250,14 @@ Solution: Use Multi-Head Attention.
 The query - Q searches over the keys – K of all e.g words that might supply context for it. "Those keys are related to values that encode more meaning about the key word.  
 Any given word can have multiple meanings and relate to other words in different ways, you can have more than one query-key-value complex attached to it. That’s “multi-headed attention.”" 
 
+Transformers use Googles self-attention which means no RNNs. There are multiple architectures of transformers, the one presented in the paper ([paper google attention]) includes a encoder and a decoder. The decoder prevents the model from "looking" into the future by masking out information that is not sequential.  
+
+Generating output from the Google-transformer is done by feeding the decoder a sequence-length zeroed matrix that includes one non-zero element (initially the <bos> character). In each forward pass one additional character is generated and added to the input for the next forward-pass.  
+
 - **XL-Transformer**:  ([paper XLT])
 learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-transformers.  
+
+Transformers do not have memory cells/states that are passed on in a autoregressive fashion. The context in the vanilla-transformer (googles) takes it's historical information from the encoder. The XL-transformer aims to extend the amount of information a transformer can learn by feeding it more information from previous chunks of sequences to various extents.  
 
 
 #### RNN: preprocessing:  
