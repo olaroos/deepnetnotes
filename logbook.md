@@ -525,3 +525,24 @@ I understand that we can use the transformer for multiple purposes, not only seq
 23:40 ->  
 
 I take back what I wrote about using the mask to hide information about the last element in Y. The google transformer uses a Residual connection that passes Y besides the masked self-attention layer. So masking Y doesn't solve the last element prediction problem.  
+
+**30 August 2019**  
+
+Ok, so it seems that the Transformer presented in the googles paper "Attention is all..." is used solely for language translation. So it is not built to handle character prediction in sequences.  
+
+It is still unclear to me why it says in the paper that the input to the decoder is "shifted right". 
+
+When doing sequence next character prediction maybe I should just skip the decoder block. Question is if I should use the mask when training a transformer that predicts next character in a sequence model.  
+
+Still, I don't understand how the Transformer does translation after training. When making translations, we can't feed the decoder with a target sentence. So how does it work when we only have the input X (e.g english sentence to be translated to German)?  
+
+So I found the answer to how you use the Transformer when translating after training. We initiate the output as zeros with the first row indexed as the <sos> character. We run the Encoder once and then repeatedly run the decoder phase generating a new character each time until we reach the <eos> character. Explanation can be found at the bottom of this article https://towardsdatascience.com/how-to-code-the-transformer-in-pytorch-24db27c8f9ec.  
+
+So I guess this is what they mean with shifting right. When we filled the outputvector with characters, not hitting the <eos> character we shift the output once to the right and generate the next character.  
+  
+This poses another question, when should we update the encoder that holds the context and some information for translation? Should we shift it right as well when we filled up the output vector? Should we compute the next chunk of the sentence with the encoder? and wait until we generated a number of characters equal to the sentence length and then put the third chunk of the sentence to the encoder etc...?  
+
+Reading the Transformer-XL (Extra Long) paper and it seems to adress these questions as well as long-term historical dependencies.  
+
+   
+
