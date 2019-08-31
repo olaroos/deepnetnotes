@@ -263,6 +263,7 @@ This information is feed to the Value- and the Key-weights, not the Query-weight
 
 This creates a "segment-level recurrence in the hidden states" which extends the context way beyond two segments back.  
 
+This creates a technical problem with the positional-encoding added to the input. To solve this, calculation of relative position is introduced and hence the calculation of MatMul has to be changed. This is done by separating the Content-Embedding and the Relative-Position embeddings when doing the the MatMul calculation. Two additional learnable terms are added $u$ and $v$. 
 
 #### RNN: preprocessing:  
 
