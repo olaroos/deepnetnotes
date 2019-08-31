@@ -255,13 +255,18 @@ Transformers use Googles self-attention which means no RNNs. There are multiple 
 Generating output from the Google-transformer is done by feeding the decoder a sequence-length zeroed matrix that includes one non-zero element (initially the <bos> character). In each forward pass one additional character is generated and added to the input for the next forward-pass.  
 
 - **XL-Transformer**:  ([paper XLT])
+
 learns dependencies that are 80% longer than RNNs and 450% longer than vanilla-transformers.  
+
+**recurrence memory**  
 
 Transformers do not have memory cells/states that are passed on in a autoregressive fashion. The context in the vanilla-transformer (googles) takes it's historical information from the encoder. The XL-transformer aims to extend the amount of information a transformer can learn by feeding it more information from previous chunks of sequences to various extents.  
 
 This information is feed to the Value- and the Key-weights, not the Query-weights. These weights are dimensionally expanded and multiplied with the previous sequential chunk ($X_{t-1}$) concatenated to the current sequential chunk ($X_{t}$).  
 
 This creates a "segment-level recurrence in the hidden states" which extends the context way beyond two segments back.  
+
+**relative positional embeddings**  
 
 This creates a technical problem with the positional-encoding added to the input. To solve this, calculation of relative position is introduced and hence the calculation of MatMul has to be changed. This is done by separating the Content-Embedding and the Relative-Position embeddings when doing the the MatMul calculation. Two additional learnable terms are added $u$ and $v$. 
 
