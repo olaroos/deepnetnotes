@@ -25,6 +25,7 @@
 [animated attention]: <https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/>
 [medium all you need attention]: <https://medium.com/@Alibaba_Cloud/self-attention-mechanisms-in-natural-language-processing-9f28315ff905>
 
+[article QAmodel]: <https://towardsdatascience.com/nlp-building-a-question-answering-model-ed0529a68c54>
 
 [tensor basics]: <https://deeplizard.com/learn/video/fCVuiW9AFzY> 
 [medium BGRU]: <https://towardsdatascience.com/understanding-bidirectional-rnn-in-pytorch-5bd25a5dd66>  
@@ -98,6 +99,11 @@ Problem:  not able to model the joint probability using product rule – BERT as
 (2) context encoding  
 (3) reasoning, and finally  
 (4) an- swer prediction  
+
+
+- **QA model**  ([article QAmodel])  
+A regular Question- and Answering-model presented in the article above is built with bidirectional attention. Attention from Context to Questions and from the Questions to the Context.  
+
 
 - **FLOW (context of MC)**: ([paper FLOW])  
 **-** base neural model  
