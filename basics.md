@@ -33,6 +33,10 @@
 [VAE article]: <https://jaan.io/what-is-variational-autoencoder-vae-tutorial/>
 [affine coupling]: <https://arxiv.org/pdf/1410.8516.pdf> 
 
+## Concepts to look closer into:  
+
+- *ELMo*  
+
 ## Papers to look closer into:  
 Jeremy Howard Recommends:  
 - *Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification* 
