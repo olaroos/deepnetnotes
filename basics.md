@@ -92,17 +92,16 @@ I don't understand the what this method is doing, we teach the model what to exp
 given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.  
 Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
 
-- **MC machine comprehension**:  
-**single turn**: 
+- **MC machine comprehension (NLU - Natural Language Understanding)**:  
+**single turn**:  
 (1) question encoding  
 (2) context encoding  
 (3) reasoning, and finally  
 (4) an- swer prediction  
 
-- **FLOW (context of MC)**: [paper FLOW]  
-components:  
-**i)** base neural model  
-**ii)** flow mechanism *encodes history*  
+- **FLOW (context of MC)**: ([paper FLOW])  
+**-** base neural model  
+**-** flow mechanism *encodes history*  
 
 - (pretraining) **XLNet**:  ([paper XLNet])  
 **(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order  
