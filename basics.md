@@ -1,3 +1,6 @@
+
+[paper flow]: <https://openreview.net/pdf?id=ByftGnR9KX>
+
 [github word2vec]: <https://github.com/bollu/bollu.github.io#everything-you-know-about-word2vec-is-wrong>
 [medium adagrad]: <https://medium.com/konvergen/an-introduction-to-adagrad-f130ae871827>
 [medium rprop]: <https://towardsdatascience.com/understanding-rmsprop-faster-neural-network-learning-62e116fcf29a>
@@ -73,6 +76,48 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 - **Layer Normalization**: Batch-Normalization for RNNs [paper layernorm]  
 
 - **PyTorch Tensor Basics**: [tensor basics]
+
+
+#### NLP: Natural Language Processing  
+
+NLP generally requires multiple steps of pretraining the input- and output-data. 
+
+- (pretraining) **AR**: AutoRegressive language modelling  
+seeks to estimate the probability distribution of a text corpus using a autoregressive model either as a backwards- or forward-product.  
+Problem:  encodes only uni-directional context.  
+
+I don't understand the what this method is doing, we teach the model what to expect given a sequence starting from the left or the right. 
+
+- (pretraining) **AE** AutoEncoding **BERT**: Bidirectional Encoder Representation from Transformers  
+given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.  
+Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
+
+- (pretraining) **XLNet**:  ([paper XLNet])  
+**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order  
+**i.e capturing bidirectinal context**.  
+**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens  
+**i.e no independence assumption**.  
+**(iii)** integrates the segment recurrence mechanism and relative encoding scheme of Transformer-XL with adjustments for the arbitrary factorization order and target ambiguity ((i))  
+**i.e improved performance for longer text sequences**  
+
+- **FLOW**: [paper FLOW]  
+components:  
+**i)** base neural model  
+**ii)** flow mechanism *encodes history*  
+
+- **ELMo**: [youtube ELMo]  
+**i)** Use multiple layers of recurrent units in the encoder  
+**ii)** Keep all the internal layer representations, in addition to the final recurrent layer.  
+**iii)** For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
+As I understand it, ELMo is a stacked bi-directional RNN where the output for each stack-layer (LSTM/GRU) is run through a softmax and then added together with the output from all the other stack-layers + the input (goes through softmax) and then scaled by a trainable gamma parameter before (not sure about this) being feed to a final soft-max layer and a prediction.  
+
+**Embeddings**:  
+
+- **Word Vectors**: https://blog.acolyer.org/2016/04/21/the-amazing-power-of-word-vectors/  
+
+- **Skip-Gram**: reverse of CBOW  
+
+- **CBOW**: reverse of Skip-Gram  
 
 
 ## Generative Models:  
@@ -285,44 +330,6 @@ This creates a technical problem with the positional-encoding added to the input
 - **Teacher Forcing:**  feeding the ground-truth (yt, yt+1, ...)to the model during sequential training.  
 - **Free Running:** 	feeding the output to the model sequentially. 
 - **Professor Forcing:**  using a GAN-discriminator to force hidden-states from teacher-forcing and free-running to be close to each other.  
-
-
-#### NLP: Natural Language Processing  
-
-NLP generally requires multiple steps of pretraining the input- and output-data. 
-
-- (pretraining) **AR**: AutoRegressive language modelling  
-seeks to estimate the probability distribution of a text corpus using a autoregressive model either as a backwards- or forward-product.  
-Problem:  encodes only uni-directional context.  
-
-I don't understand the what this method is doing, we teach the model what to expect given a sequence starting from the left or the right. 
-
-- (pretraining) **AE** AutoEncoding **BERT**: Bidirectional Encoder Representation from Transformers  
-given an input token sequence with a portion of tokens replaced by a mask – pre-train network to recover original tokens from the corrupted version.  
-Problem:  not able to model the joint probability using product rule – BERT assumes the independent tokens are independent of each other given the unmasked tokens.  
-
-- (pretraining) **XLNet**:  ([paper XLNet])  
-**(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order  
-**i.e capturing bidirectinal context**.  
-**(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens  
-**i.e no independence assumption**.  
-**(iii)** integrates the segment recurrence mechanism and relative encoding scheme of Transformer-XL with adjustments for the arbitrary factorization order and target ambiguity ((i))  
-**i.e improved performance for longer text sequences**  
-
-
-- **ELMo**: [youtube ELMo]  
-**i)** Use multiple layers of recurrent units in the encoder  
-**ii)** Keep all the internal layer representations, in addition to the final recurrent layer.  
-**iii)** For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
-As I understand it, ELMo is a stacked bi-directional RNN where the output for each stack-layer (LSTM/GRU) is run through a softmax and then added together with the output from all the other stack-layers + the input (goes through softmax) and then scaled by a trainable gamma parameter before (not sure about this) being feed to a final soft-max layer and a prediction.  
-
-**Embeddings**:  
-
-- **Word Vectors**: https://blog.acolyer.org/2016/04/21/the-amazing-power-of-word-vectors/  
-
-- **Skip-Gram**: reverse of CBOW  
-
-- **CBOW**: reverse of Skip-Gram  
 
 **Weight Initialization**:  
 The goal is to have the variance be the same when progressing through the network. If the 
