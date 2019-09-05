@@ -109,6 +109,15 @@ A regular Question- and Answering-model presented in the article above is built 
 **-** base neural model  
 **-** flow mechanism *encodes history*  
 
+- **Summarization**:  
+**Extractive**: *sentence classification problem*: created a summary by identifying (and subsequently concatenating) the most important sentences in a document.  
+**Abstractive**: *sequence-to-sequence problem*: ; 
+
+
+- **Pre-Processing**:  
+- *Trigram Blocking*:  
+Trigram Blocking is used to reduce redundancy. Given selected summary S and a candidate sentence c, we will skip c if there exists a trigram overlapping between c and S. This is similar to the Maximal Marginal Relevance (MMR).  
+
 - (pretraining) **XLNet**:  ([paper XLNet])  
 **(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order  
 **i.e capturing bidirectinal context**.  
