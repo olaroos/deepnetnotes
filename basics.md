@@ -37,6 +37,8 @@
 [VAE article]: <https://jaan.io/what-is-variational-autoencoder-vae-tutorial/>
 [affine coupling]: <https://arxiv.org/pdf/1410.8516.pdf> 
 
+[xlexp XLNet]: <https://mlexplained.com/2019/06/30/paper-dissected-xlnet-generalized-autoregressive-pretraining-for-language-understanding-explained/>
+
 ## Concepts to look closer into:  
 
 - *ELMo*  
@@ -113,19 +115,17 @@ A regular Question- and Answering-model presented in the article above is built 
 **Extractive**: *sentence classification problem*: created a summary by identifying (and subsequently concatenating) the most important sentences in a document.  
 **Abstractive**: *sequence-to-sequence problem*: ; 
 
-
 - **Pre-Processing**:  
 - *Trigram Blocking*:  
 Trigram Blocking is used to reduce redundancy. Given selected summary S and a candidate sentence c, we will skip c if there exists a trigram overlapping between c and S. This is similar to the Maximal Marginal Relevance (MMR).  
 
-- (pretraining) **XLNet**:  ([paper XLNet])  
+- (pretraining) **XLNet**:  ([paper XLNet])  ([mlexp XLNet])  
 **(i)**  maximizes the expected log likelihood of a sequence w.r.t all possible permutations of the factorization order  
 **i.e capturing bidirectinal context**.  
 **(ii)** provides a natural way to use the product rule for factorizing the joint probability of the predicted tokens  
 **i.e no independence assumption**.  
 **(iii)** integrates the segment recurrence mechanism and relative encoding scheme of Transformer-XL with adjustments for the arbitrary factorization order and target ambiguity ((i))  
 **i.e improved performance for longer text sequences**  
-
 
 - **ELMo**: [youtube ELMo]  
 **i)** Use multiple layers of recurrent units in the encoder  
@@ -305,11 +305,11 @@ calculate the context vector by combining calculating probability by using the a
 - **Googles self-attention**:  [[paper google attention]]
 
 A matrix that puts two different sequences at adjacent sides of a matrix. This matrix explains the relationship between the parts of the two sequences.  
-
 $Googles-Attention(Q,K,V) = softmax(\frac{QK^{T}}{\sqrt{d_{k}}})V$  
 Q -  search query  
 K -  key  
 V -  value   
+Intuitively, the query represents what kind of information we are looking for, the keys represent the relevance to the query, and the values represent the actual contents of the input.  
 
 - **Transformers**:  
 
