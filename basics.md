@@ -84,7 +84,7 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 - **PyTorch Tensor Basics**: [tensor basics]
 
 
-#### NLP: Natural Language Processing  
+## NLP: Natural Language Processing  
 
 NLP generally requires multiple steps of pretraining the input- and output-data. 
 
