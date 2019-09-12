@@ -90,8 +90,9 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 Convolving only on the left-hand side of the sequence as to not leak information from the future.  
 
 - Gated Linear Units (GLU)  ([article GCM]) 
-$$A \bigotimes sigmoid(B)$$  
-
+$A = X*W + b$  
+$B = X*V + c$  
+$A \smallotimes sigmoid(B)$  
 
 ## NLP: Natural Language Processing  
 
