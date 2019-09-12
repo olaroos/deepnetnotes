@@ -84,6 +84,15 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 - **PyTorch Tensor Basics**: [tensor basics]
 
 
+## Uncategorizable Concepts:  
+
+- Temporal Convolution  ([article GCM])  
+Convolving only on the left-hand side of the sequence as to not leak information from the future.  
+
+- Gated Linear Units (GLU)  ([article GCM]) 
+$$A \bigotimes sigmoid(B)$$  
+
+
 ## NLP: Natural Language Processing  
 
 NLP generally requires multiple steps of pretraining the input- and output-data. 
