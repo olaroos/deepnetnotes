@@ -39,6 +39,9 @@
 
 [xlexp XLNet]: <https://mlexplained.com/2019/06/30/paper-dissected-xlnet-generalized-autoregressive-pretraining-for-language-understanding-explained/>
 
+[article GCM]: <https://towardsdatascience.com/how-to-build-a-gated-convolutional-neural-network-gcnn-for-natural-language-processing-nlp-5ba3ee730bfb>  
+
+
 ## Concepts to look closer into:  
 
 - *ELMo*  
@@ -106,6 +109,8 @@ Problem:  not able to model the joint probability using product rule – BERT as
 - **QA model**  ([article QAmodel])  
 A regular Question- and Answering-model presented in the article above is built with bidirectional attention. Attention from Context to Questions and from the Questions to the Context.  
 
+- **Gated Convolutional Model**  ([article GCM])  
+GCM for language analysis uses Temporal Convolution – model is obstructed from knowing information from the "future".  
 
 - **FLOW (context of MC)**: ([paper FLOW])  
 **-** base neural model  
