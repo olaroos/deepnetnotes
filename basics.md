@@ -147,19 +147,20 @@ As I understand it, ELMo is a stacked bi-directional RNN where the output for ea
 Generative Models try to solve the problem which DL-models have that they work porly with data that has been taken from a different distribution than the training data. [generative models]  
 
 Likelihood methods can be divided into three sub-categories:  
-(i) Autoregressive Models (e.g GANs)  
+(i) **Autoregressive Models** (e.g GANs)  
 uses discriminator to tune the models distribution and minimize the difference from the target distribution.  
-(ii) Variational Auto-Encoders  
+(ii) **Variational Auto-Encoders**  
 uses non-deterministic encoders to learn the target distribution. Pros, can be trained with parallelization.  
 Allows interpolation of datapoints e.g in synthesized data.  
-(iii) Flow-Based generative models (e.g GLOW)  
+(iii) **Flow-Based generative models** (e.g GLOW)  
 uses chains of deterministic transformation functions to learn the target distribution. 
 Also allows interpolation of datapoints e.g in synthesized data.  
 Calculation of gradient using invertible functions requires non-exponential memory consumption.  
 
 #### GANs: Generative Adverserial Networks:  
-
-
+Uses two models  
+i) *Discriminator* "discriminates" by guessing if the sample is real or generated.  
+ii) *Generator* the generator tries to fool the discrimator by generating convincing samples.  
 
 #### VAE: Variational Auto-Encoders  
 
