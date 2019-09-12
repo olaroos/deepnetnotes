@@ -92,7 +92,7 @@ Convolving only on the left-hand side of the sequence as to not leak information
 - Gated Linear Units (GLU)  ([article GCM])  
 $A = X\*W + b$  
 $B = X\*V + c$  
-$A \smallotimes sigmoid(B)$  
+$A \otimes sigmoid(B)$  
 
 ## NLP: Natural Language Processing  
 
