@@ -102,7 +102,7 @@ $u^{i} = v^{T} tanh(W_{1}E + W_{2}d_{i})$
 $a^{i} = softmax(u^{i})$  
 
 there are two ways to use the CBIA:  
-**i)**
+**i)**  
 $\hat{d_{i}} = a^{i} x E$  
 $[\hat{d_{i}}; d_{i}$ is feed to a linear-layer -> $d_{i+1}$  
 $d_{i+1} is feed to a linear-layer -> prediction$  
