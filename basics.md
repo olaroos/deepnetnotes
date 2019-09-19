@@ -100,14 +100,13 @@ $A \otimes sigmoid(B)$
 seq2seq network that uses "Content Based Input Attention"  
 $u^{i} = v^{T} tanh(W_{1}E + W_{2}d_{i})$  
 $a^{i} = softmax(u^{i})$  
-
 there are two ways to use the CBIA:  
 **i)**  
 $\hat{d_{i}} = a^{i} x E$  
-$[\hat{d_{i}}; d_{i}$ is feed to a linear-layer -> $d_{i+1}$  
-$d_{i+1} is feed to a linear-layer -> prediction$  
+$[\hat{d_{i}}; d_{i}]$ is feed to a linear-layer -> $d_{i+1}$  
+$d_{i+1}$ is feed to a linear-layer -> prediction  
 **ii)**  
-use $a^{i}$ to decide which $e^{j} to use as input to the decoder  
+use $a^{i}$ to decide which $e^{j}$ to use as input to the decoder  
 $E(max(a^{i})) = d_{i+1}$  
 problems with **ii)** is that we end up in a loop back to the same element when one element points to itself.  
 
