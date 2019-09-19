@@ -101,11 +101,9 @@ seq2seq network that uses "Content Based Input Attention"
 $u^{i} = v^{T} tanh(W_{1}E + W_{2}d_{i})$  
 $a^{i} = softmax(u^{i})$  
 there are two ways to use the CBIA:  
-**i)**  
-$\hat{d_{i}} = a^{i} x E$  
+**i)**  $\hat{d_{i}} = a^{i} E$  
 $[\hat{d_{i}}; d_{i}]$ is feed to a linear-layer -> $d_{i+1}$; $d_{i+1}$ is feed to a linear-layer -> prediction  
-**ii)**  
-use $a^{i}$ to decide which encoder hidden-state to use as input to decoder.
+**ii)**  use $a^{i}$ to decide which encoder hidden-state to use as input to decoder.  
 $E(max(a^{i})) = e^{j} = d_{i+1}$  
 problem is that one of the elements might point back to itself.  
 
