@@ -103,12 +103,11 @@ $a^{i} = softmax(u^{i})$
 there are two ways to use the CBIA:  
 **i)**  
 $\hat{d_{i}} = a^{i} x E$  
-$[\hat{d_{i}}; d_{i}]$ is feed to a linear-layer -> $d_{i+1}$  
-$d_{i+1}$ is feed to a linear-layer -> prediction  
+$[\hat{d_{i}}; d_{i}]$ is feed to a linear-layer -> $d_{i+1}$; $d_{i+1}$ is feed to a linear-layer -> prediction  
 **ii)**  
-use $a^{i}$ to decide which $e^{j}$ to use as input to the decoder  
-$E(max(a^{i})) = d_{i+1}$  
-problems with **ii)** is that we end up in a loop back to the same element when one element points to itself.  
+use $a^{i}$ to decide which encoder hidden-state to use as input to decoder.
+$E(max(a^{i})) = e^{j} = d_{i+1}$  
+problem is that one of the elements might point back to itself.  
 
 ## NLP: Natural Language Processing  
 
