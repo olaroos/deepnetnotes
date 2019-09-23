@@ -85,6 +85,7 @@ Train the inital-state as a model parameter and/or use a noisy initial state.
 
 - **PyTorch Tensor Basics**: [tensor basics]
 
+https://medium.com/@kolloldas/building-the-mighty-transformer-for-sequence-tagging-in-pytorch-part-i-a1815655cd8
 
 ## Uncategorizable Concepts:  
 
