@@ -42,7 +42,7 @@
 [article GCM]: <https://towardsdatascience.com/how-to-build-a-gated-convolutional-neural-network-gcnn-for-natural-language-processing-nlp-5ba3ee730bfb>  
 
 [article PN]: <https://arxiv.org/pdf/1506.03134.pdf>
-
+[blog transformer]: <http://www.peterbloem.nl/blog/transformers>
 
 ## Concepts to look closer into:  
 
@@ -341,7 +341,7 @@ $Googles-Attention(Q,K,V) = softmax(\frac{QK^{T}}{\sqrt{d_{k}}})V$
 Q -  search query  
 K -  key  
 V -  value   
-Intuitively, the query represents what kind of information we are looking for, the keys represent the relevance to the query, and the values represent the actual contents of the input.  
+Intuitively, the query represents what kind of information we are looking for, the keys represent the relevance to the query, and the values represent the actual contents of the input.  [[blog transformer]]
 
 - **Transformers**:  
 
