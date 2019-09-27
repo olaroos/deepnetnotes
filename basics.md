@@ -44,6 +44,9 @@
 [article PN]: <https://arxiv.org/pdf/1506.03134.pdf>
 [blog transformer]: <http://www.peterbloem.nl/blog/transformers>
 
+[blog wordembeddings]: <https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html>  
+
+
 ## Concepts to look closer into:  
 
 - *ELMo*  
@@ -164,7 +167,7 @@ Trigram Blocking is used to reduce redundancy. Given selected summary S and a ca
 **iii)** For any downstream task, create the task-specific embeddings as a linear combination of all the internal layer representation.  
 As I understand it, ELMo is a stacked bi-directional RNN where the output for each stack-layer (LSTM/GRU) is run through a softmax and then added together with the output from all the other stack-layers + the input (goes through softmax) and then scaled by a trainable gamma parameter before (not sure about this) being feed to a final soft-max layer and a prediction.  
 
-**Embeddings**:  
+**Embeddings**: [[blog wordembeddings]]
 
 - **Word Vectors**: https://blog.acolyer.org/2016/04/21/the-amazing-power-of-word-vectors/  
 
