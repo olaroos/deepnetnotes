@@ -46,6 +46,10 @@
 
 [blog wordembeddings]: <https://lilianweng.github.io/lil-log/2017/10/15/learning-word-embedding.html>  
 
+[medium seq2seq attention]: <https://towardsdatascience.com/attention-seq2seq-with-pytorch-learning-to-invert-a-sequence-34faf4133e53>
+
+
+
 
 ## Concepts to look closer into:  
 
@@ -311,6 +315,9 @@ As I understand creating a bidirectional-gru/lstm is merging the result of two s
 
 - **Stacked GRU/LSTM**:  
 Stacking multiple GRU/LSTM on each other. The output from the first layer of GRU/LSTM is the input to the second layer. The output from the final layer is feed to a linear-layer.  
+
+- **Seq2seq with Global Attention**: [[medium seq2seq attention]]  
+Doing sequence to sequence transformation using RNNs as encoder and RNNs as decoder with global attention between. The encoder usually uses multiple layers (not more than 2-3) and bi-directional LSTM/GRUs.  
 
 - **ULMFIT**: - [[medium ULMFIT]]  
 Haven't read the whol article. ULMFIT is preprocessing text, then training with a custom dropout for embeddings and hidden layers in RNNs which need to be zeroed out in a different way than weights in a linear-layer.  
