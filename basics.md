@@ -1,4 +1,6 @@
 
+[blog GPT2]: <http://jalammar.github.io/illustrated-gpt2/>
+
 [paper flow]: <https://openreview.net/pdf?id=ByftGnR9KX>
 
 [github word2vec]: <https://github.com/bollu/bollu.github.io#everything-you-know-about-word2vec-is-wrong>
@@ -138,6 +140,9 @@ Problem:  not able to model the joint probability using product rule – BERT as
 (3) reasoning, and finally  
 (4) an- swer prediction  
 
+
+- **Language Model** ([blog GPT2])
+A language model is – basically a machine learning model that is able to look at part of a sentence and predict the next word. E.g Word2Vec. 
 
 - **QA model**  ([article QAmodel])  
 A regular Question- and Answering-model presented in the article above is built with bidirectional attention. Attention from Context to Questions and from the Questions to the Context.  
